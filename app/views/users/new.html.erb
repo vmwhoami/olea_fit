@@ -1,0 +1,15 @@
+<h1>Hello from new</h1>
+
+<%= form_for @user do |f| %>
+
+
+<%= f.label :username, "Username" %>
+<%= f.text_field :username %>
+
+<%= f.label :fullname, "Full name" %>
+<%= f.text_field :fullname %>
+
+
+<%= f.submit %>
+
+<% end %>

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  after_initialize :downcase_usename
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
   validates :fullname, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 6, maximum: 50 }
 
@@ -14,4 +16,8 @@ class User < ApplicationRecord
   has_many :following_folks, class_name: 'Following', foreign_key: 'followed_id'
 
   has_many :followers, through: :following_folks, source: :follower
+
+  def downcase_usename
+    self.username = self.username.downcase
+  end
 end
