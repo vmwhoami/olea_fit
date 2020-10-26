@@ -5,3 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create(username:"olea",fullname:"Olga Pirvu")
+User.create(username:"dima",fullname:"Dumitru Melnic")
+User.create(username:"sergyo",fullname:"Sergiu Bogdan")
+User.create(username:"inna",fullname:"Inna Bogdan")
+
+5.times do |u|
+  User.create!(
+    username:"user_#{u}",
+    fullname:"User Family_#{u}"
+  )
+end
+
+puts "-"*100
+puts "------------ Users created!!! -----------"
+user = 0
+9.times do |o|
+  user+=1
+Opinion.create!(
+  author:User.find(user),
+  text:"Because I'm just ... um .... I don't know. Why give an interview when you
+  can leave a warning, you know?
+  
+  And I'm ... you know ... most of the time. And this includes naps! You
+  know, I'm an F-18, bro. And I will destroy you in the air. And I will
+  deploy my ordinance to the ground. And, uh ...."
+
+)
+
+end
+
+
+
+puts "-"*100
+puts "------------ Opinions Created!!! -----------"
