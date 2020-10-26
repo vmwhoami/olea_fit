@@ -1,21 +1,23 @@
 class SessionsController < ApplicationController
+  
   def new 
     
   end
 
   def create
-    user = User.find_by_username(username: params[:session][:username].downcase)
+    user = User.find_by_username(params[:sessions][:username].downcase)
     if user
-    session[:user] = user 
+    log_in(user)
     redirect_to user_path(user)
     else
-      flahs.now[error] = "User does not exist"
+      flash.now[:error] = "User does not exist"
       render "new"
     end
   end
   
 
   def destroy
-
+    destroy_session
+    redirect_to root_path
   end
 end
