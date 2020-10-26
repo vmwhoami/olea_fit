@@ -4,7 +4,7 @@ class User < ApplicationRecord
   after_initialize :downcase_usename
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
-  validates :fullname, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 6, maximum: 50 }
+  validates :fullname, presence: true , length: { minimum: 6, maximum: 50 }
 
   has_many :opinions, class_name: 'Opinion', foreign_key: 'author_id'
 
@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :followers, through: :following_folks, source: :follower
 
   def downcase_usename
-    self.username = self.username.downcase
+    
+    self.username = self.username.downcase unless self.username.nil?
   end
 end

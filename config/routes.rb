@@ -1,6 +1,7 @@
  
 Rails.application.routes.draw do
- resources :users
+ resources :users,except: %i[new]
+ get "register",to: "users#new"
  root "sessions#new"
 
  get "login",to: "sessions#new"

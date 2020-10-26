@@ -5,8 +5,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_username(username: params[:session][:username].downcase)
-    session[:user] = user.username
-
+    if user
+    session[:user] = user 
+    redirect_to user_path(user)
+    else
+      flahs.now[error] = "User does not exist"
+      render "new"
+    end
   end
   
 
