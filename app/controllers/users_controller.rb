@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in? , only: [:index, :show, :destory]
+  before_action :find_user, only: [ :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -10,8 +13,8 @@ class UsersController < ApplicationController
   def create 
     @user = User.new(permitted_params)
     if @user.save
+      log_in(@user)
       flash[:success] = "User created successfully"
-      #Login the user 
       redirect_to user_path(@user)
     else
       flash.now[:error] 
@@ -21,14 +24,35 @@ class UsersController < ApplicationController
   end
 
 def show
-  @user = User.find(params[:id])
+  @user = User.find(current_user[:id])
 end
 
-  def destroy
+def edit
+end
 
+def update
+  respond_to do |format|
+    if @user.update(permitted_params)
+      format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      format.json { render :show, status: :ok, location: @pizda }
+    else
+      format.html { render :edit }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
+    end
   end
+end
+ 
+def destroy
+  @user.destroy
+  respond_to do |format|
+    format.html { redirect_to user_url, notice: 'User was successfully destroyed.' }
+    format.json { head :no_content }
+  end
+end
+ 
 
 private
+ 
 
 def find_user
   @user = User.find(params[:id])

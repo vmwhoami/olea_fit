@@ -8,9 +8,10 @@ module ApplicationHelper
   def current_user
     @current_user||= User.find_by_username(session[:user])
   end
+ 
 
   def logged_in?
-    !!@current_user.nil?
+    redirect_to login_path unless current_user
   end
 
 
