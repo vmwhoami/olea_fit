@@ -13,10 +13,69 @@
  *= require_tree .
  *= require_self
  */
-$left-color:#213246;
+
+$left-top:#1b2a3d;
+$left-bottom:#213246;
 $main-background:#f5f6f8;
-$nav-bottom:#4f9fdc;
+$nav-bottom:#4d99d3;
 $nav-top:#55acef;
 $names-leftnav:#748da1;
+$border:#1f2730;
+ 
+html {
+  font-size: 62.5%;
+}
 
+body{
+  font-size: 1.6rem !important;
+}
 
+ .container-fluid{
+   padding: 0 !important;
+ }
+.mynav{
+  height: 100vh;
+  width: 20rem;
+  background-color: $left-bottom;
+  
+}
+
+.picture-name{
+  height: 8rem;
+  width: 20rem;
+  background-color:$left-top ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:$names-leftnav;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: $border;
+}
+
+.current_user_img{
+  border-radius: 5px;
+  height: 6rem;
+  width: 6rem;
+  margin-right: 1rem;
+}
+
+.follows{
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  background-color: $left-top;
+
+  &__following{
+    border: 2px solid $border;
+    flex-grow: 1;
+    flex-basis: 0;
+   
+  }
+  &__followers{
+    border: 2px solid $border;
+    flex-grow: 1;
+    flex-basis: 0;
+    
+  }
+}

@@ -1,11 +1,22 @@
-<div class="col-2">
-
-
-  <div class="row">
-    <img src="https://via.placeholder.com/140x100" alt="user">
-    <%= current_user.fullname if current_user %>
+<div class="mynav">
+  <div class="picture-name">
+    <%= image_tag "//via.placeholder.com/140x100",class:"current_user_img" %>
+    <%= link_to "#{current_user.fullname }" ,user_path(current_user)   %>
   </div>
 
+  <div class="follows text-light px-1">
+    <div class="follows__followers d-flex flex-column justify-content-center align-items-center">
+      <p class="follows__count"><%= current_user.followings.count %></p>
+      <span class="follows__heading  ">Following</span>
+    </div>
 
+    <div class="follows__followers d-flex flex-column justify-content-center align-items-center">
+      <p class="follows__count"><%= current_user.followers.count %></p>
+      <span class="follows__heading  ">Followers</span>
+    </div>
+  </div>
 
+  <div class="left_navigation d-flex flex-column">
+
+  </div>
 </div>
