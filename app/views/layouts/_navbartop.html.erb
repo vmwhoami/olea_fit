@@ -1,9 +1,32 @@
+
+<%= render 'layouts/svgs' %>
 <nav class="topnav">
   <div class="topnav__logo ml-5">
-    ceva logo
+  <%= link_to  root_path do  %>
+   <svg class="icon-danceter">
+        <use xlink:href="#icon-danceter"/>
+      </svg>
+    <% end %>
   </div>
   <div class="topnav__right mr-5">
-    <a href="#">write a post</a>
-    <%= link_to  "logout", logout_path, method: :delete %>
+    
+  <%= link_to  root_path,class: "navlink" do  %>
+     <svg class="icon-nav">
+        <use xlink:href="#icon-pen"/>
+      </svg>
+    <% end %>
+
+     <%= link_to  root_path,class: "navlink"  do  %>
+     <svg class="icon-nav">
+        <use xlink:href="#icon-home"/>
+      </svg>
+    <% end %>
+ 
+    <%= link_to logout_path, method: :delete,class: "navlink"  do %>
+      <svg class="icon-nav">
+      <use xlink:href="#icon-exit"/>
+      </svg>
+    <% end %>
+   
   </div>
 </nav>
