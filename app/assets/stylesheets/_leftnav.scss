@@ -32,16 +32,14 @@
   height: 6rem;
   width: 100%;
   display: flex;
-  background-color: $left-top;
-  border-top: 2px solid $border;
-  border-bottom: 2px solid $border;
+
   &__following{
     flex-grow: 1;
     flex-basis: 0;
    
   }
   &__followers{
-    border-right: 2px solid $border;
+ 
     flex-grow: 1;
     flex-basis: 0;
   }
@@ -50,4 +48,5 @@
       padding: 0;
   }
 }
+
 

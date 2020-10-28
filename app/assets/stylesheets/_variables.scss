@@ -4,5 +4,22 @@ $left-bottom:#213246;
 $nav-bottom:#4d99d3;
 $nav-top:#55acef;
 $names-leftnav:#748da1;
-$border:#1f2730;
+$border:#777777;
 $main-background:#f5f6f8;
+
+
+.bg-left{
+  background-color: $left-top;
+}
+
+.border_top{
+  border-top: 2px solid $border;
+}
+
+.border_bottom{
+  border-bottom: 2px solid $border;
+}
+
+.border_right{
+  border-right: 2px solid $border;
+}

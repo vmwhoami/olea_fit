@@ -1,26 +1,48 @@
 <%# top navigation with imagage and some functionality %>
 <div class="visited">
 
-    <div class="visited__image">
-      <p class="text-white"> Main image</p>
-    </div>
+	<div class="visited__image">
+		<%= image_tag "http://via.placeholder.com/400x400" %>
+	</div>
 
 
-    <div class="visited__functionality">
+	<div class="visited__functionality border-bottom">
 
-        <div class="visited__container">
-            <%= link_to  "+", root_path, class: "follow" %>
-            <p class="visited__fullname"><%= @user.fullname %></p>
-            <span class="visited__username"><%= @user.username %></span>
-        </div>
-
-        <div class="visited__opinions">
-				
+		<div class="visited__container d-flex flex-column align-items-center justify-content-around">
+			<div class="image_navigation d-flex align-items-center justify-content-center">
+				<%= link_to  "follow_btn", root_path, class: "mr-2"  %>
+				<div class="guest__image">
+					<%= image_tag "http://via.placeholder.com/400x400" %>
 				</div>
-        <div class="visited__following"></div>
-        <div class="visited__followers"></div>
+				<%= link_to  "followers", root_path, class: "ml-2" %>
+			</div>
 
-    </div>
+			<p class="visited__fullname m-0 p-0"><%= @user.fullname %></p>
+			<span class="visited__username m-0 p-0">@<%= @user.username %></span>
+		</div>
+
+
+
+
+		<%# follows followigns section  %>
+		<div class="follows border_top  px-1">
+			<div class="follows__followers d-flex flex-column justify-content-center align-items-center border_right">
+				<p class="follows__count"><%= @user.followings.count %></p>
+				<span class="follows__heading  ">Following</span>
+			</div>
+
+			<div class="follows__followers d-flex flex-column justify-content-center align-items-center border_right">
+				<p class="follows__count"><%= @user.followers.count %></p>
+				<span class="follows__heading  ">Followers</span>
+			</div>
+
+			<div class="follows__followers d-flex flex-column justify-content-center align-items-center">
+				<p class="follows__count"><%= @user.opinions.count %></p>
+				<span class="follows__heading  ">Opinions</span>
+			</div>
+		</div>
+
+	</div>
 
 </div>
 
@@ -28,41 +50,38 @@
 
 
 <div class="container-fluid  main">
-
-<div class="main__center d-flex flex-column">
-
-	<div class="main__center__nav d-flex  align-items-center">
-	
+	<div class="main__center d-flex flex-column">
+		<div class="main__center__nav d-flex  align-items-center">
 			<a href="#">Opinions</a>
 			<a href="#">Followers</a>
 			<a href="#">Following</a>
-	</div>
-
-   <%# here will be all the tweets and stuff %>
-			<div class="container-fluid main__center__newsfeed">
-<p>
-	Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex eos quasi porro quod itaque sequi temporibus.
-	 Temporibus numquam nam autem labore aspernatur, voluptate saepe, veritatis, recusandae eveniet minima quo architecto?
-	 </p>
-			</div>
+		</div>
+		<%# here will be all the tweets and stuff %>
+		<div class="container-fluid main__center__newsfeed">
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex eos quasi porro quod itaque sequi temporibus.
+				Temporibus numquam nam autem labore aspernatur, voluptate saepe, veritatis, recusandae eveniet minima quo
+				architecto?
+			</p>
+		</div>
 		<%# here will end %>
 
 
+	</div>
+	<div class="main__right d-flex flex-column">
+		<div class="main__right__heading d-flex justify-content-center align-items-center">
+			<h2>Followed by</h2>
 		</div>
-		<div class="main__right d-flex flex-column">
-			<div class="main__right__heading d-flex justify-content-center align-items-center">
-				<h2>Followed by</h2>
-			</div>
 
-				<div class="main__right__whotofollow">
-					<div class="follow_these"></div>
-
-
-				</div>
-
+		<div class="main__right__whotofollow">
+			<div class="follow_these"></div>
 
 
 		</div>
 
- 
+
+
+	</div>
+
+
 </div>

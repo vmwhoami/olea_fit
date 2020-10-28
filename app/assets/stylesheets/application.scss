@@ -14,26 +14,54 @@ body{
  }
 
 .visited{
-  height: 20rem;
+  height: 25rem;
   background-color: $left-top;
   display: flex;
 
 // main image
   &__image{
     width: 100%;
-    height: 100%;  
+    height: 100%; 
+    
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+    }
    }
-
+&__container{
+  height: 100%;
+}
 
   &__functionality{
     flex: 0 0 35rem;
     height: 100%;
     background-color: $main-background;
     border-bottom:1px solid $names-leftnav;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
+
+ 
 }
 
+.guest__image{
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
 
+    img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+
+}
 
 
