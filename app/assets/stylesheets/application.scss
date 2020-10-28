@@ -60,8 +60,16 @@ body{
     object-fit: cover;
     overflow: hidden;
   }
-
-
 }
 
 
+.icon-viewuser{
+  height: 3rem;
+  width: 3rem;
+  fill: $muted-text;
+  transition: all .3s;
+
+  &:hover{
+fill:$text-loud;
+  }
+}

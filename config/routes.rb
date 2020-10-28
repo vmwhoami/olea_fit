@@ -1,10 +1,12 @@
  
 Rails.application.routes.draw do
- resources :users,except: %i[new]
+ resources :users,except: %i[new] do
+  resources :followings,only: [:create,:destroy]
+ end
  get "register",to: "users#new"
  root "users#index"
 
-
+ resources :opinions
  
  get "login",to: "sessions#new"
  post "login",to: "sessions#create"
