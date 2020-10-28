@@ -8,11 +8,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(username: 'olea', fullname: 'Olga Pirvu')
-User.create(username: 'dima', fullname: 'Dumitru Melnic')
+User.create(username: 'vitalie', fullname: 'Vitalie Melnic')
+User.create(username: 'adam', fullname: 'Adam Melnic')
 User.create(username: 'sergyo', fullname: 'Sergiu Bogdan')
 User.create(username: 'inna', fullname: 'Inna Bogdan')
+User.create(username: 'nikoli', fullname: 'Nikoli Bogdan')
 
-5.times do |u|
+10.times do |u|
   User.create!(
     username: "user_#{u}",
     fullname: "User Family_#{u}"
@@ -27,11 +29,7 @@ user = 0
   Opinion.create!(
     author: User.find(user),
     text: "Because I'm just ... um .... I don't know. Why give an interview when you
-  can leave a warning, you know?
-
-  And I'm ... you know ... most of the time. And this includes naps! You
-  know, I'm an F-18, bro. And I will destroy you in the air. And I will
-  deploy my ordinance to the ground. And, uh ...."
+  can leave a warning, you know?"
   )
 end
 
@@ -39,7 +37,9 @@ end
   o += 1
   Opinion.create!(
     author: User.find(o),
-    text: "Coronavirus is a joke!!!!"
+    text: "Coronavirus is a joke!!!!
+    You should care about your health not about coravirus
+    "
   )
 end
 puts '-' * 100
@@ -50,10 +50,11 @@ puts '------------ Opinions Created!!! -----------'
   f += 1
   User.find(1).followings.create(followed_id:User.find(f).id)
 end
-
+a = 1
 9.times do |f|
   f += 1
-  User.find(f).followings.create(followed_id:User.find(2).id)
+  a+=1
+  User.find(a).followings.create(followed_id:User.find(2).id)
 end
 
 

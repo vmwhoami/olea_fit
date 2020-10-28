@@ -60,17 +60,17 @@
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
 
-			<div class="bg-white">
-				<div class="card">
-					<div class="card-body">
-						<% @user.opinions.each do |opinion| %>
-				
-						<%= opinion.text %>
 
-						<% end %>
-					</div>
+			<% @user.opinions.each do |opinion| %>
+
+			<div class="card m-5">
+				<div class="card-body">
+					<%= opinion.text %>
 				</div>
 			</div>
+
+			<% end %>
+
 
 		</div>
 		<%# here will end %>
@@ -83,18 +83,22 @@
 			<h2 class="ml-4">Followed by</h2>
 		</div>
 
-		<div class="main__right__whotofollow">
+		<div class="main__right__whotofollow d-flex flex-column align-items-center">
 			<div class="follow_these">
-					<% @user.followers.each do |follower| %>
-					<div class="followers_right">
-						<p class="m-0"><%= follower.fullname %></p>
-						<span><%= follower.username %></span>
+				<% @user.followers.each do |follower| %>
+				<div class="d-flex mt-5">
+					<div class="following_img mr-3">
+						<%= image_tag "http://via.placeholder.com/400x400" %>
 					</div>
-			<% end %>
+
+					<div class="followers_right d-flex flex-column align-items-center">
+						<p class="m-0"><%= follower.fullname %></p>
+						<span>@<%= follower.username %></span>
+					</div>
+				</div>
+				<% end %>
 			</div>
 		</div>
-
-
 
 	</div>
 
