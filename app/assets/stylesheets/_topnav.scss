@@ -1,0 +1,16 @@
+@import "variables";
+
+.topnav{
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:$nav-bottom;
+background: linear-gradient(190deg, $nav-bottom 0%, $nav-top 100%);
+
+
+
+&__right{
+ max-width: 30rem;
+}
+}
