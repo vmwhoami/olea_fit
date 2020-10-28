@@ -50,33 +50,48 @@
 
 
 <div class="container-fluid  main">
-	<div class="main__center d-flex flex-column">
-		<div class="main__center__nav d-flex  align-items-center">
-			<a href="#">Opinions</a>
-			<a href="#">Followers</a>
-			<a href="#">Following</a>
+
+	<div class="main__center d-flex flex-column ">
+		<div class="main__center__nav d-flex  align-items-center border-bottom border-right">
+			<a class="ml-5" href="#">Opinions</a>
+			<a class="ml-5" href="#">Followers</a>
+			<a class="ml-5" href="#">Following</a>
 		</div>
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex eos quasi porro quod itaque sequi temporibus.
-				Temporibus numquam nam autem labore aspernatur, voluptate saepe, veritatis, recusandae eveniet minima quo
-				architecto?
-			</p>
+
+			<div class="bg-white">
+				<div class="card">
+					<div class="card-body">
+						<% @user.opinions.each do |opinion| %>
+				
+						<%= opinion.text %>
+
+						<% end %>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<%# here will end %>
 
 
 	</div>
-	<div class="main__right d-flex flex-column">
-		<div class="main__right__heading d-flex justify-content-center align-items-center">
-			<h2>Followed by</h2>
+
+	<div class="main__right d-flex flex-column border-left">
+		<div class="main__right__heading d-flex align-items-center border-bottom ">
+			<h2 class="ml-4">Followed by</h2>
 		</div>
 
 		<div class="main__right__whotofollow">
-			<div class="follow_these"></div>
-
-
+			<div class="follow_these">
+					<% @user.followers.each do |follower| %>
+					<div class="followers_right">
+						<p class="m-0"><%= follower.fullname %></p>
+						<span><%= follower.username %></span>
+					</div>
+			<% end %>
+			</div>
 		</div>
 
 

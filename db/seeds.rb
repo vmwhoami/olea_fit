@@ -35,5 +35,27 @@ user = 0
   )
 end
 
+9.times do |o|
+  o += 1
+  Opinion.create!(
+    author: User.find(o),
+    text: "Coronavirus is a joke!!!!"
+  )
+end
 puts '-' * 100
 puts '------------ Opinions Created!!! -----------'
+
+
+8.times do |f|
+  f += 1
+  User.find(1).followings.create(followed_id:User.find(f).id)
+end
+
+9.times do |f|
+  f += 1
+  User.find(f).followings.create(followed_id:User.find(2).id)
+end
+
+
+puts '-' * 100
+puts '------------ Followings Created!!! -----------'

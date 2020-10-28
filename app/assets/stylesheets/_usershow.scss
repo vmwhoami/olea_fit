@@ -9,14 +9,15 @@
 
     &__nav{
       height: 6rem;
-      background-color: pink;
+      width: 100%;
+     display: flex;
+     justify-content: flex-start;
     }
 
     &__newsfeed{
       background-color: powderblue;
     }
   }
-
 
 
   &__right{
@@ -27,7 +28,7 @@
 
     &__heading{
       height: 6rem;
-     border-bottom: 1px solid $border;
+    
     }
 
   }
