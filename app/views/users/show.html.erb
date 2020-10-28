@@ -5,51 +5,15 @@
 		<%= image_tag "http://via.placeholder.com/400x400" %>
 	</div>
 
-
-	<div class="visited__functionality border-bottom">
-
-		<div class="visited__container d-flex flex-column align-items-center justify-content-around">
-			<div class="image_navigation d-flex align-items-center justify-content-center">
-				<%= link_to  "follow_btn", root_path, class: "mr-2"  %>
-				<div class="guest__image">
-					<%= image_tag "http://via.placeholder.com/400x400" %>
-				</div>
-				<%= link_to  "followers", root_path, class: "ml-2" %>
-			</div>
-
-			<p class="visited__fullname m-0 p-0 text-loud text-uppercase"><%= @user.fullname %></p>
-			<span class="visited__username m-0 p-0">@<%= @user.username %></span>
-		</div>
-
-
-		<%# follows followigns section  %>
-		<div class="follows border_top  px-1">
-			<div class="follows__followers d-flex flex-column justify-content-center align-items-center border_right">
-				<p class="follows__count"><%= @user.followings.count %></p>
-				<span class="follows__heading  ">Following</span>
-			</div>
-
-			<div class="follows__followers d-flex flex-column justify-content-center align-items-center border_right">
-				<p class="follows__count"><%= @user.followers.count %></p>
-				<span class="follows__heading  ">Followers</span>
-			</div>
-
-			<div class="follows__followers d-flex flex-column justify-content-center align-items-center">
-				<p class="follows__count"><%= @user.opinions.count %></p>
-				<span class="follows__heading  ">Opinions</span>
-			</div>
-		</div>
-
-	</div>
-
+  <%= render 'users/user_right' %>
 </div>
 
 <%# End of top functionality%>
 
 
 <div class="container-fluid  main">
-
 	<div class="main__center d-flex flex-column ">
+
 		<div class="main__center__nav d-flex  align-items-center border-bottom border-right">
 			<a class="ml-5" href="#">Opinions</a>
 			<a class="ml-5" href="#">Followers</a>
@@ -57,28 +21,22 @@
 		</div>
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
-
-
 			<% @user.opinions.each do |opinion| %>
-
-			<div class="card m-5">
-				<div class="card-body">
+			<div class="card m-5 rounded">
+				<div class="card-body ">
 					<%= opinion.text %>
 				</div>
 			</div>
-
 			<% end %>
-
-
 		</div>
 		<%# here will end %>
-
-
 	</div>
+
+
 
 	<div class="main__right d-flex flex-column border-left">
 		<div class="main__right__heading d-flex align-items-center border-bottom ">
-			<h2 class="ml-4 text-loud">Followed by</h2>
+			<h2 class="ml-4 text-loud ">Followed by</h2>
 		</div>
 
 		<div class="main__right__whotofollow d-flex flex-column align-items-center">
@@ -90,7 +48,7 @@
 					</div>
 
 					<div class="followers_right d-flex flex-column align-items-center">
-						<p class="m-0 text-loud"><%= follower.fullname %></p>
+						<p class="m-0 text-loud "><%= follower.fullname %></p>
 						<span>@<%= follower.username %></span>
 					</div>
 				</div>

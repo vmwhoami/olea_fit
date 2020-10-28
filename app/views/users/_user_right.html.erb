@@ -1,0 +1,44 @@
+	<div class="visited__functionality border-bottom">
+
+		<div class="visited__container d-flex flex-column align-items-center justify-content-around">
+		
+			<div class="image_navigation d-flex align-items-center justify-content-center">
+				<%= link_to    root_path, class: "mr-2" do %>
+         <svg class="icon-nav text-muted">
+      <use xlink:href="#icon-plus-circle" />
+    </svg>
+        <% end %>
+				<div class="guest__image">
+					<%= image_tag "http://via.placeholder.com/400x400" %>
+				</div>
+
+				<%= link_to   root_path, class: "ml-2"  do%>
+   <svg class="icon-nav text-muted">
+      <use xlink:href="#icon-list" />
+    </svg>
+        <% end %>
+			</div>
+
+			<p class="visited__fullname m-0 p-0 text-loud text-uppercase"><%= @user.fullname %></p>
+			<span class="visited__username m-0 p-0">@<%= @user.username %></span>
+		</div>
+
+		<%# follows followigns section  %>
+		<div class="follows border-top  px-1">
+			<div class="follows__followers d-flex flex-column justify-content-center align-items-center border-right">
+				<p class="follows__count text-bold font-weight-bold text-loud"><%= @user.followings.count %></p>
+				<span class="follows__heading  ">Following</span>
+			</div>
+
+			<div class="follows__followers d-flex flex-column justify-content-center align-items-center border-right">
+				<p class="follows__count font-weight-bold text-loud"><%= @user.followers.count %></p>
+				<span class="follows__heading  ">Followers</span>
+			</div>
+
+			<div class="follows__followers d-flex flex-column justify-content-center align-items-center">
+				<p class="follows__count font-weight-bold text-loud"><%= @user.opinions.count %></p>
+				<span class="follows__heading  ">Opinions</span>
+			</div>
+		</div>
+
+	</div>
