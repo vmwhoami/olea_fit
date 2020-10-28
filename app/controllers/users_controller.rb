@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  layout  "athentication", only: [:new]
-  before_action :logged_in? , only: [:index, :show, :destory]
-  before_action :find_user, only: [ :edit, :update, :destroy]
+  layout  "athentication", only: [:new,:edit]
+  before_action :logged_in? , only: [:index, :show, :edit, :destory]
+  before_action :find_user, only: [ :edit, :update, :destroy,:show]
 
   def index
     @users = User.all
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   end
 
 def show
-  @user = User.find(current_user[:id])
 end
 
 def edit

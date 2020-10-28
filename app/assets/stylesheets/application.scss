@@ -110,14 +110,47 @@ background: linear-gradient(190deg, rgba(85,172,239,1) 0%, rgba(79,159,220,1) 10
  display: flex;
 
   &__functionality{
-    width: 40rem;
+    flex: 0 0 35rem;
     height: 100%;
     background-color: $main-background;
-    border-bottom:2px solid $names-leftnav;
+    border-bottom:1px solid $names-leftnav;
   }
 
   &__image{
    width: 100%;
    height: 100%;
+  }
+}
+
+.main{
+  display: flex;
+
+  &__center{
+    flex:1;
+
+
+    &__nav{
+      height: 6rem;
+      background-color: pink;
+    }
+
+    &__newsfeed{
+      background-color: powderblue;
+    }
+  }
+
+
+
+  &__right{
+    flex: 0 0 35rem;
+    height: 100%;
+    
+
+
+    &__heading{
+      height: 6rem;
+  border-bottom: 1px solid $border;
+    }
+
   }
 }
