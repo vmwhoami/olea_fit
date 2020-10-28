@@ -13,11 +13,15 @@
 
 <body>
   <div class="container-fluid d-flex">
-    <%= render 'layouts/navleft' if current_user%>
+    <%= render 'layouts/navleft' %>
     <div class="container-fluid d-flex flex-column">
-      <%= render 'layouts/navbar' if current_user%>
+      <%= render 'layouts/navbartop' %>
+      
+      <%= render 'layouts/visited_user' %>
+
       <%= yield %>
       <%= debug(params) if Rails.env.development?%>
+
     </div>
   </div>
 </body>
