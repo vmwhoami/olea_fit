@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   background:$nav-bottom;
-background: linear-gradient(190deg, $nav-bottom 0%, $nav-top 100%);
+background: linear-gradient(180deg,$nav-bottom  0%, $nav-bottom 100%);
 
 
 
@@ -29,11 +29,11 @@ background: linear-gradient(190deg, $nav-bottom 0%, $nav-top 100%);
 .icon-nav{
   height: 3rem;
   width: 3rem;
-  fill:$main-background;
+  fill:$icon-nav;
 
-
- 
-
+  &:hover{
+    fill:$main-background;
+  }
 }
 
 .navlink{
@@ -45,7 +45,11 @@ background: linear-gradient(190deg, $nav-bottom 0%, $nav-top 100%);
   align-items: center;
   transition: all .3s;
 
-  &:hover{
+  &:hover {
     background-color: $nav-top;
   }
+}
+
+.navlink:hover .icon-nav{
+  fill:$main-background;
 }

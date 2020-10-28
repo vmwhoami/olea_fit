@@ -1,10 +1,10 @@
 <div class="mynav">
   <div class="picture-name p-4">
     <%= image_tag "//via.placeholder.com/140x100",class:"current_user_img" %>
-    <%= link_to "#{current_user.fullname }" ,user_path(current_user) %>
+    <%= link_to "#{current_user.fullname }" ,user_path(current_user), class:"current_user" %>
   </div>
 
-  <div class="follows text-light px-1  bg-left border-bottom border-top ">
+  <div class="follows  px-1  bg-left border-bottom border-top ">
     <div class="follows__followers d-flex flex-column justify-content-center align-items-center border_right">
       <p class="follows__count"><%= current_user.followings.count %></p>
       <span class="follows__heading  ">Following</span>

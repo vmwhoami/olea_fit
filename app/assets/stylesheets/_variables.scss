@@ -3,10 +3,13 @@ $left-top:#1b2a3d;
 $left-bottom:#213246;
 $nav-bottom:#4d99d3;
 $nav-top:#55acef;
-$names-leftnav:#999999;
-$border:#777777;
-$main-background:#f5f6f8;
-
+$names-leftnav:#A8A9AB;
+$border:#E3E4E6;
+$main-background:#F5F6F8;
+$bright-ondark:#667C91;
+$icon-nav:#37709A;
+$muted-text:#B7B8BA;
+$text-loud:#314052;
 
 .bg-left{
   background-color: $left-top;
@@ -22,4 +25,12 @@ $main-background:#f5f6f8;
 
 .border_right{
   border-right: 1px solid $names-leftnav;
+}
+
+.text-muted{
+color: $muted-text;;
+}
+
+.text-loud{
+  color: $text-loud;
 }

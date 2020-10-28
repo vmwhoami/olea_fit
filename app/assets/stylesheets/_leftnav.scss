@@ -4,8 +4,7 @@
   
   width: 20rem;
   background-color: $left-bottom;
-  
-  
+   
 }
 
 .picture-name{
@@ -21,6 +20,15 @@
   border-bottom: $border;
 }
 
+.current_user{
+text-decoration: none;
+color: $bright-ondark;
+  &:hover{
+    color: #ffffff;
+    text-decoration: none;
+  }
+}
+
 .current_user_img{
   border-radius: 5px;
   height: 6rem;
@@ -33,6 +41,13 @@
   width: 100%;
   display: flex;
 
+
+  &__count{
+    color: whitesmoke;
+  }
+  &__heading{
+    color: $bright-ondark;
+  }
   &__following{
     flex-grow: 1;
     flex-basis: 0;
