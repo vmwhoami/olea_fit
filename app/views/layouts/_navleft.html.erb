@@ -1,7 +1,7 @@
 <div class="mynav">
   <div class="picture-name">
     <%= image_tag "//via.placeholder.com/140x100",class:"current_user_img" %>
-    <%= link_to "#{current_user.fullname }" ,user_path(current_user)   %>
+    <%= link_to "#{current_user.fullname }" ,user_path(current_user) %>
   </div>
 
   <div class="follows text-light px-1">
@@ -15,8 +15,12 @@
       <span class="follows__heading  ">Followers</span>
     </div>
   </div>
-
-  <div class="left_navigation d-flex flex-column">
-
-  </div>
+ 
+<ul class="left_navigation d-flex flex-column">
+  <li>Home</li>
+  <li>Connect</li>
+  <li>Discover</li>
+  <li>Profile</li>
+</ul>
+ 
 </div>

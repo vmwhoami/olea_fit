@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
+  layout  "athentication", only: [:new,:create]
   
   def new 
-    
   end
 
   def create

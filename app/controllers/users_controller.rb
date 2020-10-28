@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout  "athentication", only: [:new]
   before_action :logged_in? , only: [:index, :show, :destory]
   before_action :find_user, only: [ :edit, :update, :destroy]
 

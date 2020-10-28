@@ -13,15 +13,15 @@
  *= require_tree .
  *= require_self
  */
-
+ 
 $left-top:#1b2a3d;
 $left-bottom:#213246;
-$main-background:#f5f6f8;
 $nav-bottom:#4d99d3;
 $nav-top:#55acef;
 $names-leftnav:#748da1;
 $border:#1f2730;
- 
+$main-background:#f5f6f8;
+
 html {
   font-size: 62.5%;
 }
@@ -33,10 +33,13 @@ body{
  .container-fluid{
    padding: 0 !important;
  }
-.mynav{
+
+
+ .mynav{
   height: 100vh;
   width: 20rem;
   background-color: $left-bottom;
+  
   
 }
 
@@ -65,17 +68,32 @@ body{
   width: 100%;
   display: flex;
   background-color: $left-top;
-
+  border-top: 2px solid $border;
+  border-bottom: 2px solid $border;
   &__following{
-    border: 2px solid $border;
     flex-grow: 1;
     flex-basis: 0;
    
   }
   &__followers{
-    border: 2px solid $border;
+    border-right: 2px solid $border;
     flex-grow: 1;
     flex-basis: 0;
-    
   }
+  &__count{
+      margin: 0;
+      padding: 0;
+  }
+}
+
+.left_navigation{
+
+}
+
+.topnav{
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  background: rgb(85,172,239);
+background: linear-gradient(190deg, rgba(85,172,239,1) 0%, rgba(79,159,220,1) 100%);
 }

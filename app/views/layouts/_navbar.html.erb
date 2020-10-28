@@ -1,14 +1,9 @@
-<nav class="navbar navbar-expand-md fixed-top   mynav px-0">
-<div class="picture-name">
-  <%= image_tag "//via.placeholder.com/140x100",class:"current_user_img" %>
-  <%= link_to "#{current_user.fullname }" ,user_path(current_user)   %>
-</div>
- <div class="logo">
-ceva logo
- </div>
- <div class="right-navigation">
- <a href="#">write a post</a>
- <%= link_to  "logout", logout_path,method: :delete %>
- </div>
-
+<nav class="topnav">
+  <div class="logo">
+    ceva logo
+  </div>
+  <div class="right-navigation">
+    <a href="#">write a post</a>
+    <%= link_to  "logout", logout_path,method: :delete %>
+  </div>
 </nav>
