@@ -17,11 +17,9 @@
 				<%= link_to  "followers", root_path, class: "ml-2" %>
 			</div>
 
-			<p class="visited__fullname m-0 p-0"><%= @user.fullname %></p>
+			<p class="visited__fullname m-0 p-0 text-loud text-uppercase"><%= @user.fullname %></p>
 			<span class="visited__username m-0 p-0">@<%= @user.username %></span>
 		</div>
-
-
 
 
 		<%# follows followigns section  %>
@@ -80,7 +78,7 @@
 
 	<div class="main__right d-flex flex-column border-left">
 		<div class="main__right__heading d-flex align-items-center border-bottom ">
-			<h2 class="ml-4">Followed by</h2>
+			<h2 class="ml-4 text-loud">Followed by</h2>
 		</div>
 
 		<div class="main__right__whotofollow d-flex flex-column align-items-center">
@@ -92,7 +90,7 @@
 					</div>
 
 					<div class="followers_right d-flex flex-column align-items-center">
-						<p class="m-0"><%= follower.fullname %></p>
+						<p class="m-0 text-loud"><%= follower.fullname %></p>
 						<span>@<%= follower.username %></span>
 					</div>
 				</div>
