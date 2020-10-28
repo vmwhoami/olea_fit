@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   layout  "athentication", only: [:new,:edit]
-  before_action :logged_in? , only: [:index, :show, :edit, :destory]
+  before_action :logged_in? , only: [:index, :show, :edit, :destoroy]
   before_action :find_user, only: [ :edit, :update, :destroy,:show]
+
 
   def index
     @users = User.all
