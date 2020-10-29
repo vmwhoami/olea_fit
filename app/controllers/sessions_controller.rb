@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:sessions][:username].downcase)
     if user
     log_in(user)
-    redirect_to user_path(user)
+    redirect_to root_path
     else
       flash.now[:error] = "User does not exist"
       render "new"

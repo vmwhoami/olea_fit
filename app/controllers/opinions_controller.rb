@@ -1,11 +1,13 @@
 class OpinionsController < ApplicationController
-
+  before_action :logged_in? , only: [:index, :show, :edit, :destoroy]
   before_action :set_opinion, only: [:show, :edit, :update, :destroy]
 
   # GET /opinions
   # GET /opinions.json
   def index
     @opinions = Opinion.all
+    @opinion = Opinion.new
+    @fresh_opinions = Opinion.fresh_opinions
   end
 
   # GET /opinions/1
@@ -29,7 +31,7 @@ class OpinionsController < ApplicationController
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully created.' }
+        format.html { redirect_back fallback_location: root_path, notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }

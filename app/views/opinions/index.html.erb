@@ -1,20 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid  main">
+  <div class="main__center d-flex flex-column ">
 
-<h1>Opinions</h1>
+     <%= render 'layouts/undernav' %>
 
 
-    <% @opinions.each do |opinion| %>
-       
-       
-       
-       
-        <%= link_to 'Show', opinion %>
-        <%= link_to 'Edit', edit_opinion_path(opinion) %>
-        <%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %>
- 
-    <% end %>
- 
+    <div class="container-fluid main__center__newsfeed">
+      <p id="notice"><%= notice %></p>
+      <div class="card m-5 rounded">
+        <div class="card-body ">
+          <h1 class="text-loud">Opinions</h1>
+          <h2>What's on your mind</h2>
+          <%= form_for @opinion, url: {controller: "opinions", action: "create"} do |f| %>
+          <div class="form-group">
+            <%= f.text_area :text,class:"form-control" %>
+            <%= f.submit "Opinionate",class:"btn btn-primary" %>
+          </div>
+          <% end %>
 
-<br>
+        </div>
+      </div>
+      <% @fresh_opinions.each do |opinion| %>
 
-<%= link_to 'New Opinion', new_opinion_path %>
+      <div class="card m-5 rounded">
+        <div class="card-body ">
+          <h2><%= opinion.author.fullname %></h2>
+          <p><%= opinion.text %></p>
+
+        </div>
+      </div>
+
+      <% end %>
+   
+    </div>
+
+
+
+
+  </div>
+
+
+</div>
