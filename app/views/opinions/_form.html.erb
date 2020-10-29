@@ -1,17 +1,10 @@
-<%= form_with(model: opinion, local: true) do |form| %>
-  <% if opinion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(opinion.errors.count, "error") %> prohibited this opinion from being saved:</h2>
+<%= form_with(model: opinion, local: true) do |f| %>
+<%= render 'opinions/errors' %>
+   
+   <div class="form-group">
+<%= f.text_area :text,class:"form-control"%>
 
-      <ul>
-        <% opinion.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+ <%= f.submit %>
+ </div>
 <% end %>

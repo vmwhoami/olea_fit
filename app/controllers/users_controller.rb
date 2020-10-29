@@ -16,11 +16,12 @@ class UsersController < ApplicationController
     @user = User.new(permitted_params)
     if @user.save
       log_in(@user)
-      flash[:success] = "User created successfully"
+      format.html { redirect_to @user, notice: 'User was successfully created.' }
+      format.json { render :show, status: :created, location: @user }
       redirect_to user_path(@user)
     else
-      flash.now[:error] 
-      render 'new'
+      format.html { render :new }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
     end
 
   end
@@ -35,7 +36,7 @@ def update
   respond_to do |format|
     if @user.update(permitted_params)
       format.html { redirect_to @user, notice: 'User was successfully updated.' }
-      format.json { render :show, status: :ok, location: @pizda }
+      format.json { render :show, status: :ok, location: @user }
     else
       format.html { render :edit }
       format.json { render json: @user.errors, status: :unprocessable_entity }
