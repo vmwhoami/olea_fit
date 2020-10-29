@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  after_initialize :downcase_usename
+  after_initialize :downcase_usename, :set_default_img
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
   validates :fullname, presence: true , length: { minimum: 6, maximum: 50 }
@@ -18,7 +18,11 @@ class User < ApplicationRecord
   has_many :followers, through: :following_folks, source: :follower
 
   def downcase_usename
-    
     self.username = self.username.downcase unless self.username.nil?
+  end
+
+  def set_default_img
+    self.photo||= "//via.placeholder.com/140x100"
+    self.coverimage||= "//via.placeholder.com/140x100"
   end
 end

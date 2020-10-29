@@ -61,7 +61,7 @@ def find_user
 end
 
 def permitted_params
-  params.require(:user).permit(:username, :fullname)
+  params.require(:user).permit(:username, :fullname, :photo, :coverimage)
 end
 
 end
