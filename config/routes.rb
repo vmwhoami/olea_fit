@@ -7,7 +7,9 @@ Rails.application.routes.draw do
  root "opinions#index"
 
  resources :opinions
- 
+  get "followers",to: "users#followers"
+  get "following",to: "users#following"
+
  get "login",to: "sessions#new"
  post "login",to: "sessions#create"
  delete "logout",to:"sessions#destroy" 

@@ -1,11 +1,9 @@
 <div class="container-fluid  main">
 	<div class="main__center d-flex flex-column ">
 
-		<div class="main__center__nav d-flex  align-items-center border-bottom border-right">
-			<a class="ml-5" href="#">Opinions</a>
-			<a class="ml-5" href="#">Followers</a>
-			<a class="ml-5" href="#">Following</a>
-		</div>
+
+<%= render 'layouts/undernav' %>
+
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
 			<% current_user.opinions.each do |opinion| %>
@@ -18,7 +16,6 @@
 		</div>
 		<%# here will end %>
 	</div>
-
 
 
 	<div class="main__right d-flex flex-column border-left">
@@ -36,7 +33,7 @@
 						<div class="d-flex mt-5">
 							<div class="following_img mr-3">
 								<a href="<%= user_path(follower)%>">
-									<%= image_tag "http://via.placeholder.com/400x400" %>
+									<%= image_tag follower.photo %>
 								</a>
 							</div>
 							

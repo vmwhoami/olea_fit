@@ -3,7 +3,7 @@
     <%= render 'layouts/undernav' %>
     <%# here will be all the tweets and stuff %>
     <div class="container-fluid main__center__newsfeed">
-      <p id="notice"><%= notice %></p>
+      <p id="notice" class="p-3"><%= notice %></p>
 
       <%= form_for @opinion, url: {controller: "opinions", action: "create"} do |f| %>
       <div class="card m-5 rounded">
@@ -20,7 +20,6 @@
 
 
       <% @fresh_opinions.each do |opinion| %>
-
        <div class="card m-5 rounded">
         <div class="card-body d-flex">
 
@@ -36,9 +35,7 @@
       <% end %>
 
 
-
     </div>
-
 
 
 
