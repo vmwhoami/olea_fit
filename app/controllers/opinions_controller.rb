@@ -8,6 +8,7 @@ class OpinionsController < ApplicationController
     @opinions = Opinion.all
     @opinion = Opinion.new
     @fresh_opinions = Opinion.fresh_opinions
+    @popular_users = User.ordered_users
   end
 
   # GET /opinions/1

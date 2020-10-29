@@ -17,6 +17,10 @@ class User < ApplicationRecord
 
   has_many :followers, through: :following_folks, source: :follower
 
+  def self.ordered_users
+    @ordered_users = User.all.sort{|a,b| a.followers.count <=> b.followers.count}
+    @ordered_users.reverse
+  end
   def downcase_usename
     self.username = self.username.downcase unless self.username.nil?
   end
