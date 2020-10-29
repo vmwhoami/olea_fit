@@ -1,6 +1,9 @@
 <div class="mynav">
   <div class="picture-name p-4">
-    <%= image_tag current_user.coverimage ,class:"current_user_img" %>
+   <%= link_to  user_path(current_user) do %>
+     <%= image_tag current_user.photo ,class:"current_user_img" %>
+   <% end %>
+  
     <%= link_to "#{current_user.fullname }" ,user_path(current_user), class:"current_user font-weight-bold" %>
   </div>
 
@@ -17,7 +20,6 @@
   </div>
 
   <ul class="left_navigation d-flex flex-column p-0">
-  
   
     <li class="left_navigation__link"> <%= link_to  "Home", root_path %></li>
     <li class="left_navigation__link"> <%= link_to  "Discover", root_path %></li>

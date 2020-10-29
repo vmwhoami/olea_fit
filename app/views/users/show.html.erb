@@ -1,19 +1,15 @@
 <%# top navigation with imagage and some functionality %>
 <div class="visited">
-
 	<div class="visited__image">
 		<%= image_tag @user.photo %>
 	</div>
-
 	<%= render 'users/user_right' %>
 </div>
-
 <%# End of top functionality%>
 
 
 <div class="container-fluid  main">
 	<div class="main__center d-flex flex-column ">
-
 	<%= render 'layouts/undernav' %>
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
