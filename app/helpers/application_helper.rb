@@ -31,4 +31,8 @@ module ApplicationHelper
   def unfollow_btn
     render "users/unfollowbtn"  if current_user.followed_persons.include?(@user) 
   end
+
+  def who_to_follow(follower)
+    render "users/whom_to_follow"  if !current_user.followed_persons.include?(follower) && current_user != follower  
+  end
 end

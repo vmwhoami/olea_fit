@@ -18,11 +18,12 @@ class User < ApplicationRecord
 
   has_many :followers, through: :following_folks, source: :follower
 
-  def self.ordered_users
+  def self.ordered_users_limit(min,max)
     @ordered_users = User.all.sort{|a,b| a.followers.count <=> b.followers.count}
-    @ordered_users.reverse[0..5]
-   
+    @ordered_users.reverse[min..max]
   end
+
+
   def downcase_usename
     self.username = self.username.downcase unless self.username.nil?
   end

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.ordered_users_limit(0,-1)
   end
 
   def new

@@ -7,12 +7,12 @@ class OpinionsController < ApplicationController
   def index
     @opinions = Opinion.all
     @opinion = Opinion.new
-    @popular_users = User.ordered_users
+    @popular_users = User.ordered_users_limit(0,5)
     @subscribed = Opinion.subscribed current_user.followed_persons
   end
 
   def discover
-    @popular_users = User.ordered_users
+    @popular_users = User.ordered_users_limit(0,-1)
     @fresh_opinions = Opinion.fresh_opinions
   end
   # GET /opinions/1
