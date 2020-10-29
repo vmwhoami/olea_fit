@@ -1,20 +1,20 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
-  layout  "athentication", only: [:new,:create]
-  
-  def new 
-  end
+  layout 'athentication', only: %i[new create]
+
+  def new; end
 
   def create
     user = User.find_by_username(params[:sessions][:username].downcase)
     if user
-    log_in(user)
-    redirect_to root_path
+      log_in(user)
+      redirect_to root_path
     else
-      flash.now[:error] = "User does not exist"
-      render "new"
+      flash.now[:error] = 'User does not exist'
+      render 'new'
     end
   end
-  
 
   def destroy
     destroy_session

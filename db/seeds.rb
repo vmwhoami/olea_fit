@@ -45,18 +45,16 @@ end
 puts '-' * 100
 puts '------------ Opinions Created!!! -----------'
 
-
 8.times do |f|
   f += 1
-  User.find(1).followings.create(followed_id:User.find(f).id)
+  User.find(1).followings.create(followed_id: User.find(f).id)
 end
 a = 1
 9.times do |f|
   f += 1
-  a+=1
-  User.find(a).followings.create(followed_id:User.find(2).id)
+  a += 1
+  User.find(a).followings.create(followed_id: User.find(2).id)
 end
-
 
 puts '-' * 100
 puts '------------ Followings Created!!! -----------'

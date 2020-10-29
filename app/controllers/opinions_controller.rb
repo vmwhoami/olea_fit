@@ -1,24 +1,26 @@
+# frozen_string_literal: true
+
 class OpinionsController < ApplicationController
-  before_action :logged_in? , only: [:index, :show, :edit, :destoroy]
-  before_action :set_opinion, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in?, only: %i[index show edit destoroy]
+  before_action :set_opinion, only: %i[show edit update destroy]
 
   # GET /opinions
   # GET /opinions.json
   def index
     @opinions = Opinion.all
     @opinion = Opinion.new
-    @popular_users = User.ordered_users_limit(0,5)
+    @popular_users = User.ordered_users_limit(0, 5)
     @subscribed = Opinion.subscribed current_user.followed_persons
   end
 
   def discover
-    @popular_users = User.ordered_users_limit(0,-1)
+    @popular_users = User.ordered_users_limit(0, -1)
     @fresh_opinions = Opinion.fresh_opinions
   end
+
   # GET /opinions/1
   # GET /opinions/1.json
-  def show
-  end
+  def show; end
 
   # GET /opinions/new
   def new
@@ -26,8 +28,7 @@ class OpinionsController < ApplicationController
   end
 
   # GET /opinions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /opinions
   # POST /opinions.json
@@ -70,13 +71,14 @@ class OpinionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opinion
-      @opinion = Opinion.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def opinion_params
-      params.require(:opinion).permit(:text)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opinion
+    @opinion = Opinion.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def opinion_params
+    params.require(:opinion).permit(:text)
+  end
 end
