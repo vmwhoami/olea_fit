@@ -3,6 +3,7 @@ class Opinion < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   
   scope :fresh_opinions, -> { order('created_at DESC')}
- 
+
+  scope :subscribed, ->(followers) { where author_id: followers }
  
 end
