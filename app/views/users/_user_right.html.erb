@@ -5,7 +5,7 @@
 		<div class="image_navigation d-flex align-items-center justify-content-center">
 		<% unless current_user.followed_persons.include?(@user) || current_user == @user %>
 			
-			<%= link_to    user_followings_path(user_id: @user.id),method: :post ,class: "mr-2" do %>
+			<%= link_to   user_followings_path(user_id: @user.id),method: :post ,class: "mr-2" do %>
 			<svg class="icon-viewuser">
 				<use xlink:href="#icon-plus-circle" />
 			</svg>
@@ -14,12 +14,12 @@
 			<div class="guest__image">
 				<%= image_tag @user.photo %>
 			</div>
-	<% unless current_user.followed_persons.include?(@user) || current_user == @user %>
-			<%= link_to   root_path, class: "ml-2"  do%>
+ 
+			<%= link_to   user_following_path(user_id: @user.id), method: :delete,class: "ml-2"  do%>
 			<svg class="icon-viewuser">
 				<use xlink:href="#icon-list" />
 			</svg>
-			<% end %>
+ 
 		<% end %>
 		</div>
 

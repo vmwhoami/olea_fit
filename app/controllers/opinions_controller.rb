@@ -8,11 +8,12 @@ class OpinionsController < ApplicationController
     @opinions = Opinion.all
     @opinion = Opinion.new
     @popular_users = User.ordered_users
-    @fresh_opinions = Opinion.fresh_opinions
     @subscribed = Opinion.subscribed current_user.followed_persons
   end
 
   def discover
+    @popular_users = User.ordered_users
+    @fresh_opinions = Opinion.fresh_opinions
   end
   # GET /opinions/1
   # GET /opinions/1.json

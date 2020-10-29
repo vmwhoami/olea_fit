@@ -1,0 +1,62 @@
+<div class="container-fluid  main">
+  <div class="main__center d-flex flex-column ">
+    <%= render 'layouts/undernav' %>
+    <%# here will be all the tweets and stuff %>
+    <div class="container-fluid main__center__newsfeed">
+      <p id="notice" class="p-3"><%= notice %></p>
+
+
+      <% @fresh_opinions.each do |opinion| %>
+      <div class="card m-5 rounded">
+        <div class="card-body d-flex">
+
+          <div class="opinions_img mr-5">
+            <a href=<%= user_path(opinion.author) %>>
+              <%= image_tag opinion.author.photo %>
+            </a>
+          </div>
+          <div class="opinions_text w-100 d-flex  flex-column">
+            <a href=<%= user_path(opinion.author) %>>
+              <h2 class="text-loud"><%= opinion.author.fullname %></h2>
+            </a>
+            <p><%= opinion.text %>      </p>
+          	<span class="created_at align-self-end">Created <%= distance_of_time_in_words(opinion.created_at, Time.now)%> ago</span>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+  </div>
+
+  <div class="main__right d-flex flex-column border-left">
+    <div class="main__right__heading d-flex align-items-center border-bottom ">
+      <h2 class="ml-4 text-loud ">Popular Users</h2>
+    </div>
+    <div class="main__right__whotofollow d-flex flex-column align-items-center">
+      <div class="follow_these">
+        <% @popular_users.each_with_index do |follower,indx| %>
+        <div class="d-flex mt-5">
+          <div class="following_img mr-3">
+            <a href="<%= user_path(follower)%>">
+              <%= image_tag follower.photo %>
+            </a>
+          </div>
+          <a href="<%= user_path(follower)%>">
+            <div class="followers_right d-flex flex-column align-items-center">
+              <p class="m-0 text-loud "><%= follower.fullname %></p>
+              <span>@<%= follower.username %></span>
+              
+            </div>
+          </a>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
