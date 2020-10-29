@@ -24,5 +24,11 @@ module ApplicationHelper
     current_user == user
   end
 
+  def follow_btn
+   render "users/followbtn"   unless current_user.followed_persons.include?(@user) || current_user == @user
+  end
 
+  def unfollow_btn
+    render "users/unfollowbtn"  if current_user.followed_persons.include?(@user) 
+  end
 end
