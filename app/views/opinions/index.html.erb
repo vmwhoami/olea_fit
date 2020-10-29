@@ -11,8 +11,8 @@
           <h1 class="text-loud">Opinions</h1>
           <h2>What's on your mind</h2>
           <div class="form-group">
-            <%= f.text_area :text,class:"form-control" %>
-            <%= f.submit "Opinionate",class:"btn btn-primary" %>
+            <%= f.text_area :text, rows:"2", class:"form-control" %>
+            <%= f.submit "Opinionate",class:"btn mt-5 mybtn" %>
           </div>
         </div>
       </div>
@@ -21,11 +21,16 @@
 
       <% @fresh_opinions.each do |opinion| %>
 
-      <div class="card m-5 rounded">
-        <div class="card-body ">
-          <h2><%= opinion.author.fullname %></h2>
-          <p><%= opinion.text %></p>
+       <div class="card m-5 rounded">
+        <div class="card-body d-flex">
 
+        <div class="opinions_img mr-5">
+           <%= image_tag opinion.author.photo %>
+        </div>
+        <div class="opinions_text">
+          <h2 class="text-loud"><%= opinion.author.fullname %></h2>
+          <p><%= opinion.text %></p>
+        </div>
         </div>
       </div>
       <% end %>
@@ -40,17 +45,13 @@
 
   </div>
 
-
-
   <div class="main__right d-flex flex-column border-left">
     <div class="main__right__heading d-flex align-items-center border-bottom ">
       <h2 class="ml-4 text-loud ">Who to follow</h2>
     </div>
-
     <div class="main__right__whotofollow d-flex flex-column align-items-center">
       <div class="follow_these">
         <% @popular_users.each_with_index do |follower,indx| %>
-        <%=break if indx > 4 %>
         <div class="d-flex mt-5">
           <div class="following_img mr-3">
             <a href="<%= user_path(follower)%>">

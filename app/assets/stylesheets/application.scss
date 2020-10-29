@@ -73,3 +73,25 @@ body{
 fill:$text-loud;
   }
 }
+
+.opinions_img{
+  width: 5rem;
+  height: 5rem;
+  border-radius: 5px;
+  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    overflow: hidden;
+  }
+}
+
+.mybtn{
+  font-size: 1.8rem !important;
+  background-color: $nav-top !important;
+}
+
+.form-control{
+  font-size: 1.8rem !important;
+}

@@ -1,7 +1,7 @@
 <%# top navigation with imagage and some functionality %>
 <div class="visited">
 	<div class="visited__image">
-		<%= image_tag @user.photo %>
+		<%= image_tag @user.coverimage %>
 	</div>
 	<%= render 'users/user_right' %>
 </div>
@@ -14,9 +14,7 @@
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
 
-			 
-
-			<% @user.opinions.each do |opinion| %>
+			<% @user.opinions.fresh_opinions.each do |opinion| %>
 			<div class="card m-5 rounded">
 				<div class="card-body ">
 					<%= opinion.text %>

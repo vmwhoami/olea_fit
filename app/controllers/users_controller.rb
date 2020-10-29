@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout  "athentication", only: [:new,:edit]
   before_action :logged_in? , only: [:index, :show, :edit, :destoroy]
+  before_action :is_curremt_user?, only: %i[edit]
   before_action :find_user, only: [ :edit, :update, :destroy,:show]
 
 
@@ -16,9 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(permitted_params)
     if @user.save
       log_in(@user)
-      format.html { redirect_to @user, notice: 'User was successfully created.' }
-      format.json { render :show, status: :created, location: @user }
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: 'User was successfully created.' 
     else
       format.html { render :new }
       format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -54,8 +53,10 @@ end
  
 
 private
- 
 
+def is_curremt_user?
+  redirect_to user_path(find_user) if !current_user?(find_user) 
+end
 def find_user
   @user = User.find(params[:id])
 end

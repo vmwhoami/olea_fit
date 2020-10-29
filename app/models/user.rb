@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :opinions, class_name: 'Opinion', foreign_key: 'author_id', dependent: :destroy
 
+ 
   # These are in the followings in the followings table
   has_many :followings, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
   # These are the users
@@ -19,7 +20,8 @@ class User < ApplicationRecord
 
   def self.ordered_users
     @ordered_users = User.all.sort{|a,b| a.followers.count <=> b.followers.count}
-    @ordered_users.reverse
+    @ordered_users.reverse[0..5]
+   
   end
   def downcase_usename
     self.username = self.username.downcase unless self.username.nil?
