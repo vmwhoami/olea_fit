@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   root 'opinions#index'
 
   resources :opinions do
-    resources :likes,only:  %i[create destroy]
+    resources :likes, only: %i[create destroy]
   end
-  
+
   get 'followers', to: 'users#followers'
   get 'following', to: 'users#following'
   get 'discover', to: 'opinions#discover'
