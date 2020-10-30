@@ -20,11 +20,3 @@ class Opinion < ApplicationRecord
     Opinion.where('author_id in (?)', merged ).order('created_at DESC')
    end
 end
-
-#Solution???
-# 
-# Opinion.find_by_author_id(20).author.followed_persons.ids
-# def self.all_gifts(user_id)
-#   follower_ids = User.find(user_id).following_users.pluck(:id)
-#   Gift.where('giver_id in (?) OR receiver_id in (?)', follower_ids, follower_ids).uniq
-# end
