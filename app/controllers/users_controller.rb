@@ -24,9 +24,9 @@ class UsersController < ApplicationController
       flash[:success] = 'User was successfully created.'
       log_in(@user)
       redirect_to user_path(@user)
-    else
-  
-    redirect_to login_path
+    else 
+    flash[:danger] = @user.errors.full_messages[0]
+    redirect_to register_path
     end
   end
 
