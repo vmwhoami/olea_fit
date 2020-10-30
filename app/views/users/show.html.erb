@@ -59,6 +59,35 @@
 			</div>
 		</div>
 
+		<div class="main__right__heading d-flex align-items-center border-bottom ">
+			<h2 class="ml-4 text-loud ">Following</h2>
+		</div>
+
+		<div class="main__right__whotofollow d-flex flex-column align-items-center">
+			<div class="follow_these">
+				<% @user.followed_persons.each do |person| %>
+
+
+				<div class="d-flex mt-5">
+					<div class="following_img mr-3">
+						<a href="<%= user_path(person)%>">
+							<%= image_tag person.photo %>
+						</a>
+					</div>
+					<a href="<%= user_path(person)%>">
+						<div class="followers_right d-flex flex-column align-items-center">
+							<p class="m-0 text-loud "><%= person.fullname %></p>
+							<span>@<%= person.username %></span>
+						</div>
+					</a>
+				</div>
+
+				<% end %>
+			</div>
+		</div>
+
+
+
 	</div>
 
 
