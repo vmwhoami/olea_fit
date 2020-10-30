@@ -13,12 +13,12 @@
 	<%= render 'layouts/undernav' %>
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
-		<div class="card p-5 m-5">
+		<div class="card p-5 m-3">
 			<h2>Recent opinions:</h2>
 		</div>
 	
 			<% @user.opinions.fresh_opinions.each do |opinion| %>
-			<div class="card m-5 rounded">
+			<div class="card m-3 rounded">
 				<div class="card-body ">
 					<p> <%= opinion.text %></p>
 					<span class="created_at">Created <%= distance_of_time_in_words(opinion.created_at, Time.now)   %> ago</span>

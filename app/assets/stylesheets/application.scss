@@ -1,4 +1,4 @@
-@import "variables","leftnav","topnav","usershow";
+@import "variables","leftnav","topnav","usershow","authentication";
 
 html {
   font-size: 62.5%;
@@ -9,6 +9,9 @@ body{
   color: $muted-text !important;
 }
 
+a:hover{
+text-decoration: none !important;
+}
  .container-fluid{
    padding: 0 !important;
    background-color: $main-background;

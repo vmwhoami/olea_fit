@@ -9,8 +9,9 @@ class OpinionsController < ApplicationController
   def index
     @opinions = Opinion.all
     @opinion = Opinion.new
+    @fresh_opinions = Opinion.fresh_opinions.limit(6)
     @popular_users = User.ordered_users_limit(0, 5)
-    @merged_opinions = Opinion.merged_o(current_user)
+    # @merged_opinions = Opinion.merged_o(current_user)
   end
 
   def discover
