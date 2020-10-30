@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   layout 'athentication', only: %i[new edit]
   before_action :logged_in?, only: %i[index show edit destoroy]
-  before_action :curremt_user?, only: %i[edit]
+  before_action :current_user?, only: %i[edit]
   before_action :find_user, only: %i[edit update destroy show]
 
   def followers; end
@@ -21,11 +21,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(permitted_params)
     if @user.save
+      flash[:success] = 'User was successfully created.'
       log_in(@user)
-      redirect_to user_path(@user), notice: 'User was successfully created.'
+      redirect_to user_path(@user)
     else
-      format.html { render :new }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+  
+    redirect_to login_path
     end
   end
 
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
 
   private
 
-  def curremt_user?
+  def current_user?
     redirect_to user_path(find_user) unless current_user?(find_user)
   end
 

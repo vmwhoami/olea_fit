@@ -4,7 +4,7 @@
       <h3 class="card-title text-center">Register to Danceter</h3>
       <div class="card-text">
 
-
+        <%= show_errors %>
         <%= form_for @user do |f| %>
 
         <div class="form-group">
@@ -20,15 +20,19 @@
         <div class="form-group">
           <%= f.label :photo, "Icon Photo" %>
           <%= f.text_field :photo ,class:"form-control form-control-sm" %>
+          <span ><strong class="text-danger">Important!!!</strong>  by default you are given a default image you can change it with a live link from the internet </span>
         </div>
         
          <div class="form-group">
           <%= f.label :coverimage, "Cover image" %>
           <%= f.text_field :coverimage ,class:"form-control form-control-sm" %>
+ <span ><strong class="text-danger">Important!!!</strong>  by default you are given a default image you can change it with a live link from the internet </span>
+
         </div>
         
 
         <%= f.submit "Register",class:"btn btn-primary btn-block" %>
+        <p>Do you have an account? <%= link_to  "Login", login_path %></p>
         <% end %>
 
       </div>
