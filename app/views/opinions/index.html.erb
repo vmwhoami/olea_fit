@@ -6,7 +6,7 @@
       <p id="notice" class="p-3"><%= notice %></p>
 
       <%= form_for @opinion, url: {controller: "opinions", action: "create"} do |f| %>
-      <div class="card m-5 rounded">
+      <div class="card m-3 rounded">
         <div class="card-body ">
           <h1 class="text-loud">Opinions</h1>
           <h2>What's on your mind</h2>
@@ -21,7 +21,7 @@
  
 
       <% @fresh_opinions.each do |opinion| %>
-      <div class="card m-5 rounded">
+      <div class="card m-3 rounded">
         <div class="card-body d-flex">
 
           <div class="opinions_img mr-5">
