@@ -10,7 +10,7 @@ class OpinionsController < ApplicationController
     @opinions = Opinion.all
     @opinion = Opinion.new
     @popular_users = User.ordered_users_limit(0, 5)
-    @merged = Opinion.merged_opinions(current_user,current_user.followed_persons)
+    # @merged = Opinion.merged_opinions(current_user,current_user.followed_persons)
     @merged_opinions = Opinion.merged_o(current_user)
   end
 

@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   get 'register', to: 'users#new'
   root 'opinions#index'
 
-  resources :opinions
+  resources :opinions do
+    resources :likes,only:  %i[create destroy]
+  end
+  
   get 'followers', to: 'users#followers'
   get 'following', to: 'users#following'
   get 'discover', to: 'opinions#discover'

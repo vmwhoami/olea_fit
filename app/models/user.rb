@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :fullname, presence: true, length: { minimum: 6, maximum: 50 }
 
   has_many :opinions, class_name: 'Opinion', foreign_key: 'author_id', dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   # These are in the followings in the followings table
   has_many :followings, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy

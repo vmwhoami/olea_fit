@@ -35,6 +35,19 @@
             </a>
             <p><%= opinion.text %>      </p>
           	<span class="created_at align-self-end">Created <%= distance_of_time_in_words(opinion.created_at, Time.now)%> ago</span>
+
+   <% unless opinion.likes.find_by_user_id(current_user.id) %>
+     
+    	<%= link_to   opinion_likes_path(opinion_id: opinion.id),method: :post ,class: "mr-2" do %>
+                <svg class="icon-viewuser">
+                  <use xlink:href="#icon-star" />
+                </svg>
+              <% end %>
+          
+   <% end %>
+            
+            <%= like_dislike_btn(opinion) %>
+
           </div>
         </div>
       </div>

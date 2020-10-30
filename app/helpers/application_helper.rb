@@ -33,4 +33,17 @@ module ApplicationHelper
   def who_to_follow(follower)
     render 'users/whom_to_follow' if !current_user.followed_persons.include?(follower) && current_user != follower
   end
+
+
+  
+  def like_dislike_btn(opinion)
+    like = Like.find_by(opinion: opinion, user: current_user)
+    if like
+      link_to('Dislike!', opinion_like_path(id: like.id, opinion_id: opinion.id), method: :delete)
+    else
+      link_to('Like!', opinion_likes_path(opinion_id: opinion.id), method: :post)
+    end
+  end
+
+
 end
