@@ -36,14 +36,32 @@ module ApplicationHelper
 
 
   
-  def like_dislike_btn(opinion)
+  def like_dislike_btn(opinion,unlike,liked)
     like = Like.find_by(opinion: opinion, user: current_user)
     if like
-      link_to('Dislike!', opinion_like_path(id: like.id, opinion_id: opinion.id), method: :delete)
+     link_to(opinion_like_path(id: like.id, opinion_id: opinion.id), method: :delete) do
+      unlike
+     end
     else
-      link_to('Like!', opinion_likes_path(opinion_id: opinion.id), method: :post)
+      link_to(opinion_likes_path(opinion_id: opinion.id), method: :post) do
+        liked
+      end
     end
   end
+  
+  def unlike_btn
+    @unlike_btn = "<span>Dislike </span><svg class='icon-viewuser'>
+        <use xlink:href='#icon-heart-broken' />
+      </svg> "
+      @unlike_btn.html_safe
+  end
+  def like_btn
+    @like_btn = "<span>Like </span> <svg class='icon-viewuser'>
+        <use xlink:href='#icon-star' />
+      </svg> "
+      @like_btn.html_safe
+  end
+
 
 
 end
