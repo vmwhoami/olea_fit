@@ -1,0 +1,40 @@
+<div class="container-fluid  main">
+  <div class="main__center d-flex flex-column ">
+    <%= render 'layouts/undernav' %>
+   <div class="container-fluid main__center__newsfeed">
+      <div class="card m-3 rounded">
+        <div class="card-body ">
+          <div class="row">
+            <% current_user.followers.each do |follower| %>
+
+            <div class="col-md-4">
+              <span><%= follower.fullname %></span>
+                
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <div class="main__right d-flex flex-column border-left">
+    <div class="main__right__heading d-flex align-items-center border-bottom ">
+      <h2 class="ml-4 ">Whom to follow</h2>
+    </div>
+
+    <div class="main__right__whotofollow d-flex flex-column align-items-center">
+      <div class="follow_these">
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

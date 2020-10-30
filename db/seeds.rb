@@ -28,26 +28,26 @@
 
 ]
 
-User.create(username: 'olea', fullname: 'Olga Pirvu,' ,
+User.create(username: 'olea', fullname: 'Olga Pirvu' ,
 coverimage:"https://million-wallpapers.ru/wallpapers/3/60/9711581260296049905/gorod-san-francisko-noch-ogni-most-san-francisco.jpg",
 photo: @photos.sample)
-User.create(username: 'vitalie', fullname: 'Vitalie Melnic,' ,
+User.create(username: 'vitalie', fullname: 'Vitalie Melnic' ,
 
 coverimage:"https://tv.bectero.com/wp-content/uploads/2018/04/thumb_002-93.jpg",
 photo: @photos.sample)
-User.create(username: 'adam', fullname: 'Adam Melnic,' ,
+User.create(username: 'adam', fullname: 'Adam Melnic' ,
 
 coverimage:"https://yandex.ru/images/_crpd/5zz1l1W64/486740a9F3l5/8wtK-q0p6jEiM4X5KUrMan7BZTWpGhxCH5vp8GXYrZc083rgYBXweXcMmI1yCJTzQY6n1yt75FI3tpf2CXNYLcOvrkrZae5hc1FESbyOvQ67wdDgfQvJp9vaGZBhnBwCUVWeUaARFcxx7Bjtc_pmUXBp1GBdHPNlIEJydtwWafwnju35SEqK0fKw0fq4CXka7ZHHhmpezNNM7GjhFk0u1hbw6cHwUCctMQvti3bKBSJzC7UiPpyiJpKxkReepHhJ5dwsa63Jq-KyE6EJy6sYWVyRR7aYzqxyzf9porfcvCYEMtpjo1I1jTD7nvnVu-cww2jnAr0NYWbxIINlHyRJOOe9TIv9K2uxwmMzm4gpinlPQyQnGszcUy1_qND17D-VtCHYgQNBdC0hmK7qNgqVkCMateA-TVH3ouNjBJ72yir3nQ7ILtt4YqHB4ch5uzo5_cGlBwhN_YLPviiCJ5ze1ORRmmLTQGY8gCv_u9TbR0IBO-WinxzxBJJDk-cux6spt9-Mi86pWGJAQuJ4WApqy82TVccZDN-Cfg9Zo1fN7zYWQxmDAhB1jXKLjwiEGRbjEBnnUo2_QBdw8kHEjwe6K_X9Ttk8u6gTcUGTmKs4qhiuoycXy5_sYR2ciOEE7Q8kF2KYcNAxNl1gmq6pVpvW8FA759B8DJBnAPByR1zlexhGHj2r7mjLoEPQ4wlpexm7jbH2FLnv3GA8zgiAdtyu9FZCyYOiQ-UuApt-mmQ5N-EA2SbjjL3jlxAzonTdNKg69f3ci__qiQAhc4FIe9laCvxxlBXITWwgz-8qwXTPXZV3gkpCg1NnLGJ7TTpG2DTxMutm0Pz-sSXjIQDW7mZbSIT9bLrvetjgoWEhOZk5qrt8oaR0afzOcey_WUIXn_7lpOP58dEzlbxBCJ0pddtVkyFrx-CcDxI1kDOgpn60eNpXrY0Yj9hZkrHic6rreRrpjIFmZ6rMfvJezrihA",
 photo: @photos.sample)
-User.create(username: 'sergyo', fullname: 'Sergiu Bogdan,' ,
+User.create(username: 'sergyo', fullname: 'Sergiu Bogdan' ,
 
 coverimage:"https://www.vladtime.ru/uploads/posts/2017-06/1497268693_2004-maybach-62-11.jpg",
 photo: @photos.sample)
-User.create(username: 'inna', fullname: 'Inna Bogdan,' ,
+User.create(username: 'inna', fullname: 'Inna Bogdan' ,
 
 coverimage:"https://wallbox.ru/wallpapers/main/201424/e5e41a1e3b6c539.jpg",
 photo: @photos.sample)
-User.create(username: 'nikoli', fullname: 'Nikoli Bogdan,' ,
+User.create(username: 'nikoli', fullname: 'Nikoli Bogdan' ,
 
 coverimage:"https://www.culture.ru/storage/images/e4a2cddbe5b782ed2fe00ddb641bc6cb/9e76e3959c43b8e9023ed74c26ec7a00.jpeg",
 photo: @photos.sample)

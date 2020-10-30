@@ -2,7 +2,7 @@
 	<div class="main__center d-flex flex-column ">
 
 
-<%= render 'layouts/undernav' %>
+		<%= render 'layouts/undernav' %>
 
 		<%# here will be all the tweets and stuff %>
 		<div class="container-fluid main__center__newsfeed">
@@ -27,10 +27,10 @@
 			<div class="follow_these">
 
 				<% @users.each do |follower| %>
-					<%# unless current_user.followed_persons.include?(follower) %>
+				<%# unless current_user.followed_persons.include?(follower) %>
 
-					<% @follower = follower %>
-					<%= who_to_follow(follower) %>
+				<% @follower = follower %>
+				<%= who_to_follow(follower) %>
 				<% end %>
 			</div>
 		</div>
