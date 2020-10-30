@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: danceter_production
-  username: danceter
-  password: <%= ENV['DANCETER_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_URL'] %>
+  # username: danceter
+  # password: <%= ENV['DANCETER_DATABASE_PASSWORD'] %>

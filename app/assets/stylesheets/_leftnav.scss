@@ -76,9 +76,13 @@ color: $bright-ondark;
     padding:2rem;
     width: 100%;
     text-transform: uppercase;
+    cursor: pointer;
     transition: all .3s;
     &:hover {
       background-color:$left-top ;
+      &:hover svg{
+        fill: white;
+      }
     }
 a{
   color: $muted-text;

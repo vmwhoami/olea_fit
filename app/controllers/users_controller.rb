@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else 
     flash[:danger] = @user.errors.full_messages[0]
-    redirect_to register_path
+    redirect_back(fallback_location: root_path)
     end
   end
 
