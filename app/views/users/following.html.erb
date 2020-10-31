@@ -7,11 +7,20 @@
         <div class="card-body ">
           <div class="row">
             <% current_user.followed_persons.each do |following| %>
-
-            <div class="col-md-4">
-              <p><%= following.fullname %></p>
-
+           <div class="col-4">
+              <div class="follow_container">
+                <div class="follow_img">
+                <%= image_tag following.photo %>
+                </div>
+                 
+                <p class="follow_name"><%= following.fullname %></p>
+                <span class= "follow_info"> <%=following.followers.count%> Followers</span>
+                </div>
+                <%= unfollow_btn %>
             </div>
+             
+
+        
             <% end %>
           </div>
         </div>

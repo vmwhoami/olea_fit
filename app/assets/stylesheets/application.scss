@@ -1,4 +1,4 @@
-@import "variables","leftnav","topnav","usershow","authentication","undernav";
+@import "variables","leftnav","topnav","usershow","authentication","undernav","followers_following";
 
 html {
   font-size: 62.5%;
@@ -73,7 +73,7 @@ text-decoration: none !important;
   transition: all .3s;
 
   &:hover{
-fill:$text-loud;
+  fill:white;
   }
 }
 
@@ -97,4 +97,25 @@ fill:$text-loud;
 
 .form-control{
   font-size: 1.8rem !important;
+}
+
+.flw_btn{
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  align-items: center;
+  color: $muted-text;
+  padding: 5px;
+  background-color: $text-loud;
+
+  &:hover{
+    color: white;
+  }
+}
+
+.flw_span{
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+
 }

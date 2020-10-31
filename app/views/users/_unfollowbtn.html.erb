@@ -1,6 +1,6 @@
-	<%= link_to   user_following_path(user_id: @user.id), method: :delete,class: "ml-2"  do%>
+	<%= link_to  user_following_path(user_id: @user.id), method: :delete,class: "ml-2 flw_btn"  do%>
+	<span class="flw_span">Unfollow</span>
 			<svg class="icon-viewuser">
 				<use xlink:href="#icon-minus-circle" />
-	</svg>
-
+	   </svg>
   <% end %>
