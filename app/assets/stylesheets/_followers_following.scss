@@ -9,6 +9,9 @@ display: flex;
 flex-direction: column;
 line-height: 2rem;
 justify-content: center;
+color: $bright-ondark;
+ font-weight: 600;
+ 
 }
 
 .follow_img{
@@ -28,5 +31,5 @@ img{
 
 .follow_name{
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 }
