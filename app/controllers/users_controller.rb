@@ -56,9 +56,14 @@ class UsersController < ApplicationController
 
   private
 
-  def current_user?
-    redirect_to user_path(find_user) 
+ def current_user?
+  if current?(find_user)
+    return
+  else
+    redirect_to root_path
+    flash[:danger] = "You don't have the right credentials"
   end
+ end
 
   def find_user
     @user = User.find(params[:id])

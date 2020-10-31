@@ -18,7 +18,7 @@ module ApplicationHelper
     @current_user = nil
   end
 
-  def current_user?(user)
+  def current?(user)
     current_user == user
   end
 
