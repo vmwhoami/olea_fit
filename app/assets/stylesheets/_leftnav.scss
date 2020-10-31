@@ -76,17 +76,23 @@ color: $bright-ondark;
   justify-content: center;
 
   &__link{
-    font-size: 2rem;
+    font-size: 1.6rem;
     padding:2rem;
     width: 100%;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    color: $muted-text;
+    margin-right: 1rem;
     cursor: pointer;
     transition: all .3s;
     &:hover {
       background-color:$left-top ;
-      &:hover svg{
-        fill: white;
-      }
+      color: white;    
+    }
+
+    &:hover svg{
+      fill: white;
     }
 a {
     color: $muted-text;
@@ -99,6 +105,8 @@ a {
    
   }
 }
+
+
 
 .followers_right{
   font-weight: 600;
@@ -114,4 +122,11 @@ a {
 .follow_these{
   width: 100%;
   padding-left: 2rem;
+}
+
+.leftnav-icon{
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: $muted-text;
+  margin-right: 1rem;
 }

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include UserPhotos
   after_initialize :downcase_usename, :set_default_img
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
@@ -28,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def set_default_img
-    self.photo ||= '//via.placeholder.com/140x100'
-    self.coverimage ||= '//via.placeholder.com/140x100'
+    self.photo ||= pick_photo
+    self.coverimage ||= pick_cover
   end
 end

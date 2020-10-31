@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   private
 
   def current_user?
-    redirect_to user_path(find_user) unless current_user?(find_user)
+    redirect_to user_path(find_user) 
   end
 
   def find_user
