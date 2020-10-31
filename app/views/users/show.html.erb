@@ -41,7 +41,7 @@
 				<% @user.followers.each do |follower| %>
 
 
-				<div class="d-flex mt-5">
+				<div class="d-flex mt-3">
 					<div class="following_img mr-3">
 						<a href="<%= user_path(follower)%>">
 							<%= image_tag follower.photo %>
@@ -68,7 +68,7 @@
 				<% @user.followed_persons.each do |person| %>
 
 
-				<div class="d-flex mt-5">
+				<div class="d-flex mt-3">
 					<div class="following_img mr-3">
 						<a href="<%= user_path(person)%>">
 							<%= image_tag person.photo %>

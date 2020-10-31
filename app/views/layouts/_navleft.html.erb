@@ -7,7 +7,7 @@
     <%= link_to "#{current_user.fullname }" ,user_path(current_user), class:"current_user font-weight-bold" %>
   </div>
 
-  <div class="follows  px-1  bg-left    ">
+  <div class="follows  px-1  bg-left border_b   ">
     <%= link_to   following_path, class:"navleft_info border_r" do %>
     <p class="follows__count font-weight-bold text-white "><%= current_user.followings.count %></p>
     <span class="follows__heading  font-weight-bold">Following</span>

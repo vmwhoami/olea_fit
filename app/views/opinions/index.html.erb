@@ -12,7 +12,7 @@
           <h2>What's on your mind</h2>
           <div class="form-group">
             <%= f.text_area :text, rows:"2", autofocus: true,class:"form-control" %>
-            <%= f.submit "Opinionate",class:"btn mt-5 mybtn text-white" %>
+            <%= f.submit "Opinionate",class:"btn mt-3 mybtn text-white" %>
           </div>
         </div>
       </div>
@@ -57,17 +57,16 @@
         <% unless current_user == follower %>
           
      
-        <div class="d-flex mt-5">
+        <div class="d-flex mt-3">
           <div class="following_img mr-3">
             <a href="<%= user_path(follower)%>">
               <%= image_tag follower.photo %>
             </a>
           </div>
           <a href="<%= user_path(follower)%>">
-            <div class="followers_right d-flex flex-column align-items-center">
+            <div class="followers_right d-flex flex-column align-items-end">
               <p class="m-0 text-loud "><%= follower.fullname %></p>
               <span>@<%= follower.username %></span>
-              
             </div>
           </a>
         </div>

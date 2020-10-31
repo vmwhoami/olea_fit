@@ -40,7 +40,7 @@
     <div class="main__right__whotofollow d-flex flex-column align-items-center">
       <div class="follow_these">
         <% @popular_users.each_with_index do |follower,indx| %>
-        <div class="d-flex mt-5">
+        <div class="d-flex mt-3">
           <div class="following_img mr-3">
             <a href="<%= user_path(follower)%>">
               <%= image_tag follower.photo %>
