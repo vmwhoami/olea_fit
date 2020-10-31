@@ -6,11 +6,21 @@
         <div class="card-body ">
           <div class="row">
             <% current_user.followers.each do |follower| %>
-
-            <div class="col-md-4">
-              <span><%= follower.fullname %></span>
-                
+    <div class="col-4 m-2">
+          <%= link_to  user_path(follower),class:"follow_container" do %>  
+                <div class="follow_img">
+                <%= image_tag follower.photo %>
+                </div>
+                 <div class="flw_container ml-2">
+                  <p class="follow_name"><%= follower.fullname %></p>
+                  <span class= "follow_info"> <%=follower.followers.count%> Followers</span>
+                  </div>  
             </div>
+             <% end %>
+             
+
+
+
             <% end %>
           </div>
         </div>
