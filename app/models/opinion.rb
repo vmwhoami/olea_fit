@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Opinion < ApplicationRecord
-  validates :text, presence: true, length: { minimum: 3, maximum: 250 }
+  validates :text, presence: true, length: { minimum: 1, maximum: 250 }
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
   has_many :likes, dependent: :destroy
