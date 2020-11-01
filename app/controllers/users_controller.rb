@@ -24,9 +24,9 @@ class UsersController < ApplicationController
       flash[:success] = 'User was successfully created.'
       log_in(@user)
       redirect_to user_path(@user)
-    else 
-    flash[:danger] = @user.errors.full_messages[0]
-    redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = @user.errors.full_messages[0]
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -56,14 +56,14 @@ class UsersController < ApplicationController
 
   private
 
- def current_user?
-  if current?(find_user)
-    return
-  else
-    redirect_to root_path
-    flash[:danger] = "You don't have the right credentials"
+  def current_user?
+    if current?(find_user)
+      nil
+    else
+      redirect_to root_path
+      flash[:danger] = "You don't have the right credentials"
+    end
   end
- end
 
   def find_user
     @user = User.find(params[:id])

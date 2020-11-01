@@ -22,11 +22,9 @@ module ApplicationHelper
     current_user == user
   end
 
-
   def show_errors
     render 'layouts/flash' if flash.any?
   end
-
 
   def follow_btn
     render 'users/followbtn' unless current_user.followed_persons.include?(@user) || current_user == @user

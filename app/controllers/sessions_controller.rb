@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to root_path
     else
-      flash.now[:danger] = "There is no such user try again or register"
+      flash.now[:danger] = 'There is no such user try again or register'
       render 'new'
     end
   end
