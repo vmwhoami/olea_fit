@@ -1,7 +1,7 @@
 <div class="global-container">
   <div class="card login-form">
     <div class="card-body">
-      <h3 class="card-title text-center">Register to Danceter</h3>
+      <h3 class="card-title text-center text-loud">Register to Danceter</h3>
       <div class="card-text">
 
      
@@ -9,23 +9,23 @@
  <%= show_errors %>
  
         <div class="form-group">
-          <%= f.label :username, "Username" %>
+          <%= f.label :username, "Username:",class:"text-loud font-weight-bold" %>
           <%= f.text_field :username, class:"form-control form-control-sm"%>
         </div>
 
         <div class="form-group">
-          <%= f.label :fullname, "Full name" %>
+          <%= f.label :fullname, "Full name:",class:"text-loud font-weight-bold" %>
           <%= f.text_field :fullname,class:"form-control form-control-sm" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :photo, "Icon Photo" %>
+          <%= f.label :photo, "Icon Photo:",class:"text-loud font-weight-bold" %>
           <%= f.text_field :photo ,class:"form-control form-control-sm" %>
           <span ><strong class="text-danger">Important!!!</strong>  by default you are given a default image you can change it with a live link from the internet </span>
         </div>
         
          <div class="form-group">
-          <%= f.label :coverimage, "Cover image" %>
+          <%= f.label :coverimage, "Cover image:",class:"text-loud font-weight-bold" %>
           <%= f.text_field :coverimage ,class:"form-control form-control-sm" %>
  <span ><strong class="text-danger">Important!!!</strong>  by default you are given a default image you can change it with a live link from the internet </span>
 

@@ -23,10 +23,10 @@ RSpec.feature 'UserFollowingUnfollowings', type: :feature do
     fill_in 'Username', with: 'test_one'
     click_button 'Login'
     click_link 'Test UserTwo'
-    expect(page).to  have_link('Follow')  
+    expect(page).to  have_link('Follow')
     click_link 'Follow'
     expect(@test_Two.followers.count).to eq(1)
-    expect(page).to  have_link('Unfollow')
+    expect(page).to have_link('Unfollow')
   end
 
   scenario 'There should be a button to unfollow another user' do
@@ -34,8 +34,8 @@ RSpec.feature 'UserFollowingUnfollowings', type: :feature do
     fill_in 'Username', with: 'test_one'
     click_button 'Login'
     click_link 'Test UserTwo'
-    click_link 'Follow' 
-    click_link 'Unfollow' 
+    click_link 'Follow'
+    click_link 'Unfollow'
     expect(@test_Two.followers.count).to eq(0)
   end
 end
