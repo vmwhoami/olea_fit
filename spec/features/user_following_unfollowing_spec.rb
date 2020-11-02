@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.feature 'UserFollowingUnfollowings', type: :feature do
   before(:each) do
     @test_one = User.create(username: 'test_one', fullname: 'Test UserOne')
