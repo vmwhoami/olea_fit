@@ -9,7 +9,7 @@ Some of the advanced concepts explored in this project includes.
  
 
 
-![screenshot]( )
+![screenshot](https://raw.githubusercontent.com/vmwhoami/danceter/pre-development/app/assets/images/Screenshot_1.jpg )
 
 ## Built With
 
