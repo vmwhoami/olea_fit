@@ -58,6 +58,5 @@ gem 'carrierwave-aws', '~> 1.0'
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 gem 'rubocop', '~>0.81.0'
-
 gem 'table_print', '~> 1.5', '>= 1.5.7'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
