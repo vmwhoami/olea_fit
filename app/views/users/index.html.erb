@@ -27,7 +27,7 @@
 			<div class="follow_these">
 
 				<% @users.each do |follower| %>
-				<%# unless current_user.followed_persons.include?(follower) %>
+	 
 
 				<% @follower = follower %>
 				<%= who_to_follow(follower) %>

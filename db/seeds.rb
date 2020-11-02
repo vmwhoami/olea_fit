@@ -29,6 +29,15 @@
 
 ]
 
+@opinions = [
+  "When I was a kid, my mother told me I could be anyone I wanted to be. Turns out, identity theft is a crime",
+  "A guy goes to his doctor because he can see into the future. The doctor asks him, 'How long have you suffered from that condition?' The guy tells him, 'Since next Monday.'",
+  "What do sprinters eat before a race? Nothing, they fast!",
+  "Why couldn't the bicycle stand up by itself? It was two tired!",
+  "Did you hear about the restaurant on the moon? Great food, no atmosphere!",
+  "Did you hear the rumor about butter? Well, I'm not going to spread it!"
+]
+
 User.create(username: 'olea', fullname: 'Olga Pirvu',
             coverimage: 'https://million-wallpapers.ru/wallpapers/3/60/9711581260296049905/gorod-san-francisko-noch-ogni-most-san-francisco.jpg',
             photo: @photos.sample)
@@ -69,8 +78,7 @@ user = 0
   user += 1
   Opinion.create!(
     author: User.find(user),
-    text: "Because I'm just ... um .... I don't know. Why give an interview when you
-  can leave a warning, you know?"
+    text:@opinions.sample
   )
 end
 
@@ -78,9 +86,7 @@ end
   o += 1
   Opinion.create!(
     author: User.find(o),
-    text: "Coronavirus is a joke!!!!
-    You should care about your health not about coravirus
-    "
+    text: @opinions.sample
   )
 end
 puts '-' * 100
