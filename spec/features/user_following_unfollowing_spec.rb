@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.feature 'UserFollowingUnfollowings', type: :feature do
@@ -13,9 +11,9 @@ RSpec.feature 'UserFollowingUnfollowings', type: :feature do
     visit '/'
     fill_in 'Username', with: 'test_one'
     click_button 'Login'
-    expect(page).to  have_link('Test UserTwo')
-    expect(page).to  have_link('Test UserOne')
-    expect(page).to  have_link('Test UserThree')
+    expect(page).to have_link('Test UserTwo')
+    expect(page).to have_link('Test UserOne')
+    expect(page).to have_link('Test UserThree')
   end
 
   scenario 'There should be a button to follow another user' do
@@ -23,7 +21,7 @@ RSpec.feature 'UserFollowingUnfollowings', type: :feature do
     fill_in 'Username', with: 'test_one'
     click_button 'Login'
     click_link 'Test UserTwo'
-    expect(page).to  have_link('Follow')
+    expect(page).to have_link('Follow')
     click_link 'Follow'
     expect(@test_Two.followers.count).to eq(1)
     expect(page).to have_link('Unfollow')

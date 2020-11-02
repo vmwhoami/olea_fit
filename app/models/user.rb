@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   include UserPhotos
   after_initialize :downcase_usename, :set_default_img
@@ -19,16 +17,12 @@ class User < ApplicationRecord
 
   has_many :followers, through: :following_folks, source: :follower
 
-  
   scope :fresh_users, -> { order('created_at DESC') }
 
   def self.ordered_users_limit(min, max)
     @ordered_users = User.all.sort { |a, b| a.followers.count <=> b.followers.count }
     @ordered_users.reverse[min..max]
   end
-
-
- 
 
   def downcase_usename
     self.username = username.downcase unless username.nil?

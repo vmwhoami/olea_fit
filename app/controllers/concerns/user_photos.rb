@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module UserPhotos
   extend ActiveSupport::Concern
 
