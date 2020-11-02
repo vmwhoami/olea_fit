@@ -1,56 +1,51 @@
 @import "variables";
 
-.topnav{
+.topnav {
   height: 8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background:$nav-bottom;
-background: linear-gradient(180deg,$nav-bottom  0%, $nav-bottom 100%);
+  background: $nav-bottom;
+  background: linear-gradient(180deg, $nav-bottom  0%, $nav-bottom 100%);
 
-
-
-  &__right{
-  width: 30rem;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
- 
+  &__right {
+    width: 30rem;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
-
-.icon-danceter{
-  fill:$main-background;
+.icon-danceter {
+  fill: $main-background;
   height: 6rem;
   width: 6rem;
 }
 
-.icon-nav{
+.icon-nav {
   height: 3rem;
   width: 3rem;
-  fill:$icon-nav;
+  fill: $icon-nav;
 
-  &:hover{
-    fill:$main-background;
+  &:hover {
+    fill: $main-background;
   }
 }
 
-.navlink{
+.navlink {
   width: 8rem;
   height: 100%;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all .3s;
+  transition: all 0.3s;
 
   &:hover {
     background-color: $nav-top;
   }
 }
 
-.navlink:hover .icon-nav{
-  fill:$main-background;
+.navlink:hover .icon-nav {
+  fill: $main-background;
 }
-

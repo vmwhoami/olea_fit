@@ -4,21 +4,10 @@ class LikesController < ApplicationController
     return_back
   end
 
-  # /opinions/:opinion_id/likes/:id(.:format)
-  def destroy
-    @like = current_user.likes.find(params[:id])
-    @like.destroy
-    return_back
-  end
-
   def destroy
     like = Like.find_by(id: params[:id], user: current_user, opinion_id: params[:opinion_id])
-    if like
-      like.destroy
-      return_back
-    else
-      return_back
-    end
+    like&.destroy
+    return_back
   end
 
   private

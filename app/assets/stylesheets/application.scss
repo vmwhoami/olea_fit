@@ -4,41 +4,43 @@ html {
   font-size: 62.5%;
 }
 
-body{
+body {
   font-size: 1.6rem !important;
   color: $muted-text !important;
 }
 
-a:hover{
-text-decoration: none !important;
+a:hover {
+  text-decoration: none !important;
 }
- .container-fluid{
-   padding: 0 !important;
-   background-color: $main-background;
- }
 
-.visited{
+.container-fluid {
+  padding: 0 !important;
+  background-color: $main-background;
+}
+
+.visited {
   height: 25rem;
   background-color: $left-top;
   display: flex;
 
-// main image
-  &__image{
+  // main image
+  &__image {
     width: 100%;
-    height: 100%; 
-    
-    img{
+    height: 100%;
+
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       overflow: hidden;
     }
-   }
-&__container{
-  height: 100%;
-}
+  }
 
-  &__functionality{
+  &__container {
+    height: 100%;
+  }
+
+  &__functionality {
     flex: 0 0 30rem;
     height: 100%;
     background-color: $main-background;
@@ -46,17 +48,14 @@ text-decoration: none !important;
     flex-direction: column;
     justify-content: space-between;
   }
-
-
- 
 }
 
-.guest__image{
+.guest__image {
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
 
-    img{
+  img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -65,23 +64,23 @@ text-decoration: none !important;
   }
 }
 
-
-.icon-viewuser{
+.icon-viewuser {
   height: 3rem;
   width: 3rem;
   fill: $muted-text;
-  transition: all .3s;
+  transition: all 0.3s;
 
-  &:hover{
-  fill:white;
+  &:hover {
+    fill: white;
   }
 }
 
-.opinions_img{
+.opinions_img {
   width: 5rem;
   height: 5rem;
   border-radius: 5px;
-  img{
+
+  img {
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -90,16 +89,16 @@ text-decoration: none !important;
   }
 }
 
-.mybtn{
+.mybtn {
   font-size: 1.8rem !important;
   background-color: $nav-top !important;
 }
 
-.form-control{
+.form-control {
   font-size: 1.8rem !important;
 }
 
-.flw_btn{
+.flw_btn {
   display: flex;
   flex-direction: column;
   border-radius: 3px;
@@ -108,14 +107,13 @@ text-decoration: none !important;
   padding: 5px;
   background-color: $text-loud;
 
-  &:hover{
+  &:hover {
     color: white;
   }
 }
 
-.flw_span{
+.flw_span {
   font-weight: 600;
   font-size: 1.3rem;
   text-transform: uppercase;
-
 }
