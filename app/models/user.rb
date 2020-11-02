@@ -24,6 +24,10 @@ class User < ApplicationRecord
     @ordered_users.reverse[min..max]
   end
 
+  def self.fresh_users
+    scope :fresh_users, -> { order('created_at DESC') }
+  end
+
   def downcase_usename
     self.username = username.downcase unless username.nil?
   end

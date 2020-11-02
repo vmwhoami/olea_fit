@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   before_action :current_user?, only: %i[edit]
   before_action :find_user, only: %i[edit update destroy show]
 
-  def followers; end
+  def followers
+   @fresh_users = User.fresh_users
+  end
 
   def following; end
 

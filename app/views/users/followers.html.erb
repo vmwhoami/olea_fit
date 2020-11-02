@@ -17,10 +17,6 @@
                   </div>  
             </div>
              <% end %>
-             
-
-
-
             <% end %>
           </div>
         </div>
@@ -34,12 +30,27 @@
 
   <div class="main__right d-flex flex-column border-left">
     <div class="main__right__heading d-flex align-items-center border-bottom ">
-      <h2 class="ml-4 ">Whom to follow</h2>
+      <h2 class="ml-4 ">Recently registered users</h2>
     </div>
 
     <div class="main__right__whotofollow d-flex flex-column align-items-center">
       <div class="follow_these">
 
+<%  @fresh_users.each do |user| %>
+       <div class="d-flex mt-3">
+          <div class="following_img mr-3">
+            <a href="<%= user_path(user)%>">
+              <%= image_tag user.photo %>
+            </a>
+          </div>
+          <a href="<%= user_path(user)%>">
+            <div class="followers_right d-flex flex-column align-items-end">
+              <p class="m-0 text-loud "><%= user.fullname %></p>
+              <span>@<%= user.username %></span>
+            </div>
+          </a>
+        </div>
+<% end %>
 
 
 
