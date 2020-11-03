@@ -10,7 +10,7 @@ class OpinionsController < ApplicationController
     @popular_users = User.most_followed
 
     @opinion = Opinion.new
-    # @merged_opinions = Opinion.merged_o(current_user)
+    @merged_opinions = Opinion.merged_o(current_user)
   end
 
   def discover
