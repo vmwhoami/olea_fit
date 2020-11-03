@@ -6,12 +6,16 @@ class UsersController < ApplicationController
 
   def followers
     @fresh_users = User.fresh_users
+
   end
 
-  def following; end
+  def following
+    a = Following.where("follower_id = ?", current_user.id).pluck(:followed_id)
+    @following =  User.where('id in (?)', a)
+  end
 
   def index
-    @users = User.ordered_users_limit(0, -1)
+    @users = User.ordered_users_limit(0, -1).includes(:followings)
   end
 
   def new

@@ -5,15 +5,16 @@ class OpinionsController < ApplicationController
   # GET /opinions
   # GET /opinions.json
   def index
-    @opinions = Opinion.all
+ 
+    @fresh_opinions = Opinion.fresh_opinions.includes(:author,:likes).limit(6)
+    @popular_users = User.most_followed
+
     @opinion = Opinion.new
-    @fresh_opinions = Opinion.fresh_opinions.limit(6)
-    @popular_users = User.ordered_users_limit(0, 5)
     # @merged_opinions = Opinion.merged_o(current_user)
   end
 
   def discover
-    @popular_users = User.ordered_users_limit(0, -1)
+    @popular_users = User.most_followed
     @fresh_opinions = Opinion.fresh_opinions
   end
 

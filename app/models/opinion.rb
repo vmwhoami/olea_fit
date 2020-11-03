@@ -5,11 +5,14 @@ class Opinion < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   scope :fresh_opinions, -> { order('created_at DESC') }
-
+ 
   # def self.merged_o(author)
   #   subscribed = Opinion.find_by_author_id(author.id).author.followed_persons.ids
   #   own =  Opinion.find_by_author_id(author.id).author_id
   #   merged = subscribed << own
   #   Opinion.where('author_id in (?)', merged).order('created_at DESC')
   # end
+
+
+
 end

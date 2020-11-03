@@ -18,11 +18,24 @@ class User < ApplicationRecord
   has_many :followers, through: :following_folks, source: :follower
 
   scope :fresh_users, -> { order('created_at DESC') }
-  # icludes
+ 
+  # scope :count, -> { where(:attibute => value)}
+   
+
   def self.ordered_users_limit(min, max)
     @ordered_users = User.all.sort { |a, b| a.followers.count <=> b.followers.count }
     @ordered_users.reverse[min..max]
   end
+
+  def self.most_followed
+    arr  = Following.pluck(:followed_id)
+    x = arr.inject(Hash.new(0)) { |h, e| h[e] += 1 ; h }
+    a = x.sort_by { |name, followers| followers }.reverse
+    b = a.map{|arr| arr[0] }
+    @most_followed = User.find([b])
+    
+  end
+
 
   def downcase_usename
     self.username = username.downcase unless username.nil?

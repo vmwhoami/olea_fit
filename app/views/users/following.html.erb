@@ -6,18 +6,18 @@
       <div class="card m-3 rounded">
         <div class="card-body ">
           <div class="row">
-            <% current_user.followed_persons.each do |following| %>
+            <%  @following.each do |user| %>
            <div class="col-4 m-2">
-          <%= link_to  user_path(following),class:"follow_container" do %>  
+            <%= link_to  user_path(user) do%>
                 <div class="follow_img">
-                <%= image_tag following.photo %>
+                <%= image_tag user.photo %>
                 </div>
                  <div class="flw_container ml-2">
-                  <p class="follow_name"><%= following.fullname %></p>
-                  <span class= "follow_info"> <%=following.followers.count%> Followers</span>
+                  <p class="follow_name"><%= user.fullname %></p>
+                  <span class= "follow_info"> <%= user.followers.length%> Followers</span>
                   </div>  
             </div>
-             <% end %>
+           <% end %>
              
 
         
