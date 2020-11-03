@@ -9,11 +9,11 @@
 
   <div class="follows  px-1  bg-left border_b   ">
     <%= link_to   following_path, class:"navleft_info border_r" do %>
-    <p class="follows__count font-weight-bold text-white "><%= current_user.followings.count %></p>
+    <p class="follows__count font-weight-bold text-white "><%= current_user.followings.size %></p>
     <span class="follows__heading  font-weight-bold">Following</span>
     <% end %>
     <%= link_to   followers_path, class: "navleft_info"  do %>
-    <p class="follows__count font-weight-bold text-white "><%= current_user.followers.count %></p>
+    <p class="follows__count font-weight-bold text-white "><%= current_user.followers.size %></p>
     <span class="follows__heading  font-weight-bold ">Followers</span>
     <% end %>
   </div>

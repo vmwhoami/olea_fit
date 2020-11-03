@@ -36,7 +36,7 @@
             <p><%= opinion.text %>      </p>
           	<span class="created_at align-self-end">
             <span class="mr-4"> <%= like_dislike_btn(opinion, unlike_btn, like_btn) %></span>
-            <span class="mx-4"><%= opinion.likes.count %> Likes</span>
+            <span class="mx-4"><%= opinion.likes.size %> Likes</span>
             Created <%= distance_of_time_in_words(opinion.created_at, Time.now)%> ago</span>
           </div>
         </div>

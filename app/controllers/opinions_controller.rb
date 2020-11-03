@@ -14,7 +14,7 @@ class OpinionsController < ApplicationController
   end
 
   def discover
-    @popular_users = User.most_followed
+    @users = User.all
     @fresh_opinions = Opinion.fresh_opinions
   end
 

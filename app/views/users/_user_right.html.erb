@@ -19,17 +19,17 @@
 	<%# follows followigns section  %>
 	<div class="follows border-top d-flex  px-1">
 		<div class=" show_user border-right">
-			<p class=" text-bold font-weight-bold text-loud"><%= @user.followings.count %></p>
+			<p class=" text-bold font-weight-bold text-loud"><%= @user.followings.size %></p>
 			<span class="follows__heading  ">Following</span>
 		</div>
 
 		<div class=" show_user border-right">
-			<p class=" font-weight-bold text-loud"><%= @user.followers.count %></p>
+			<p class=" font-weight-bold text-loud"><%= @user.followers.size %></p>
 			<span class="follows__heading  ">Followers</span>
 		</div>
 
 		<div class=" show_user">
-			<p class=" font-weight-bold text-loud"><%= @user.opinions.count %></p>
+			<p class=" font-weight-bold text-loud"><%= @user.opinions.size %></p>
 			<span class="follows__heading  ">Opinions</span>
 		</div>
 	</div>
