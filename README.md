@@ -24,7 +24,7 @@ Some of the advanced concepts explored in this project includes.
 
 ## Video Presentation
 
-[Video Link](https://www.loom.com/share/21bbca08fe56413c98f86668229218a5 )
+[Video Link](https://youtu.be/PLhU1zXu0uU )
 
 
 ## Getting Started
