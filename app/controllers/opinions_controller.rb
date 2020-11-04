@@ -2,35 +2,27 @@ class OpinionsController < ApplicationController
   before_action :logged_in?, only: %i[index show edit destoroy]
   before_action :set_opinion, only: %i[show edit update destroy]
 
-  # GET /opinions
-  # GET /opinions.json
   def index
     @fresh_opinions = Opinion.fresh_opinions.includes(:author, :likes).limit(6)
     @popular_users = User.most_followed
 
     @opinion = Opinion.new
-    @merged_opinions = Opinion.merged_o(current_user)
+    @merged_opinions = Opinion.merged_o(current_user).includes(:likes)
   end
 
   def discover
     @users = User.all
-    @fresh_opinions = Opinion.fresh_opinions
+    @fresh_opinions = Opinion.fresh_opinions.includes(:author, :likes)
   end
 
-  # GET /opinions/1
-  # GET /opinions/1.json
   def show; end
 
-  # GET /opinions/new
   def new
     @opinion = Opinion.new
   end
 
-  # GET /opinions/1/edit
   def edit; end
 
-  # POST /opinions
-  # POST /opinions.json
   def create
     @opinion = current_user.opinions.new(opinion_params)
 
@@ -45,8 +37,6 @@ class OpinionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /opinions/1
-  # PATCH/PUT /opinions/1.json
   def update
     respond_to do |format|
       if @opinion.update(opinion_params)
@@ -59,8 +49,6 @@ class OpinionsController < ApplicationController
     end
   end
 
-  # DELETE /opinions/1
-  # DELETE /opinions/1.json
   def destroy
     @opinion.destroy
     respond_to do |format|
@@ -71,12 +59,10 @@ class OpinionsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_opinion
     @opinion = Opinion.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def opinion_params
     params.require(:opinion).permit(:text)
   end
