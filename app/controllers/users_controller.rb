@@ -6,14 +6,14 @@ class UsersController < ApplicationController
 
   def followers
     @fresh_users = User.fresh_users
-    arr = Following.where("followed_id = ?", current_user.id).pluck(:follower_id)
-    @followers =  User.where('id in (?)', arr).includes(:followings)
+    arr = Following.where('followed_id = ?', current_user.id).pluck(:follower_id)
+    @followers = User.where('id in (?)', arr).includes(:followings)
   end
 
   def following
     @users = User.most_followed
-    arr = Following.where("follower_id = ?", current_user.id).pluck(:followed_id)
-    @following =  User.where('id in (?)', arr).includes(:followings)
+    arr = Following.where('follower_id = ?', current_user.id).pluck(:followed_id)
+    @following = User.where('id in (?)', arr).includes(:followings)
   end
 
   def index

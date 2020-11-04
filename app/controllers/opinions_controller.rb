@@ -5,8 +5,7 @@ class OpinionsController < ApplicationController
   # GET /opinions
   # GET /opinions.json
   def index
- 
-    @fresh_opinions = Opinion.fresh_opinions.includes(:author,:likes).limit(6)
+    @fresh_opinions = Opinion.fresh_opinions.includes(:author, :likes).limit(6)
     @popular_users = User.most_followed
 
     @opinion = Opinion.new
