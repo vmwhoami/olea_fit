@@ -1,0 +1,37 @@
+<div class="visited__functionality border-bottom">
+
+	<div class="visited__container d-flex flex-column align-items-center justify-content-around">
+
+		<div class="image_navigation d-flex align-items-center justify-content-center">
+		
+		<%= follow_btn %>
+
+			<div class="guest__image">
+				<%= image_tag @user.photo %>
+			</div>
+<%= unfollow_btn %>
+		</div>
+
+		<p class="visited__fullname m-0 p-0 text-loud text-uppercase font-weight-bold"><%= @user.fullname %></p>
+		<span class="visited__username m-0 p-0">@<%= @user.username %></span>
+	</div>
+
+	<%# follows followigns section  %>
+	<div class="follows border-top d-flex  px-1">
+		<div class=" show_user border-right">
+			<p class=" text-bold font-weight-bold text-loud"><%= @user.followings.size %></p>
+			<span class="follows__heading  ">Following</span>
+		</div>
+
+		<div class=" show_user border-right">
+			<p class=" font-weight-bold text-loud"><%= @user.followers.size %></p>
+			<span class="follows__heading  ">Followers</span>
+		</div>
+
+		<div class=" show_user">
+			<p class=" font-weight-bold text-loud"><%= @user.opinions.size %></p>
+			<span class="follows__heading  ">Opinions</span>
+		</div>
+	</div>
+
+</div>

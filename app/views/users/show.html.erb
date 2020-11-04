@@ -1,0 +1,94 @@
+<%# top navigation with imagage and some functionality %>
+<div class="visited">
+	<div class="visited__image">
+		<%= image_tag @user.coverimage %>
+	</div>
+	<%= render 'users/user_right' %>
+</div>
+<%# End of top functionality%>
+
+
+<div class="container-fluid  main">
+	<div class="main__center d-flex flex-column ">
+	<%= render 'layouts/undernav' %>
+		<%# here will be all the tweets and stuff %>
+		<div class="container-fluid main__center__newsfeed">
+		<div class="card p-5 m-3">
+			<h2>Recent opinions:</h2>
+		</div>
+	
+			<% @user.opinions.fresh_opinions.each do |opinion| %>
+			<div class="card m-3 rounded">
+				<div class="card-body ">
+					<p> <%= opinion.text %></p>
+					<span class="created_at">Created <%= distance_of_time_in_words(opinion.created_at, Time.now)   %> ago</span>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<%# here will end %>
+	</div>
+
+
+
+	<div class="main__right d-flex flex-column border-left">
+		<div class="main__right__heading d-flex align-items-center border-bottom ">
+			<h2 class="ml-4 text-loud ">Followed by</h2>
+		</div>
+
+		<div class="main__right__whotofollow d-flex flex-column align-items-center">
+			<div class="follow_these">
+				<% @user.followers.each do |follower| %>
+
+
+				<div class="d-flex mt-3">
+					<div class="following_img mr-3">
+						<a href="<%= user_path(follower)%>">
+							<%= image_tag follower.photo %>
+						</a>
+					</div>
+					<a href="<%= user_path(follower)%>">
+						<div class="followers_right d-flex flex-column align-items-center">
+							<p class="m-0 text-loud "><%= follower.fullname %></p>
+							<span>@<%= follower.username %></span>
+						</div>
+					</a>
+				</div>
+
+				<% end %>
+			</div>
+		</div>
+
+		<div class="main__right__heading d-flex align-items-center border-bottom ">
+			<h2 class="ml-4 text-loud ">Following</h2>
+		</div>
+
+		<div class="main__right__whotofollow d-flex flex-column align-items-center">
+			<div class="follow_these">
+				<% @user.followed_persons.each do |person| %>
+
+
+				<div class="d-flex mt-3">
+					<div class="following_img mr-3">
+						<a href="<%= user_path(person)%>">
+							<%= image_tag person.photo %>
+						</a>
+					</div>
+					<a href="<%= user_path(person)%>">
+						<div class="followers_right d-flex flex-column align-items-center">
+							<p class="m-0 text-loud "><%= person.fullname %></p>
+							<span>@<%= person.username %></span>
+						</div>
+					</a>
+				</div>
+
+				<% end %>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+</div>

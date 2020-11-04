@@ -1,0 +1,41 @@
+<div class="container-fluid  main">
+	<div class="main__center d-flex flex-column ">
+
+
+		<%= render 'layouts/undernav' %>
+
+		<%# here will be all the tweets and stuff %>
+		<div class="container-fluid main__center__newsfeed">
+			<% current_user.opinions.each do |opinion| %>
+			<div class="card m-3 rounded">
+				<div class="card-body ">
+					<%= opinion.text %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<%# here will end %>
+	</div>
+
+
+	<div class="main__right d-flex flex-column border-left">
+		<div class="main__right__heading d-flex align-items-center border-bottom ">
+			<h2 class="ml-4 ">Whom to follow</h2>
+		</div>
+
+		<div class="main__right__whotofollow d-flex flex-column align-items-center">
+			<div class="follow_these">
+
+				<% @users.each do |follower| %>
+	 
+
+				<% @follower = follower %>
+				<%= who_to_follow(follower) %>
+				<% end %>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>

@@ -1,0 +1,49 @@
+<div class="mynav">
+  <div class="picture-name p-4">
+    <%= link_to  user_path(current_user) do %>
+    <%= image_tag current_user.photo ,class:"current_user_img" %>
+    <% end %>
+
+    <%= link_to "#{current_user.fullname }" ,user_path(current_user), class:"current_user font-weight-bold" %>
+  </div>
+
+  <div class="follows  px-1  bg-left border_b   ">
+    <%= link_to   following_path, class:"navleft_info border_r" do %>
+    <p class="follows__count font-weight-bold text-white "><%= current_user.followings.size %></p>
+    <span class="follows__heading  font-weight-bold">Following</span>
+    <% end %>
+    <%= link_to   followers_path, class: "navleft_info"  do %>
+    <p class="follows__count font-weight-bold text-white "><%= current_user.followers.size %></p>
+    <span class="follows__heading  font-weight-bold ">Followers</span>
+    <% end %>
+  </div>
+
+  <ul class="left_navigation d-flex flex-column p-0">
+    <%= link_to root_path do %>
+    <li class="left_navigation__link d-flex ">
+      <svg class="leftnav-icon">
+        <use xlink:href="#icon-home" />
+      </svg> Home</li>
+    <% end %>
+
+    <%= link_to   discover_path do %>
+    <li class="left_navigation__link">
+      <svg class="leftnav-icon">
+        <use xlink:href="#icon-list" />
+      </svg>
+      Discover
+    </li>
+    <% end %>
+
+    <%= link_to   edit_user_path(current_user) do %>
+    <li class="left_navigation__link">
+      <svg class="leftnav-icon">
+        <use xlink:href="#icon-user" />
+      </svg>
+      Edit Profile
+    </li>
+    <% end %>
+
+  </ul>
+
+</div>

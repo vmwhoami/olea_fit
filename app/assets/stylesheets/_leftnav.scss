@@ -1,0 +1,132 @@
+@import "variables";
+
+.mynav {
+  min-height: 100vh;
+  width: 20rem;
+  background-color: $left-bottom;
+}
+
+.picture-name {
+  height: 8rem;
+  width: 20rem;
+  background-color: $left-top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $names-leftnav;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: $border;
+
+  &:hover {
+    background-color: $left-bottom;
+  }
+}
+
+.current_user {
+  text-decoration: none;
+  color: $bright-ondark;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.current_user_img {
+  border-radius: 5px;
+  height: 6rem;
+  width: 6rem;
+  margin-right: 1rem;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.follows {
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+  // border-bottom: 1px solid black;
+}
+
+.navleft_info {
+  height: 100%;
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1rem;
+  color: $main-background;
+
+  &:hover {
+    background-color: $left-bottom;
+    color: $main-background;
+  }
+}
+
+.left_navigation {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__link {
+    font-size: 1.6rem;
+    padding: 2rem;
+    width: 100%;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    color: $muted-text;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $left-top;
+      color: white;
+    }
+
+    &:hover svg {
+      fill: white;
+    }
+
+    a {
+      color: $muted-text;
+
+      &:hover {
+        text-decoration: none;
+        color: $main-background;
+      }
+    }
+  }
+}
+
+.followers_right {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.2rem;
+
+  span {
+    color: $muted-text;
+    font-weight: 400;
+    align-self: flex-start;
+  }
+}
+
+.follow_these {
+  width: 100%;
+  padding-left: 2rem;
+}
+
+.leftnav-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: $muted-text;
+  margin-right: 1rem;
+}

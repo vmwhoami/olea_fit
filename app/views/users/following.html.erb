@@ -1,0 +1,65 @@
+<div class="container-fluid  main">
+  <div class="main__center d-flex flex-column ">
+    <%= render 'layouts/undernav' %>
+
+    <div class="container-fluid main__center__newsfeed">
+      <div class="card m-3 rounded">
+        <div class="card-body ">
+          <div class="row">
+            <%  @following.each do |user| %>
+           <div class="col-4 m-2">
+            <%= link_to  user_path(user) do%>
+                <div class="follow_img">
+                <%= image_tag user.photo %>
+                </div>
+                 <div class="flw_container ml-2">
+                  <p class="follow_name"><%= user.fullname %></p>
+                  <span class= "follow_info"> <%= user.followers.size%> Followers</span>
+                  </div>  
+            </div>
+           <% end %>
+             
+
+        
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="main__right d-flex flex-column border-left">
+    <div class="main__right__heading d-flex align-items-center border-bottom ">
+      <h2 class="ml-4 ">Whom to follow</h2>
+    </div>
+
+    <div class="main__right__whotofollow d-flex flex-column align-items-center">
+      <div class="follow_these">
+
+     <% @users.each do |follower | %>
+        	<% @follower = follower %>
+    
+     
+        <div class="d-flex mt-3">
+          <div class="following_img mr-3">
+            <a href="<%= user_path(follower)%>">
+              <%= image_tag follower.photo %>
+            </a>
+          </div>
+          <a href="<%= user_path(follower)%>">
+            <div class="followers_right d-flex flex-column align-items-end">
+              <p class="m-0 text-loud "><%= follower.fullname %></p>
+              <span>@<%= follower.username %></span>
+            </div>
+          </a>
+        </div>
+ 
+        <% end %>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

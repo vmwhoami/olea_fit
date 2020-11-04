@@ -1,0 +1,15 @@
+<% @follower %>			
+<div class="d-flex mt-3">
+  <div class="following_img mr-3">
+    <a href="<%= user_path(@follower)%>">
+      <%= image_tag @follower.photo %>
+    </a>
+  </div>
+  
+  <a href="<%= user_path(@follower)%>">
+    <div class="followers_right d-flex flex-column align-items-center">
+      <p class="m-0 text-loud "><%= @follower.fullname %></p>
+      <span>@<%= @follower.username %></span>
+    </div>
+  </a>
+</div>
