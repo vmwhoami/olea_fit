@@ -97,8 +97,7 @@ puts '------------ Opinions Created!!! -----------'
   User.find(1).followings.create(followed_id: User.find(f).id)
 end
 a = 1
-9.times do |f|
-  f += 1
+9.times do |_f|
   a += 1
   User.find(a).followings.create(followed_id: User.find(2).id)
 end

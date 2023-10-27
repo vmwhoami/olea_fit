@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OpinionsController < ApplicationController
   before_action :logged_in?, only: %i[index show edit destoroy]
   before_action :set_opinion, only: %i[show edit update destroy]

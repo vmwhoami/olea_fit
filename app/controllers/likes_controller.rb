@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LikesController < ApplicationController
   def create
     current_user.likes.create(opinion_id: params[:opinion_id])
