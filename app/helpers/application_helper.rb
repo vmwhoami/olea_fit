@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ApplicationHelper
   def log_in(user)
     session[:user] = user.username
@@ -39,7 +37,7 @@ module ApplicationHelper
   end
 
   def like_dislike_btn(opinion, unlike, liked)
-    like = Like.find_by(opinion:, user: current_user)
+    like = Like.find_by(opinion: opinion, user: current_user)
     if like
       link_to(opinion_like_path(id: like.id, opinion_id: opinion.id), method: :delete) do
         unlike

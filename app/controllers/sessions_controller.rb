@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# implements SessionsController
 class SessionsController < ApplicationController
   layout 'athentication', only: %i[new create]
 

@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# implements UsersController
 class UsersController < ApplicationController
   layout 'athentication', only: %i[new edit]
   before_action :logged_in?, only: %i[index show edit destoroy]
