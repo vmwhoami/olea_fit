@@ -4,30 +4,25 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.7'
+gem 'rails', '~> 7.2', '>= 7.2.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg', '~> 1.5', '>= 1.5.7'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 6.4', '>= 6.4.2'
 # Use SCSS for stylesheets
-gem 'sassc-rails'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-# gem 'webpacker', '~> 4.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+ 
+gem 'bootsnap', '~> 1.18', '>= 1.18.3', require: false
+ 
+gem 'jbuilder', '~> 2.12'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'minitest', '~> 5.18'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
-
+gem 'rspec-core', '~> 3.13', '>= 3.13.1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -46,18 +41,17 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'rspec', '~> 3.13'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+ 
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
-gem 'carrierwave', '~> 2.1'
-gem 'carrierwave-aws', '~> 1.0'
-gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
-gem 'mini_magick', '~> 4.10', '>= 4.10.1'
-gem 'rubocop', '~>0.81.0'
+gem 'carrierwave', '~> 3.0', '>= 3.0.7'
+gem 'carrierwave-aws', '~> 1.6'
+gem 'dotenv-rails', '~> 3.1', '>= 3.1.2'
+ 
+gem 'rubocop', '~> 1.66', '>= 1.66.1'
 gem 'table_print', '~> 1.5', '>= 1.5.7'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data', '~> 1.2024', '>= 1.2024.1', platforms: %i[mingw mswin x64_mingw jruby]
