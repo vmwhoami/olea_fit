@@ -9,6 +9,7 @@ WORKDIR /danceter
 # Install Rails
 
 RUN gem install rails -v 7.2.1
+RUN gem install rack-cors
 
 # Copy Gemfile and Gemfile.lock
 COPY Gemfile Gemfile.lock ./
