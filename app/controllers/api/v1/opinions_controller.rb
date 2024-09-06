@@ -1,13 +1,15 @@
-class OpinionsController < ApplicationController
-  before_action :logged_in?, only: %i[index show edit destoroy]
-  before_action :set_opinion, only: %i[show edit update destroy]
+class Api::V1::OpinionsController < ApplicationController
+  # before_action :logged_in?, only: %i[index show edit destoroy]
+  # before_action :set_opinion, only: %i[show edit update destroy]
 
   def index
-    @fresh_opinions = Opinion.fresh_opinions.includes(:author, :likes).limit(6)
-    @popular_users = User.most_followed
+    render json: { message: 'You have to be logged in to perform this action' }, status: :unauthorized unless logged_in?
 
-    @opinion = Opinion.new
-    @merged_opinions = Opinion.merged_o(current_user).includes(:likes)
+    # @fresh_opinions = Opinion.fresh_opinions.includes(:author, :likes).limit(6)
+    # @popular_users = User.most_followed
+
+    # @opinion = Opinion.new
+    # @merged_opinions = Opinion.merged_o(current_user).includes(:likes)
   end
 
   def discover

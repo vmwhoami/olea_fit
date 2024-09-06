@@ -1,4 +1,4 @@
-class FollowingsController < ApplicationController
+class Api::V1::FollowingsController < ApplicationController
   def create
     current_user.followings.create(followed_id: params[:user_id])
     redirect_back(fallback_location: root_path)

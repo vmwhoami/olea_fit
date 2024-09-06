@@ -1,6 +1,5 @@
-class UsersController < ApplicationController
-  layout 'athentication', only: %i[new edit]
-  before_action :logged_in?, only: %i[index show edit destoroy]
+class Api::V1::UsersController < ApplicationController
+   before_action :logged_in?, only: %i[index show edit destoroy]
   before_action :current_user?, only: %i[edit]
   before_action :find_user, only: %i[edit update destroy show]
 

@@ -1,5 +1,5 @@
-class SessionsController < ApplicationController
-  layout 'athentication', only: %i[new create]
+class Api::V1::SessionsController < ApplicationController
+ 
 
   def new; end
 
