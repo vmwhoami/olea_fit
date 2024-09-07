@@ -7,8 +7,9 @@ Rails.application.routes.draw do
         resources :followings, only: %i[create destroy]
       end
       get 'register', to: 'users#new'
-      root 'opinions#index'
-    
+      # get 'opinions#index'
+
+      root "/app", to: "opinions#app"
       resources :opinions do
         resources :likes, only: %i[create destroy]
       end

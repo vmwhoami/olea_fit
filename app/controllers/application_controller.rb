@@ -28,15 +28,13 @@ class ApplicationController < ActionController::API
   #   @user = User.find_by(id: user_id)
   # end
 
-  def logged_in?
-    render json: { message: 'Crasavcik' } 
-
-    # if logged_in_user
-    #   true
-    # else
-    #   false
-    # end
-  end
+  # def logged_in?
+  #   if logged_in_user
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
 
   # def authorized
   #   render json: { message: 'You have to be logged in to perform this action' }, status: :unauthorized unless logged_in?
