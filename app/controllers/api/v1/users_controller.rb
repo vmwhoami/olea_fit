@@ -4,6 +4,9 @@ class Api::V1::UsersController < ApplicationController
   # before_action :find_user, only: %i[edit update destroy show]
 
   def index
+    
+    binding.remote_pry
+    
     render json: { userS: User.all }
   end
   # def followers
