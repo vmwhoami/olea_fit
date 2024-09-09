@@ -18,3 +18,17 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/danceter_development
+      
+  frontend:
+      build:
+        context: ./frontend
+      command: bun run dev
+      volumes:
+        - ./frontend:/danceter
+        - /danceter/node_modules
+      ports:
+        - "5173:5173" # Adjust port to match Vite's default or custom port
+      environment:
+        NODE_ENV: development
+      depends_on:
+        - web
