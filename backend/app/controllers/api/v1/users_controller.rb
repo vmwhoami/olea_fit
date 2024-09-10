@@ -3,9 +3,16 @@ class Api::V1::UsersController < ApplicationController
   # before_action :current_user?, only: %i[edit]
   # before_action :find_user, only: %i[edit update destroy show]
 
+
+  def new
+    @user = User.new
+  end
+
   def index
-     
-    render json: {  messsage: "This is awsome you did it" }
+    
+      @users = User.most_followed
+  
+    render json: { most_followed: @users  }
   end
   # def followers
   #   @fresh_users = User.fresh_users
@@ -19,25 +26,20 @@ class Api::V1::UsersController < ApplicationController
   #   @following = User.where('id in (?)', arr).includes(:followings)
   # end
 
-  # def index
-  #   @users = User.most_followed
-  # end
 
-  # def new
-  #   @user = User.new
-  # end
+ 
 
-  # def create
-  #   @user = User.new(permitted_params)
-  #   if @user.save
-  #     flash[:success] = 'User was successfully created.'
-  #     log_in(@user)
-  #     redirect_to user_path(@user)
-  #   else
-  #     flash[:danger] = @user.errors.full_messages[0]
-  #     redirect_back(fallback_location: root_path)
-  #   end
-  # end
+  def create
+    @user = User.new(permitted_params)
+    if @user.save
+      flash[:success] = 'User was successfully created.'
+      log_in(@user)
+      redirect_to user_path(@user)
+    else
+      flash[:danger] = @user.errors.full_messages[0]
+      redirect_back(fallback_location: root_path)
+    end
+  end
 
   # def show; end
 
@@ -78,7 +80,7 @@ class Api::V1::UsersController < ApplicationController
   #   @user = User.find(params[:id])
   # end
 
-  # def permitted_params
-  #   params.require(:user).permit(:username, :fullname, :photo, :coverimage)
-  # end
+  def permitted_params
+    params.require(:user).permit(:username, :fullname, :photo, :coverimage)
+  end
 end
