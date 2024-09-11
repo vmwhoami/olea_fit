@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2020_10_30_073711) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_11_190621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.2].define(version: 2020_10_30_073711) do
     t.text "coverimage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

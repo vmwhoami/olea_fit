@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   include UserPhotos
+  has_secure_password
+
   after_initialize :downcase_usename, :set_default_img
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }

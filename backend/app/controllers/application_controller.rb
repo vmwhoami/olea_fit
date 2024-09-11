@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
-  before_action :authorized, except: :development_mode
+  # binding.pry_remote
+  before_action :authorized
 
   def encode_token(payload)
     JWT.encode(payload, 'adam')

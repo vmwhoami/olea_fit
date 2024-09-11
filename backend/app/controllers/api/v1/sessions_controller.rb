@@ -1,6 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
   def new
-    binding.pry_remote
+    # binding.pry_remote
   end
 
   def create
