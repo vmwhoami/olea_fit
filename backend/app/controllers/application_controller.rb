@@ -1,42 +1,43 @@
 class ApplicationController < ActionController::API
- 
-  # def encode_token(payload)
-  #   JWT.encode(payload, 'adam')
-  # end
+  before_action :authorized, except: :development_mode
 
-  # def auth_header
-  #   # { Authorization: 'Bearer <token>' }
-  #   request.headers['Authorization']
-  # end
+  def encode_token(payload)
+    JWT.encode(payload, 'adam')
+  end
 
-  # def decoded_token
-  #   return unless auth_header
+  def auth_header
+    # { Authorization: 'Bearer <token>' }
+    request.headers['Authorization']
+  end
 
-  #   token = auth_header.split(' ')[1]
-  #   # header: { 'Authorization': 'Bearer <token>' }
-  #   begin
-  #     JWT.decode(token, 'adam', true, algorithm: 'HS256')
-  #   rescue JWT::DecodeError
-  #     nil
-  #   end
-  # end
+  def decoded_token
+    return unless auth_header
 
-  # def logged_in_user
-  #   return unless decoded_token
+    token = auth_header.split(' ')[1]
+    # header: { 'Authorization': 'Bearer <token>' }
+    begin
+      JWT.decode(token, 'adam', true, algorithm: 'HS256')
+    rescue JWT::DecodeError
+      nil
+    end
+  end
 
-  #   user_id = decoded_token[0]['user_id']
-  #   @user = User.find_by(id: user_id)
-  # end
+  def logged_in_user
+    return unless decoded_token
 
-  # def logged_in?
-  #   if logged_in_user
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
+    user_id = decoded_token[0]['user_id']
+    @user = User.find_by(id: user_id)
+  end
 
-  # def authorized
-  #   render json: { message: 'You have to be logged in to perform this action' }, status: :unauthorized unless logged_in?
-  # end
+  def logged_in?
+    if logged_in_user
+      true
+    else
+      false
+    end
+  end
+
+  def authorized
+    render json: { message: 'You have to be logged in to perform this action' }, status: :unauthorized unless logged_in?
+  end
 end

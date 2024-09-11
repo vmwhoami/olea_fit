@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   def self.most_followed
     arr = Following.pluck(:followed_id)
-    x = arr.each_with_object(Hash.new(0)) { |e, h| h[e] += 1; }
+    x = arr.each_with_object(Hash.new(0)) { |e, h| h[e] += 1 }
     a = x.sort_by { |_name, followers| followers }.reverse
     b = a.map { |array| array[0] }
     @most_followed = User.find([b])

@@ -3,10 +3,9 @@ class Api::V1::OpinionsController < ApplicationController
   # before_action :set_opinion, only: %i[show edit update destroy]
 
   def app
-    
     render json: User.all
   end
-  
+
   # def index
   #   @fresh_opinions = Opinion.fresh_opinions.includes(:author, :likes).limit(6)
   #   @popular_users = User.most_followed
@@ -22,53 +21,52 @@ class Api::V1::OpinionsController < ApplicationController
 
   # def show; end
 
-  # def new
-  #   @opinion = Opinion.new
-  # end
+  def new
+    @opinion = Opinion.new
+  end
 
-  # def edit; end
+  def edit; end
 
-  # def create
-  #   @opinion = current_user.opinions.new(opinion_params)
+  def create
+    @opinion = current_user.opinions.new(opinion_params)
 
-  #   respond_to do |format|
-  #     if @opinion.save
- 
-  #       format.json { render :show, status: :created, location: @opinion }
-  #     else
-      
-  #       format.json { render json: @opinion.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @opinion.save
 
-  # def update
-  #   respond_to do |format|
-  #     if @opinion.update(opinion_params)
-        
-  #       format.json { render :show, status: :ok, location: @opinion }
-  #     else
- 
-  #       format.json { render json: @opinion.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+        format.json { render :show, status: :created, location: @opinion }
+      else
 
-  # def destroy
-  #   @opinion.destroy
-  #   respond_to do |format|
-     
-  #     format.json { head :no_content }
-  #   end
-  # end
+        format.json { render json: @opinion.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  # private
+  def update
+    respond_to do |format|
+      if @opinion.update(opinion_params)
 
-  # def set_opinion
-  #   @opinion = Opinion.find(params[:id])
-  # end
+        format.json { render :show, status: :ok, location: @opinion }
+      else
 
-  # def opinion_params
-  #   params.require(:opinion).permit(:text)
-  # end
+        format.json { render json: @opinion.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @opinion.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def set_opinion
+    @opinion = Opinion.find(params[:id])
+  end
+
+  def opinion_params
+    params.require(:opinion).permit(:text)
+  end
 end
