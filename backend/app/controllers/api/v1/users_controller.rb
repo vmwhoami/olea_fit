@@ -2,9 +2,17 @@ class Api::V1::UsersController < ApplicationController
   before_action :logged_in?, only: %i[index show edit destoroy]
   before_action :current_user?, only: %i[edit]
   before_action :find_user, only: %i[edit update destroy show]
+  skip_before_action :authorized, only: [:register]
 
-  def new
-    @user = User.new
+  def register
+    @user = User.new(permitted_params)
+
+    if @user.save
+      token = encode_token({ user_id: @user.id }) # Generate a JWT token upon successful registration
+      render json: { user: @user, token: }, status: :created
+    else
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def index
@@ -76,6 +84,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def permitted_params
-    params.require(:user).permit(:username, :fullname, :photo, :coverimage)
+    params.require(:user).permit(:username, :fullname, :photo, :coverimage, :username, :password,
+                                 :password_confirmation)
   end
 end

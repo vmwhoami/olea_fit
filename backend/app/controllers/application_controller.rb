@@ -39,6 +39,7 @@ class ApplicationController < ActionController::API
   end
 
   def authorized
+    # binding.pry_remote
     render json: { message: 'You have to be logged in to perform this action' }, status: :unauthorized unless logged_in?
   end
 end
