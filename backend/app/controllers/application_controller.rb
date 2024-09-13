@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::API
-  # binding.pry_remote
   before_action :authorized
 
   def encode_token(payload)
-    JWT.encode(payload, 'adam')
+    payload[:exp] = 24.hours.from_now.to_i # Token expires in 24 hours
+    JWT.encode(payload, ENV['JWT_SECRET'])
   end
 
   def auth_header
@@ -31,15 +31,10 @@ class ApplicationController < ActionController::API
   end
 
   def logged_in?
-    if logged_in_user
-      true
-    else
-      false
-    end
+    !!logged_in_user
   end
 
   def authorized
-    # binding.pry_remote
     render json: { message: 'You have to be logged in to perform this action' }, status: :unauthorized unless logged_in?
   end
 end

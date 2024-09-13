@@ -21,10 +21,6 @@ Rails.application.routes.draw do
       get 'followers', to: 'users#followers'
       get 'following', to: 'users#following'
       get 'discover', to: 'opinions#discover'
-
-      # Session routes for login/logout
-      post 'login', to: 'sessions#create'
-      delete 'logout', to: 'sessions#destroy'
     end
   end
 end

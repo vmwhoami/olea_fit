@@ -9,12 +9,5 @@ class Api::V1::AuthController < ApplicationController
       render json: { failure: 'Log in failed! Email or password is invalid!' }
     end
   end
-
-  def auto_login
-    if logged_in_user
-      render json: logged_in_user
-    else
-      render json: { errors: 'No user logged in' }
-    end
-  end
+ 
 end
