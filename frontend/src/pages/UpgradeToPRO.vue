@@ -89,12 +89,12 @@
                       >
                     </td>
                     <td class="text-center">
-                      <md-button
+                      <!-- <md-button
                         target="_blank"
                         href="https://www.creative-tim.com/product/vue-material-dashboard-pro/?ref=vue-md-free-upgrade-live"
                         class="md-info md-round"
                         >Upgrade to PRO</md-button
-                      >
+                      > -->
                     </td>
                   </tr>
                 </tbody>

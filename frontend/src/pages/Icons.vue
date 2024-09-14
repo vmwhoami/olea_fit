@@ -14,11 +14,10 @@
           </md-card-header>
 
           <md-card-content>
-            <div class="iframe-container hidden-sm">
-              <iframe src="https://vuematerial.io/components/icon">
-                <p>Your browser does not support iframes.</p>
-              </iframe>
-            </div>
+          <div class="iframe-container hidden-sm">
+            <iframe src="https://vuematerial.io/components/icon"></iframe>
+            <p class="fallback-content">Your browser does not support iframes.</p>
+          </div>
             <div class="hidden-md">
               <h5>
                 The icons are visible on Desktop mode inside an iframe. Since

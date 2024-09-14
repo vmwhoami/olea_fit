@@ -37,10 +37,9 @@
 
   .md-list {
     &.nav {
+      background-color: transparent !important; /* Moved up */
       position: initial;
     }
-
-    background-color: transparent !important;
 
     .md-list-item a {
       text-transform: capitalize;

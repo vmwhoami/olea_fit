@@ -66,14 +66,14 @@
             <div class="centered-buttons">
               <ShareNetwork
                 title=""
-                url="https://www.creative-tim.com/product/vue-material-dashboard"
+                url=""
                 network="facebook"
                 class="md-button md-round md-just-icon md-facebook"
               >
                 <i class="fab fa-facebook-f"></i>
               </ShareNetwork>
               <ShareNetwork
-                url="https://www.creative-tim.com/product/vue-material-dashboard"
+                url=""
                 title=""
                 network="twitter"
                 class="md-button md-round md-just-icon md-twitter"
@@ -99,10 +99,10 @@ export default {
   data() {
     return {
       documentationLink:
-        "https://creativetimofficial.github.io/vue-material-dashboard/documentation",
-      shareUrl: "https://www.creative-tim.com/product/vue-material-dashboard",
+        "",
+      shareUrl: "",
       buyUrl: "",
-      freeUrl: "https://www.creative-tim.com/product/vue-material-dashboard",
+      freeUrl: "",
       isOpen: false,
       sidebarColors: [
         { color: "purple", active: false },

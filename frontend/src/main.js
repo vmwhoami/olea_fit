@@ -1,9 +1,8 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue"; // Ensure the correct file extension is used
-import SocialSharing from 'vue-social-sharing';
-import VueGitHubButtons from 'vue-github-buttons';
-import 'vue-github-buttons/dist/vue-github-buttons.css';
+ 
+ 
 // router setup
 import routes from "./router"; 
 // Plugins
@@ -35,7 +34,7 @@ app.use(GlobalComponents);
 app.use(GlobalDirectives);
 app.use(Notifications);
 app.use(vuetify);
-app.use(SocialSharing);
-app.use(VueGitHubButtons, { useCache: true });
+ 
+ 
 // Mount the app
 app.mount("#app");
