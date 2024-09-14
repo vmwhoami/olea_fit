@@ -21,9 +21,10 @@
     <span data-notify="message" v-html="message"></span>
   </div>
 </template>
+
 <script>
 export default {
-  name: "notification",
+  name: "Notification",
   props: {
     message: String,
     icon: String,
@@ -93,6 +94,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 @media screen and (max-width: 991px) {
   .alert {

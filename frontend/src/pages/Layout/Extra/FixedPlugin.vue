@@ -93,16 +93,9 @@
     </div>
   </div>
 </template>
-<script>
-import Vue from "vue";
-import SocialSharing from "vue-social-sharing";
-import VueGitHubButtons from "vue-github-buttons";
-import "vue-github-buttons/dist/vue-github-buttons.css";
 
-Vue.use(SocialSharing);
-Vue.use(VueGitHubButtons, { useCache: true });
+<script>
 export default {
-  components: { SocialSharing },
   data() {
     return {
       documentationLink:
@@ -153,6 +146,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .centered-row {
   display: flex;

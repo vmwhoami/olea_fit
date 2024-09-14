@@ -1,23 +1,65 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
-})
+import Dashboard from "@/pages/Dashboard.vue";
+import UserProfile from "@/pages/UserProfile.vue";
+import TableList from "@/pages/TableList.vue";
+import Typography from "@/pages/Typography.vue";
+import Icons from "@/pages/Icons.vue";
+import Maps from "@/pages/Maps.vue";
+import Notifications from "@/pages/Notifications.vue";
+import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 
-export default router
+const routes = [
+  {
+    path: "/",
+    component: DashboardLayout,
+    redirect: "/dashboard",
+    children: [
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        component: Dashboard,
+      },
+      {
+        path: "user",
+        name: "User Profile",
+        component: UserProfile,
+      },
+      {
+        path: "table",
+        name: "Table List",
+        component: TableList,
+      },
+      {
+        path: "typography",
+        name: "Typography",
+        component: Typography,
+      },
+      {
+        path: "icons",
+        name: "Icons",
+        component: Icons,
+      },
+      {
+        path: "maps",
+        name: "Maps",
+        meta: {
+          hideFooter: true,
+        },
+        component: Maps,
+      },
+      {
+        path: "notifications",
+        name: "Notifications",
+        component: Notifications,
+      },
+      {
+        path: "upgrade",
+        name: "Upgrade to PRO",
+        component: UpgradeToPRO,
+      },
+    ],
+  },
+];
+
+export default routes;

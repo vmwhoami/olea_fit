@@ -16,7 +16,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/assets/scss/material-dashboard.scss";`
+      additionalData: `@import "./src/assets/scss/material-dashboard.scss";`
       }
     }
   }
