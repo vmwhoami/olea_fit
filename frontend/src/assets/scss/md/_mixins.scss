@@ -1,4 +1,4 @@
-//Utilities
+// Utilities
 
 @import "mixins/transparency";
 @import "mixins/vendor-prefixes";
@@ -17,6 +17,7 @@
   } // Safari and Chrome
 }
 
+// Toolbar colors
 @mixin toolbar-colors($variation-color) {
   background-color: $variation-color !important;
   @include shadow-big-color($variation-color);
@@ -31,6 +32,7 @@
   }
 }
 
+// Dropdown colors
 @mixin dropdown-colors($variation-color) {
   .dropdown-menu {
     border-radius: $border-radius-base !important;
@@ -48,13 +50,16 @@
       &:focus {
         color: $white-color !important;
       }
+      & {
       background-color: $variation-color !important;
       color: $white-color !important;
       @include shadow-big-color($variation-color);
+      }
     }
   }
 }
 
+// Alert color
 @mixin alert-color($color) {
   background-color: $color;
   color: $white-color;
@@ -62,6 +67,7 @@
   @include shadow-big-color($color);
 }
 
+// Transition
 @mixin transition($time, $type) {
   -webkit-transition: all $time $type;
   -moz-transition: all $time $type;
@@ -70,6 +76,7 @@
   transition: all $time $type;
 }
 
+// Transform scale
 @mixin transform-scale($value) {
   -webkit-transform: scale($value);
   -moz-transform: scale($value);
@@ -78,6 +85,7 @@
   transform: scale($value);
 }
 
+// Transform scale 3D
 @mixin transform-scale3d($value) {
   -webkit-transform: scale3d($value);
   -moz-transform: scale3d($value);
@@ -86,6 +94,7 @@
   transform: scale3d($value);
 }
 
+// Transform translate X
 @mixin transform-translate-x($value) {
   -webkit-transform: translate3d($value, 0, 0);
   -moz-transform: translate3d($value, 0, 0);
@@ -94,6 +103,7 @@
   transform: translate3d($value, 0, 0);
 }
 
+// Transform translate Y
 @mixin transform-translate-y($value) {
   -webkit-transform: translate3d(0, $value, 0);
   -moz-transform: translate3d(0, $value, 0);
@@ -102,6 +112,7 @@
   transform: translate3d(0, $value, 0);
 }
 
+// Transform origin
 @mixin transform-origin($coordinates) {
   -webkit-transform-origin: $coordinates;
   -moz-transform-origin: $coordinates;
@@ -110,6 +121,7 @@
   transform-origin: $coordinates;
 }
 
+// Black filter
 @mixin black-filter() {
   background: rgba(0, 0, 0, 0.55);
   position: absolute;
@@ -121,6 +133,7 @@
   top: 0;
 }
 
+// Animation
 @mixin animation($value) {
   -webkit-animation: $value;
   -moz-animation: $value;
@@ -129,49 +142,19 @@
   animation: $value;
 }
 
+// Radial gradient
 @mixin radial-gradient($extern-color, $center-color) {
   background: $extern-color;
-  background: -moz-radial-gradient(
-    center,
-    ellipse cover,
-    $center-color 0%,
-    $extern-color 100%
-  ); /* FF3.6+ */
-  background: -webkit-gradient(
-    radial,
-    center center,
-    0px,
-    center center,
-    100%,
-    color-stop(0%, $center-color),
-    color-stop(100%, $extern-color)
-  ); /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(
-    center,
-    ellipse cover,
-    $center-color 0%,
-    $extern-color 100%
-  ); /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(
-    center,
-    ellipse cover,
-    $center-color 0%,
-    $extern-color 100%
-  ); /* Opera 12+ */
-  background: -ms-radial-gradient(
-    center,
-    ellipse cover,
-    $center-color 0%,
-    $extern-color 100%
-  ); /* IE10+ */
-  background: radial-gradient(
-    ellipse at center,
-    $center-color 0%,
-    $extern-color 100%
-  ); /* W3C */
+  background: -moz-radial-gradient(center, ellipse cover, $center-color 0%, $extern-color 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $center-color), color-stop(100%, $extern-color)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, $center-color 0%, $extern-color 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, $center-color 0%, $extern-color 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, $center-color 0%, $extern-color 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center, $center-color 0%, $extern-color 100%); /* W3C */
   background-size: 550% 450%;
 }
 
+// Tag color
 @mixin tag-color($color) {
   .tag {
     background-color: $color;
@@ -184,6 +167,8 @@
     color: $color;
   }
 }
+
+// Create colored tags
 @mixin create-colored-tags() {
   &.tag-primary {
     @include tag-color($brand-primary);
@@ -205,6 +190,7 @@
   }
 }
 
+// Rotate 180 degrees
 @mixin rotate-180() {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   -webkit-transform: rotate(180deg);
@@ -212,6 +198,7 @@
   transform: rotate(180deg);
 }
 
+// Rotate 45 degrees
 @mixin rotate() {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -220,23 +207,12 @@
   transform: rotate(45deg);
 }
 
+// Linear gradient
 @mixin linear-gradient($color1, $color2) {
   background: $color1; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(
-    60deg,
-    $color1,
-    $color2
-  ); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(
-    60deg,
-    $color1,
-    $color2
-  ); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(
-    60deg,
-    $color1,
-    $color2
-  ); /* For Firefox 3.6 to 15 */
+  background: -webkit-linear-gradient(60deg, $color1, $color2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(60deg, $color1, $color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(60deg, $color1, $color2); /* For Firefox 3.6 to 15 */
   background: linear-gradient(60deg, $color1, $color2); /* Standard syntax */
 }
 
@@ -314,6 +290,7 @@
   }
 }
 
+// Set background color for button
 @mixin set-background-color-button($color) {
   .nav {
     .md-list-item-container.active {
@@ -323,7 +300,7 @@
   }
 }
 
-// for social buttons
+// Social buttons color
 @mixin social-buttons-color($color) {
   background-color: $color !important;
   color: #fff;
@@ -349,6 +326,7 @@
   }
 }
 
+// Social buttons
 @mixin social-buttons() {
   &.md-facebook {
     @include social-buttons-color($social-facebook);
