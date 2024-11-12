@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Make script executable for any user
+# Ensure the script itself is executable
 chmod +x setup.sh
+
+# Set ownership to the current user to avoid root-related issues
+sudo chown -R $(whoami) .
 
 # Set permissions for the entire project
 chmod -R 755 .
@@ -18,7 +21,6 @@ if [ -d "backend" ]; then
     echo "Setting up backend permissions..."
     chmod -R 777 backend/tmp
     chmod -R 777 backend/log
-    # For Rails specific directories
     if [ -d "backend/tmp/db" ]; then
         chmod -R 777 backend/tmp/db
     fi
