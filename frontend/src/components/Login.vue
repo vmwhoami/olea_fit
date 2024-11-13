@@ -33,7 +33,7 @@
   
   <script>
   export default {
-    name: 'Login',
+    name: 'login-item',
     data() {
       return {
         email: '',

@@ -54,8 +54,9 @@
   </template>
   
   <script>
+  // import axios from 'axios';
   export default {
-    name: 'Register',
+    name: 'register-item',
     data() {
       return {
         name: '',
@@ -70,10 +71,12 @@
           alert("Passwords don't match");
           return;
         }
+        
         // Placeholder for registration logic - replace with an API call as needed
         console.log('Registering:', this.name, this.email, this.password);
         alert('Registration submitted!');
       },
+      
     },
   };
   </script>
