@@ -1,4 +1,3 @@
-<!-- /frontend/src/components/Login.vue -->
 <template>
     <div class="login-container">
       <h2>Login</h2>
@@ -24,7 +23,8 @@
             placeholder="Enter your password"
           />
         </div>
-  
+        <p>Current Count: {{ counter.count }}</p>
+        <button @click="counter.increment">Increment Counter</button>
         <button type="submit">Login</button>
       </form>
       <p>Don't have an account? <router-link to="/register">Register here</router-link></p>
@@ -32,20 +32,34 @@
   </template>
   
   <script>
+  import { useCounterStore } from '@/stores/counter';
   export default {
     name: 'login-item',
+ 
     data() {
       return {
         email: '',
         password: '',
       };
     },
+    setup() {
+    // Access the counter store
+    const counter = useCounterStore();
+    return { counter };
+
+  },
+  actions: {
+    increment() {
+      this.count++;
+    },
+  },
     methods: {
       handleSubmit() {
         // Placeholder login logic - replace with API call as needed
         console.log('Login attempt with:', this.email, this.password);
         alert('Login submitted!');
       },
+      
     },
   };
   </script>
