@@ -54,30 +54,70 @@
   </template>
   
   <script>
-  // import axios from 'axios';
+ import { useUserStore } from '@/stores/user';
   export default {
     name: 'register-item',
     data() {
       return {
+        user:{
         name: '',
         email: '',
         password: '',
         confirmPassword: '',
+        }
       };
     },
-    methods: {
-      handleRegister() {
-        if (this.password !== this.confirmPassword) {
-          alert("Passwords don't match");
+    setup() {
+    const userStore = useUserStore();
+
+    const registerUser = async (userData) => {
+      try {
+        await userStore.register(userData); // Assuming you define a `register` action in your store
+        alert('Registration successful! Redirecting to login...');
+      } catch (error) {
+        alert('Registration failed. Please try again.');
+      }
+    };
+
+    return {
+      registerUser,
+    };
+  },
+  methods: {
+    async handleRegister() {
+      if (this.password !== this.confirmPassword) {
+        alert("Passwords don't match");
+        return;
+      }
+      const userData = {
+        user: {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        },
+      };
+      try {
+        const response = await fetch('http://localhost:3003/api/v1/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userData),
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          alert(`Error: ${error.message || 'Registration failed'}`);
           return;
         }
-        
-        // Placeholder for registration logic - replace with an API call as needed
-        console.log('Registering:', this.name, this.email, this.password);
-        alert('Registration submitted!');
-      },
-      
+
+        const data = await response.json();
+        console.log('Registration successful:', data);
+        alert('Registration successful! Please log in.');
+      } catch (error) {
+        console.error('Error during registration:', error);
+        alert('An error occurred. Please try again later.');
+      }
     },
+  },
   };
   </script>
   
