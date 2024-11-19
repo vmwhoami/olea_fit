@@ -41,11 +41,10 @@ module Api
         if @user.save
           render json: { message: 'User was successfully created.' }
           log_in(@user)
-          redirect_to user_path(@user)
+
         else
           render json: { message: @user.errors.full_messages[0] }
 
-          redirect_back(fallback_location: root_path)
         end
       end
 
@@ -88,7 +87,8 @@ module Api
 
       def permitted_params
         params.require(:user).permit(:username, :fullname, :photo, :coverimage, :username, :password,
-                                     :password_confirmation)
+                                     :password_confirmation).tap do |p|
+        end
       end
     end
   end
