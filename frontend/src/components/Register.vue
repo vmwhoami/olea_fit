@@ -57,6 +57,7 @@
  import { useUserStore } from '@/stores/user';
   export default {
     name: 'register-item',
+
     data() {
       return {
         user:{
@@ -67,22 +68,23 @@
         }
       };
     },
-    setup() {
-    const userStore = useUserStore();
 
-    const registerUser = async (userData) => {
+    setup() {
+      const userStore = useUserStore();
+
+      const registerUser = async (userData) => {
       try {
         await userStore.register(userData); // Assuming you define a `register` action in your store
         alert('Registration successful! Redirecting to login...');
-      } catch (error) {
-        alert('Registration failed. Please try again.');
-      }
-    };
+        } catch (error) {
+          alert('Registration failed. Please try again.');
+        }
+      };
 
-    return {
-      registerUser,
-    };
-  },
+      return {
+        registerUser,
+      };
+    },
   methods: {
     async handleRegister() {
       if (this.password !== this.confirmPassword) {

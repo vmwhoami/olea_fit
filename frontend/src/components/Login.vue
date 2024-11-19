@@ -1,15 +1,15 @@
 <template>
     <div class="login-container">
-      <h2>Login</h2>
+      <h2>Username</h2>
       <form @submit.prevent="handleSubmit">
         <div class="form-group">
-          <label for="email">Email:</label>
+          <label for="username">Username:</label>
           <input
-            type="email"
-            id="email"
-            v-model="email"
+            type="username"
+            id="username"
+            v-model="Username"
             required
-            placeholder="Enter your email"
+            placeholder="Enter your Username"
           />
         </div>
   
@@ -23,8 +23,7 @@
             placeholder="Enter your password"
           />
         </div>
-        <p>Current Count: {{ counter.count }}</p>
-        <button @click="counter.increment">Increment Counter</button>
+   
         <button type="submit">Login</button>
       </form>
       <p>Don't have an account? <router-link to="/register">Register here</router-link></p>
@@ -32,32 +31,31 @@
   </template>
   
   <script>
-  import { useCounterStore } from '@/stores/counter';
+ 
+  import { useUserStore } from '@/stores/user';
   export default {
     name: 'login-item',
  
     data() {
       return {
-        email: '',
+        username: '',
         password: '',
       };
     },
     setup() {
     // Access the counter store
-    const counter = useCounterStore();
-    return { counter };
+    const user = useUserStore();
+    return { user };
 
-  },
-  actions: {
-    increment() {
-      this.count++;
     },
+  actions: {
+
   },
     methods: {
       handleSubmit() {
         // Placeholder login logic - replace with API call as needed
-        console.log('Login attempt with:', this.email, this.password);
-        alert('Login submitted!');
+        console.log('Login attempt with:', this.username, this.password);
+       
       },
       
     },
