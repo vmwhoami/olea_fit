@@ -66,6 +66,7 @@ User.create(username: 'nikoli', fullname: 'Nikoli Bogdan',
   User.create!(
     username: "user_#{u}",
     fullname: "User Family_#{u}",
+    email: "theuser#{u}@mail.com",
     coverimage: @cover_image.sample,
     photo: @photos.sample,
     password: 'password123',

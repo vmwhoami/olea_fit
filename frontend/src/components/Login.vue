@@ -43,22 +43,69 @@
       };
     },
     setup() {
-    // Access the counter store
-    const user = useUserStore();
-    return { user };
+      const userStore = useUserStore();
 
+      const login = async (userData) => {
+      try {
+        await userStore.login(userData); // Assuming you define a `register` action in your store
+        alert('Registration successful! Redirecting to login...');
+        } catch (error) {
+          alert('Registration failed. Please try again.');
+        }
+      };
+
+      return {
+        login,
+      };
     },
+    // setup() {
+    // // Access the counter store
+    // const user = useUserStore();
+    // return { user };
+
+    // },
   actions: {
 
   },
-    methods: {
-      handleSubmit() {
-        // Placeholder login logic - replace with API call as needed
-        console.log('Login attempt with:', this.username, this.password);
-       
-      },
-      
+  methods: {
+    async handleLogin() {
+ 
+      const userData = {
+        user: {
+          name: this.name,
+          password: this.password,
+        },
+      };
+      try {
+        const response = await fetch('http://localhost:3003/api/v1/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userData),
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          alert(`Error: ${error.message || 'Registration failed'}`);
+          return;
+        }
+
+        const data = await response.json();
+        console.log('Registration successful:', data);
+        alert('Registration successful! Please log in.');
+      } catch (error) {
+        console.error('Error during registration:', error);
+        alert('An error occurred. Please try again later.');
+      }
     },
+  },
+    // methods: {
+    //   handleSubmit() {
+    //     // Placeholder login logic - replace with API call as needed
+    //     console.log('Login attempt with:', this.username, this.password);
+       
+    //   },
+      
+    // },
   };
   </script>
   

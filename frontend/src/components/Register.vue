@@ -8,7 +8,7 @@
           <input
             type="text"
             id="name"
-            v-model="name"
+            v-model="username"
             required
             placeholder="Enter your name"
           />
@@ -61,7 +61,7 @@
     data() {
       return {
         user:{
-        name: '',
+        username: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -93,7 +93,7 @@
       }
       const userData = {
         user: {
-          name: this.name,
+          username: this.username,
           email: this.email,
           password: this.password,
         },
