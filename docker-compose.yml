@@ -2,23 +2,33 @@ services:
   db:
     image: postgres:13
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - ./db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: danceter_development
 
   dance_api:
     build:
       context: ./backend
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      args:
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
+    env_file:
+      - .env
+    user: "${UID}:${GID}"
     volumes:
       - ./backend:/danceter
+      - ./backend/tmp:/danceter/tmp
+      - ./backend/log:/danceter/log
     ports:
-      - "3003:3000"
+      - "3000:3000"
     depends_on:
       - db
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/danceter_development
       
+
   # frontend:
   #     build:
   #       context: ./frontend

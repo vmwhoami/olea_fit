@@ -5,7 +5,6 @@ class User < ApplicationRecord
   after_initialize :downcase_usename, :set_default_img
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
-  validates :fullname, presence: true, length: { minimum: 6, maximum: 50 }
 
   has_many :opinions, class_name: 'Opinion', foreign_key: 'author_id', dependent: :destroy
   has_many :likes, dependent: :destroy
