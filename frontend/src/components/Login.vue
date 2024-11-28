@@ -1,15 +1,27 @@
 <template>
   <div class="login-container">
-    <h2>Username</h2>
-    <form @submit.prevent="handleSubmit">
+    <h2>Login</h2>
+    <form @submit.prevent="login">
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="username" id="username" v-model="Username" required placeholder="Enter your Username" />
+        <input
+          type="text"
+          id="username"
+          v-model="username"
+          required
+          placeholder="Enter your username"
+        />
       </div>
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" required placeholder="Enter your password" />
+        <input
+          type="password"
+          id="password"
+          v-model="password"
+          required
+          placeholder="Enter your password"
+        />
       </div>
 
       <button type="submit">Login</button>
@@ -18,84 +30,43 @@
   </div>
 </template>
 
+
 <script>
+import { ref } from 'vue';
+import apiClient from '../services/api'; // Your reusable API service
+import { useAuthStore } from '../stores/auth';
 
-import { useUserStore } from '@/stores/user';
 export default {
-  name: 'login-item',
-
-  data() {
-    return {
-      username: '',
-      password: '',
-    };
-  },
   setup() {
-    const userStore = useUserStore();
+    const username = ref('');
+    const password = ref('');
+    const authStore = useAuthStore();
 
-    const login = async (userData) => {
+    const login = async () => {
       try {
-        await userStore.login(userData); // Assuming you define a `register` action in your store
-        alert('Registration successful! Redirecting to login...');
-      } catch (error) {
-        alert('Registration failed. Please try again.');
-      }
-    };
-
-    return {
-      login,
-    };
-  },
-  // setup() {
-  // // Access the counter store
-  // const user = useUserStore();
-  // return { user };
-
-  // },
-  actions: {
-
-  },
-  methods: {
-    async handleLogin() {
-
-      const userData = {
-        user: {
-          name: this.name,
-          password: this.password,
-        },
-      };
-      try {
-        const response = await fetch('http://localhost:3000/api/v1/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(userData),
+        // Send login request to the backend
+        const response = await apiClient.post('/api/v1/auth/login', {
+          username: username.value,
+          password: password.value,
         });
 
-        if (!response.ok) {
-          const error = await response.json();
-          alert(`Error: ${error.message || 'Registration failed'}`);
-          return;
-        }
-
-        const data = await response.json();
-        console.log('Registration successful:', data);
-        alert('Registration successful! Please log in.');
+        // Store the returned token in the auth store
+        authStore.setToken(response.data.token);
+        alert('Login successful!');
       } catch (error) {
-        console.error('Error during registration:', error);
-        alert('An error occurred. Please try again later.');
+        if (error.response?.status === 401) {
+          alert('Invalid username or password. Please try again.');
+        } else {
+          alert('Something went wrong. Please try again later.');
+        }
       }
-    },
+    };
+
+    return { username, password, login };
   },
-  // methods: {
-  //   handleSubmit() {
-  //     // Placeholder login logic - replace with API call as needed
-  //     console.log('Login attempt with:', this.username, this.password);
-
-  //   },
-
-  // },
 };
 </script>
+
 
 <style scoped>
 .login-container {

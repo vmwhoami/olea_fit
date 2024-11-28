@@ -87,9 +87,6 @@ module Api
 
       def permitted_params
         params.require(:user).permit(:username, :email, :password)
-        # params.require(:user).permit(:username, :fullname, :photo, :coverimage, :username, :password,
-        #                              :password_confirmation).tap do |p|
-        # end
       end
     end
   end
