@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: redirect('/api/v1/opinions')
   namespace :api do
     namespace :v1 do
+      post '/login', to: 'auth#login'
+
       # User Registration Route
       post '/register', to: 'users#register'
 

@@ -31,48 +31,29 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
+
 export default {
   name: 'register-item',
 
-  data() {
-    return {
-      user: {
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      }
-    };
-  },
-
   setup() {
+    const username = ref('');
+    const email = ref('');
+    const password = ref('');
+    const confirmPassword = ref('');
     const userStore = useUserStore();
 
-    const registerUser = async (userData) => {
-      try {
-        await userStore.register(userData); // Assuming you define a `register` action in your store
-        alert('Registration successful! Redirecting to login...');
-      } catch (error) {
-        alert('Registration failed. Please try again.');
-      }
-    };
-
-    return {
-      registerUser,
-    };
-  },
-  methods: {
-    async handleRegister() {
-      if (this.password !== this.confirmPassword) {
+    const handleRegister = async () => {
+      if (password.value !== confirmPassword.value) {
         alert("Passwords don't match");
         return;
       }
       const userData = {
         user: {
-          username: this.username,
-          email: this.email,
-          password: this.password,
+          username: username.value,
+          email: email.value,
+          password: password.value,
         },
       };
       try {
@@ -95,10 +76,19 @@ export default {
         console.error('Error during registration:', error);
         alert('An error occurred. Please try again later.');
       }
-    },
+    };
+
+    return {
+      username,
+      email,
+      password,
+      confirmPassword,
+      handleRegister,
+    };
   },
 };
 </script>
+
 
 <style scoped>
 .register-container {

@@ -28,6 +28,7 @@ const router = createRouter({
 // Navigation guard for protected routes
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
+  console.log(authStore.token)
   if (to.meta.requiresAuth && !authStore.token) {
     next({ name: 'login' }); // Redirect to login if not authenticated
   } else {

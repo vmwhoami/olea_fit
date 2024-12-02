@@ -45,7 +45,7 @@ export default {
     const login = async () => {
       try {
         // Send login request to the backend
-        const response = await apiClient.post('/api/v1/auth/login', {
+        const response = await apiClient.post('/api/v1/login', {
           username: username.value,
           password: password.value,
         });
