@@ -2,10 +2,11 @@
 <template>
   <div class="register-container">
     <h2>Register</h2>
+    <button @click="notify">Notify !</button>
     <form @submit.prevent="handleRegister">
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" v-model="username" required placeholder="Enter your name" />
+        <label for="username">Username:</label>
+        <input type="text" id="username" v-model="username" required placeholder="Enter your name" />
       </div>
 
       <div class="form-group">
@@ -33,6 +34,8 @@
 <script>
 import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 export default {
   name: 'register-item',
@@ -43,19 +46,25 @@ export default {
     const password = ref('');
     const confirmPassword = ref('');
     const userStore = useUserStore();
-
-    const handleRegister = async () => {
-      if (password.value !== confirmPassword.value) {
-        alert("Passwords don't match");
-        return;
-      }
-      const userData = {
+    const userData = {
         user: {
           username: username.value,
           email: email.value,
           password: password.value,
         },
       };
+      
+    const notify = () => {
+          toast("Wow so easy !", {
+          autoClose: 1000,
+        });
+      };
+    const handleRegister = async () => {
+      if (password.value !== confirmPassword.value) {
+        alert("Passwords don't match");
+        return;
+      }
+      
       try {
         const response = await fetch('http://localhost:3000/api/v1/register', {
           method: 'POST',
@@ -83,6 +92,7 @@ export default {
       email,
       password,
       confirmPassword,
+      notify,
       handleRegister,
     };
   },
