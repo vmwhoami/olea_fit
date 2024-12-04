@@ -1,8 +1,6 @@
-<!-- /frontend/src/components/Register.vue -->
 <template>
   <div class="register-container">
     <h2>Register</h2>
-    <button @click="notify">Notify !</button>
     <form @submit.prevent="handleRegister">
       <div class="form-group">
         <label for="username">Username:</label>
@@ -46,22 +44,24 @@ export default {
     const password = ref('');
     const confirmPassword = ref('');
     const userStore = useUserStore();
-    const userData = {
-        user: {
-          username: username.value,
-          email: email.value,
-          password: password.value,
-        },
-      };
-      
-    const notify = () => {
-          toast("Wow so easy !", {
-          autoClose: 1000,
-        });
-      };
+    
+    const userData = () => ({
+      user: {
+        username: username.value,
+        email: email.value,
+        password: password.value,
+      },
+    });
+
+    const notify = (message) => {
+      toast(message, {
+        autoClose: 2000,
+      });
+    };
+
     const handleRegister = async () => {
       if (password.value !== confirmPassword.value) {
-        alert("Passwords don't match");
+        notify("Passwords don't match");
         return;
       }
       
@@ -69,21 +69,23 @@ export default {
         const response = await fetch('http://localhost:3000/api/v1/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(userData),
+          body: JSON.stringify(userData()),
         });
 
         if (!response.ok) {
           const error = await response.json();
-          alert(`Error: ${error.message || 'Registration failed'}`);
+          const errorMessage = error.errors && error.errors.length > 0 ? error.errors[0] : 'Registration failed';
+          
+          notify(`${errorMessage}`);
           return;
         }
 
+
         const data = await response.json();
-        console.log('Registration successful:', data);
-        alert('Registration successful! Please log in.');
+        notify('Registration successful! Please log in.');
       } catch (error) {
         console.error('Error during registration:', error);
-        alert('An error occurred. Please try again later.');
+        notify('An error occurred. Please try again later.');
       }
     };
 
@@ -98,7 +100,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .register-container {
