@@ -30,11 +30,11 @@
   </div>
 </template>
 
-
 <script>
 import { ref } from 'vue';
-import apiClient from '../services/api'; // Your reusable API service
-import { useAuthStore } from '../stores/auth';
+import { useAuthStore } from '@/stores/auth';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 export default {
   setup() {
@@ -42,23 +42,39 @@ export default {
     const password = ref('');
     const authStore = useAuthStore();
 
+    const notify = (message) => {
+      toast(message, {
+        autoClose: 2000,
+      });
+    };
+
     const login = async () => {
       try {
         // Send login request to the backend
-        const response = await apiClient.post('/api/v1/login', {
-          username: username.value,
-          password: password.value,
+        const response = await fetch('http://localhost:3000/api/v1/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: username.value, // Use email instead of username
+            password: password.value,
+          }),
         });
 
-        // Store the returned token in the auth store
-        authStore.setToken(response.data.token);
-        alert('Login successful!');
-      } catch (error) {
-        if (error.response?.status === 401) {
-          alert('Invalid username or password. Please try again.');
-        } else {
-          alert('Something went wrong. Please try again later.');
+        if (!response.ok) {
+          const error = await response.json();
+          const errorMessage = error.message || 'Login failed';
+          notify(`Error: ${errorMessage}`);
+          return;
         }
+
+        const data = await response.json();
+        console.log(data.jwt)
+        authStore.setToken(data.jwt); // Store the token
+        authStore.setUser(data.user); // Store user data
+        notify('Login successful!');
+      } catch (error) {
+        console.error('Error during login:', error);
+        notify('An error occurred. Please try again later.');
       }
     };
 
@@ -66,7 +82,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .login-container {

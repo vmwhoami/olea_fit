@@ -19,8 +19,7 @@
 
       <div class="form-group">
         <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" v-model="confirmPassword" required
-          placeholder="Confirm your password" />
+        <input type="password" id="confirm-password" v-model="confirmPassword" required placeholder="Confirm your password" />
       </div>
 
       <button type="submit">Register</button>
@@ -80,8 +79,8 @@ export default {
           return;
         }
 
-
         const data = await response.json();
+        userStore.setUser(data.user); // Store user data in the store
         notify('Registration successful! Please log in.');
       } catch (error) {
         console.error('Error during registration:', error);
