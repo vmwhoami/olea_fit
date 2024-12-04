@@ -19,8 +19,8 @@ services:
     user: "${UID}:${GID}"
     volumes:
       - ./backend:/danceter
-      - ./backend/tmp:/danceter/tmp
-      - ./backend/log:/danceter/log
+      - ./backend/tmp:/danceter/backend/tmp
+      - ./backend/log:/danceter/backend/log
     ports:
       - "3000:3000"
     depends_on:
