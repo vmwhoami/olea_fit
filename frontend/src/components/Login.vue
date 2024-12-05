@@ -3,13 +3,13 @@
     <h2>Login</h2>
     <form @submit.prevent="login">
       <div class="form-group">
-        <label for="username">Username:</label>
+        <label for="email">Email:</label>
         <input
           type="text"
-          id="username"
-          v-model="username"
+          id="email"
+          v-model="email"
           required
-          placeholder="Enter your username"
+          placeholder="Enter your email"
         />
       </div>
 
@@ -32,15 +32,17 @@
 
 <script>
 import { ref } from 'vue';
+import { useUserStore } from '@/stores/user';
 import { useAuthStore } from '@/stores/auth';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 export default {
   setup() {
-    const username = ref('');
+    const email = ref('');
     const password = ref('');
-    const authStore = useAuthStore();
+    const userStore = useUserStore();
+    const useAuth = useAuthStore();
 
     const notify = (message) => {
       toast(message, {
@@ -55,7 +57,7 @@ export default {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            email: username.value, // Use email instead of username
+            email: email.value, // Use email instead of email
             password: password.value,
           }),
         });
@@ -68,17 +70,17 @@ export default {
         }
 
         const data = await response.json();
-        console.log(data.jwt)
-        authStore.setToken(data.jwt); // Store the token
-        authStore.setUser(data.user); // Store user data
-        notify('Login successful!');
+         userStore.setUser(data.user); // Store user data in the store
+ 
+        useAuth.setToken(data.jwt)
+      
       } catch (error) {
         console.error('Error during login:', error);
         notify('An error occurred. Please try again later.');
       }
     };
 
-    return { username, password, login };
+    return { email, password, login };
   },
 };
 </script>

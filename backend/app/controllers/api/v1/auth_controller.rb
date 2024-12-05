@@ -5,8 +5,7 @@ module Api
       skip_before_action :authorized, only: [:login]
 
       def login
-        
-        user = User.find_by(username: params[:username])
+        user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
           payload = { user_id: user.id }
           token = encode_token(payload)

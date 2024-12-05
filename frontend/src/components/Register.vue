@@ -31,6 +31,7 @@
 <script>
 import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
+import { useAuthStore } from '@/stores/auth';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
@@ -43,6 +44,7 @@ export default {
     const password = ref('');
     const confirmPassword = ref('');
     const userStore = useUserStore();
+    const useAuth = useAuthStore();
     
     const userData = () => ({
       user: {
@@ -81,6 +83,8 @@ export default {
 
         const data = await response.json();
         userStore.setUser(data.user); // Store user data in the store
+        console.log(data)
+        useAuth.setToken(data.token)
         notify('Registration successful! Please log in.');
       } catch (error) {
         console.error('Error during registration:', error);
