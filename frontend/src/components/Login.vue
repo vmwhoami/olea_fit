@@ -4,24 +4,12 @@
     <form @submit.prevent="login">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input
-          type="text"
-          id="email"
-          v-model="email"
-          required
-          placeholder="Enter your email"
-        />
+        <input type="text" id="email" v-model="email" required placeholder="Enter your email" />
       </div>
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          v-model="password"
-          required
-          placeholder="Enter your password"
-        />
+        <input type="password" id="password" v-model="password" required placeholder="Enter your password" />
       </div>
 
       <button type="submit">Login</button>
@@ -70,10 +58,11 @@ export default {
         }
 
         const data = await response.json();
-         userStore.setUser(data.user); // Store user data in the store
- 
+        userStore.setUser(data.user); // Store user data in the store
+
         useAuth.setToken(data.jwt)
-      
+        notify('Loggein successful! Redirecting to main page...');
+        window.location.href = '/about'; // Redirect to main page
       } catch (error) {
         console.error('Error during login:', error);
         notify('An error occurred. Please try again later.');

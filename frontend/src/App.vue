@@ -1,17 +1,20 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
- 
-</script>
-
 <template>
   <div>
-    <nav>
+    <nav v-if="!isLoggedIn">
       <router-link to="/">Login</router-link>
       <router-link to="/register">Register</router-link>
     </nav>
     <router-view></router-view>
   </div>
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+import { useAuthStore } from './stores/auth';
+import { computed } from 'vue'; // Import computed from Vue const 
+let authStore = useAuthStore();
+const isLoggedIn = computed(() => authStore.isLoggedIn);
+</script>
 
 <style scoped>
 header {
@@ -69,7 +72,6 @@ nav a:first-of-type {
   nav {
     margin-left: -1rem;
     font-size: 1rem;
-
     padding: 1rem 0;
     margin-top: 1rem;
   }

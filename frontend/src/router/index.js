@@ -17,9 +17,9 @@ const router = createRouter({
       component: Register,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue'), // Lazy loading
+      path: '/main',
+      name: 'main',
+      component: () => import('../views/Main.vue'), // Lazy loading
       meta: { requiresAuth: true }, // This route is protected
     },
   ],
@@ -28,12 +28,8 @@ const router = createRouter({
 // Navigation guard for protected routes
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
-  console.log(authStore.token)
-  if (to.meta.requiresAuth && !authStore.token) {
-    next({ name: 'login' }); // Redirect to login if not authenticated
-  } else {
-    next(); // Proceed to the next route
-  }
+  if (to.meta.requiresAuth && !authStore.isLoggedIn) { next('/'); }
+  else if (to.meta.requiresGuest && authStore.isLoggedIn) { next('/main'); }
+  else { next(); }
 });
-
 export default router;

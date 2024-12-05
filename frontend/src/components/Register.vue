@@ -4,7 +4,7 @@
     <form @submit.prevent="handleRegister">
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username" required placeholder="Enter your name" />
+        <input type="text" id="username" v-model="username" required placeholder="Enter your username" />
       </div>
 
       <div class="form-group">
@@ -19,7 +19,8 @@
 
       <div class="form-group">
         <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" v-model="confirmPassword" required placeholder="Confirm your password" />
+        <input type="password" id="confirm-password" v-model="confirmPassword" required
+          placeholder="Confirm your password" />
       </div>
 
       <button type="submit">Register</button>
@@ -45,7 +46,7 @@ export default {
     const confirmPassword = ref('');
     const userStore = useUserStore();
     const useAuth = useAuthStore();
-    
+
     const userData = () => ({
       user: {
         username: username.value,
@@ -65,7 +66,7 @@ export default {
         notify("Passwords don't match");
         return;
       }
-      
+
       try {
         const response = await fetch('http://localhost:3000/api/v1/register', {
           method: 'POST',
@@ -76,16 +77,16 @@ export default {
         if (!response.ok) {
           const error = await response.json();
           const errorMessage = error.errors && error.errors.length > 0 ? error.errors[0] : 'Registration failed';
-          
+
           notify(`${errorMessage}`);
           return;
         }
 
         const data = await response.json();
         userStore.setUser(data.user); // Store user data in the store
-        console.log(data)
         useAuth.setToken(data.token)
-        notify('Registration successful! Please log in.');
+        notify('Registration successful! Redirecting to main page...');
+        window.location.href = '/about'; // Redirect to main page
       } catch (error) {
         console.error('Error during registration:', error);
         notify('An error occurred. Please try again later.');
