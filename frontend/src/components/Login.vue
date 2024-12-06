@@ -62,7 +62,7 @@ export default {
 
         useAuth.setToken(data.jwt)
         notify('Loggein successful! Redirecting to main page...');
-        window.location.href = '/about'; // Redirect to main page
+        window.location.href = '/main'; // Redirect to main page
       } catch (error) {
         console.error('Error during login:', error);
         notify('An error occurred. Please try again later.');

@@ -86,7 +86,7 @@ export default {
         userStore.setUser(data.user); // Store user data in the store
         useAuth.setToken(data.token)
         notify('Registration successful! Redirecting to main page...');
-        window.location.href = '/about'; // Redirect to main page
+        window.location.href = '/main'; // Redirect to main page
       } catch (error) {
         console.error('Error during registration:', error);
         notify('An error occurred. Please try again later.');
