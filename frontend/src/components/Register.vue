@@ -30,45 +30,23 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { useForm } from '@/composables/useForm'; // Import the useForm composable
 import { useUserStore } from '@/stores/user';
 import { useAuthStore } from '@/stores/auth';
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
 
 export default {
   name: 'register-item',
 
   setup() {
-    const username = ref('');
-    const email = ref('');
-    const password = ref('');
-    const confirmPassword = ref('');
+    const { username, email, password, confirmPassword, notify, validatePasswords, userData } = useForm()``;
     const userStore = useUserStore();
     const useAuth = useAuthStore();
 
-    const userData = () => ({
-      user: {
-        username: username.value,
-        email: email.value,
-        password: password.value,
-      },
-    });
-
-    const notify = (message) => {
-      toast(message, {
-        autoClose: 2000,
-      });
-    };
-
     const handleRegister = async () => {
-      if (password.value !== confirmPassword.value) {
-        notify("Passwords don't match");
-        return;
-      }
+      if (!validatePasswords()) return;
 
       try {
-        const response = await fetch('http://localhost:3000/api/v1/register', {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(userData()),
@@ -84,7 +62,7 @@ export default {
 
         const data = await response.json();
         userStore.setUser(data.user); // Store user data in the store
-        useAuth.setToken(data.token)
+        useAuth.setToken(data.token);
         notify('Registration successful! Redirecting to main page...');
         window.location.href = '/main'; // Redirect to main page
       } catch (error) {
@@ -98,7 +76,6 @@ export default {
       email,
       password,
       confirmPassword,
-      notify,
       handleRegister,
     };
   },

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/login', to: 'auth#login'
-
+      post '/verify-token', to: 'auth#verify_token'
       # User Registration Route
       post '/register', to: 'users#register'
 

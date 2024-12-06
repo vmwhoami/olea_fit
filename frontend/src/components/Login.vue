@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <h2>Login</h2>
-    <form @submit.prevent="login">
+    <form @submit.prevent="handleLogin">
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="text" id="email" v-model="email" required placeholder="Enter your email" />
@@ -19,35 +19,24 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { useLogin } from '@/composables/useLogin'; // Import the useLogin composable
 import { useUserStore } from '@/stores/user';
 import { useAuthStore } from '@/stores/auth';
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
 
 export default {
+  name: 'login-item',
+
   setup() {
-    const email = ref('');
-    const password = ref('');
+    const { email, password, notify, loginData } = useLogin();
     const userStore = useUserStore();
     const useAuth = useAuthStore();
 
-    const notify = (message) => {
-      toast(message, {
-        autoClose: 2000,
-      });
-    };
-
-    const login = async () => {
+    const handleLogin = async () => {
       try {
-        // Send login request to the backend
-        const response = await fetch('http://localhost:3000/api/v1/login', {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: email.value, // Use email instead of email
-            password: password.value,
-          }),
+          body: JSON.stringify(loginData()),
         });
 
         if (!response.ok) {
@@ -59,9 +48,8 @@ export default {
 
         const data = await response.json();
         userStore.setUser(data.user); // Store user data in the store
-
-        useAuth.setToken(data.jwt)
-        notify('Loggein successful! Redirecting to main page...');
+        useAuth.setToken(data.jwt);
+        notify('Login successful! Redirecting to main page...');
         window.location.href = '/main'; // Redirect to main page
       } catch (error) {
         console.error('Error during login:', error);
@@ -69,7 +57,11 @@ export default {
       }
     };
 
-    return { email, password, login };
+    return {
+      email,
+      password,
+      handleLogin,
+    };
   },
 };
 </script>

@@ -14,6 +14,13 @@ module Api
           render json: { failure: 'Log in failed! Email or password is invalid!' }
         end
       end
+
+      def verify_token
+        render json: { message: 'Token is valid' }, status: :ok
+      rescue JWT::DecodeError
+        render json: { error: 'Invalid token' }, status: :unauthorized
+      end
     end
   end
 end
+
