@@ -38,7 +38,7 @@ export default {
   name: 'register-item',
 
   setup() {
-    const { username, email, password, confirmPassword, notify, validatePasswords, userData } = useForm()``;
+    const { username, email, password, confirmPassword, notify, validatePasswords, userData } = useForm();
     const userStore = useUserStore();
     const useAuth = useAuthStore();
 
