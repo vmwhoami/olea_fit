@@ -5,7 +5,7 @@ export const useAuthStore = defineStore('auth', {
         token: localStorage.getItem('token') || null,
     }),
     getters: {
-        isLoggedIn: (state) => !!state.token,
+        isLoggedIn: (state) => !state.token,
     },
     actions: {
         setToken(token) {

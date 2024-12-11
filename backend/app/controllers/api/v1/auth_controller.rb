@@ -2,7 +2,7 @@ module Api
   module V1
     # implements Api::V1::AuthController
     class AuthController < ApplicationController
-      skip_before_action :authorized, only: [:login]
+      skip_before_action :authorized, only: [:login, :verify_token]
 
       def login
         user = User.find_by(email: params[:email])
@@ -16,11 +16,19 @@ module Api
       end
 
       def verify_token
-        render json: { message: 'Token is valid' }, status: :ok
+        token = request.headers['Authorization']&.split(' ')&.last
+        decoded_token = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
+        user_id = decoded_token['user_id']
+        user = User.find(user_id)
+
+        if user
+          render json: { message: 'Token is valid' }, status: :ok
+        else
+          render json: { error: 'Invalid token' }, status: :unauthorized
+        end
       rescue JWT::DecodeError
         render json: { error: 'Invalid token' }, status: :unauthorized
       end
     end
   end
 end
-

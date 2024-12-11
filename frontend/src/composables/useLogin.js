@@ -18,6 +18,12 @@ export function useLogin() {
         password: password.value,
     });
 
+
+    const logOut = () => ({
+        email: null,
+        password: null,
+    })
+
     return {
         email,
         password,
