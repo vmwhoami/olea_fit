@@ -1,41 +1,46 @@
 import { defineStore } from 'pinia';
+import apiClient from '@/utils/api';
+import { useUserStore } from '@/stores/user';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        token: localStorage.getItem('token') || null,
+        isLoggedIn: false,
+        token: null, // Add token to the state
     }),
-    getters: {
-        isLoggedIn: (state) => !state.token,
-    },
     actions: {
+        async login(credentials) {
+            try {
+                const response = await apiClient.post('/login', credentials);
+                const { jwt, user } = response.data;
+
+                // Store JWT token and mark as logged in
+                this.setToken(jwt); // Use setToken method
+                this.isLoggedIn = true;
+
+                // Set user data in the user store
+                const userStore = useUserStore();
+                userStore.setUser(user);
+
+                return true; // Indicate success
+            } catch (error) {
+                console.error('Login error:', error);
+                this.logout();
+                return false; // Indicate failure
+            }
+        },
+
         setToken(token) {
             this.token = token;
             localStorage.setItem('token', token);
         },
-        clearToken() {
-            this.token = null;
+
+        logout() {
             localStorage.removeItem('token');
-        },
-        async verifyToken() {
-            if (!this.token) return false;
+            this.token = null; // Clear token
+            this.isLoggedIn = false;
 
-            try {
-                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/verify-token`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}` },
-                });
-
-                if (!response.ok) {
-                    this.clearToken();
-                    return false;
-                }
-
-                return true;
-            } catch (error) {
-                console.error('Error verifying token:', error);
-                this.clearToken();
-                return false;
-            }
+            const userStore = useUserStore();
+            userStore.clearUser();
         },
     },
 });

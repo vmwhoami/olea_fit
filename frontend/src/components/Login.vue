@@ -29,32 +29,39 @@ export default {
   setup() {
     const { email, password, notify, loginData } = useLogin();
     const userStore = useUserStore();
-    const useAuth = useAuthStore();
+    const authStore = useAuthStore();
 
     const handleLogin = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(loginData()),
-        });
-
-        if (!response.ok) {
-          const error = await response.json();
-          const errorMessage = error.message || 'Login failed';
-          notify(`Error: ${errorMessage}`);
-          return;
-        }
-
-        const data = await response.json();
+        const data = await loginUser(loginData());
         userStore.setUser(data.user); // Store user data in the store
-        useAuth.setToken(data.jwt);
+        authStore.setToken(data.jwt);
         notify('Login successful! Redirecting to main page...');
         window.location.href = '/main'; // Redirect to main page
       } catch (error) {
-        console.error('Error during login:', error);
-        notify('An error occurred. Please try again later.');
+        handleError(error);
       }
+    };
+
+    const handleError = (error) => {
+      console.error('Error during login:', error);
+      notify(`Error: ${error.message}`);
+    };
+
+    const loginUser = async (loginData) => {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginData),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Login failed');
+      }
+
+      console.log(response.json());
+      // return response.json();
     };
 
     return {
