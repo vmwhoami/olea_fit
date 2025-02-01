@@ -12,6 +12,15 @@ export const useUserStore = defineStore('user', {
     clearUser() {
       this.user = null;
     },
+
+    setUserToLocalStorage(userData) {
+      localStorage.setItem('user', JSON.stringify(userData));
+    },
+
+    clearUserFromLocalStorage() {
+      localStorage.removeItem('user');
+    },
+
     async fetchUser() {
       try {
         const response = await apiClient.get('/user');

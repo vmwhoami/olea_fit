@@ -34,8 +34,10 @@ export default {
     const handleLogin = async () => {
       try {
         const data = await loginUser(loginData());
-        userStore.setUser(data.user); // Store user data in the store
+        userStore.setUser(data.user);
+        userStore.setUserToLocalStorage(data.user)// Store user data in the store
         authStore.setToken(data.jwt);
+
         notify('Login successful! Redirecting to main page...');
         window.location.href = '/main'; // Redirect to main page
       } catch (error) {
@@ -60,8 +62,7 @@ export default {
         throw new Error(error.message || 'Login failed');
       }
 
-      console.log(response.json());
-      // return response.json();
+      return response.json();
     };
 
     return {

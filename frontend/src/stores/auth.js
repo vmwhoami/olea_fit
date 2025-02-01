@@ -4,7 +4,7 @@ import { useUserStore } from '@/stores/user';
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        isLoggedIn: false,
+        isLoggedIn: null,
         token: null, // Add token to the state
     }),
     actions: {
@@ -33,6 +33,7 @@ export const useAuthStore = defineStore('auth', {
             this.token = token;
             localStorage.setItem('token', token);
         },
+
 
         logout() {
             localStorage.removeItem('token');

@@ -8,8 +8,7 @@ module Api
         user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
           token = JwtService.encode(user_id: user.id)
-          
-        
+
           render json: { jwt: token, user: user.as_json(only: [:id, :username, :email]) }, status: :ok
         else
           render json: { error: 'Invalid email or password' }, status: :unauthorized
