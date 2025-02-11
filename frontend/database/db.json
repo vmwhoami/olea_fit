@@ -1,0 +1,78 @@
+{
+    "movies": [
+      {
+        "id": 1,
+        "name": "The Shawshank Redemption",
+        "year": 1994,
+        "duration": "142 min",
+        "runtime": 142,
+        "poster": "https://static.hdrezka.ac/i/2021/3/6/v6113f7f005baab50d60m.jpeg"
+      },
+      {
+        "id": 2,
+        "name": "The Godfather",
+        "Year": 1972,
+        "duration": "175 min",
+        "runtime": 175,
+        "poster": "https://static.hdrezka.ac/i/2024/3/2/pd39575cb22abxn12k63v.jpeg"
+      },
+      {
+        "id": 3,
+        "name": "The Dark Knight",
+        "year": 2008,
+        "duration": "152 min",
+        "runtime": 152,
+        "poster": "https://static.hdrezka.ac/i/2013/7/5/y1c6f43eeb9b8no38f56j.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Pulp Fiction",
+        "year": 1994,
+        "duration": "154 min",
+        "runtime": 154,
+        "poster": "https://static.hdrezka.ac/i/2021/3/17/q6e275b47b126xt59x65c.jpeg"
+      },
+      {
+        "id": 5,
+        "name": "Schindler's List",
+        "year": 1993,
+        "duration": "195 min",
+        "runtime": 195,
+        "poster": "https://static.hdrezka.ac/i/2020/11/8/f7a8fed2cada3bm26g73e.jpeg"
+      },
+      {
+        "id": 6,
+        "name": "The Lord of the Rings: The Return of the King",
+        "year": 2003,
+        "duration": "201 min",
+        "runtime": 201,
+        "poster": "https://static.hdrezka.ac/i/2023/5/1/x39f9c13d537bme91u78m.jpeg"
+      },
+      {
+        "id": 7,
+        "name": "Fight Club",
+        "year": 1999,
+        "duration": "139 min",
+        "runtime": 139,
+        "poster": "https://static.hdrezka.ac/i/2013/11/30/m33c30ddfb881gn13z89a.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Inception",
+        "year": 2010,
+        "duration": "148 min",
+        "runtime": 148,
+        "poster": "https://static.hdrezka.ac/i/2021/11/2/kcad758381af1ow79z45o.jpeg"
+      },
+ 
+      {
+        "id": 9,
+        "name": "The Matrix",
+        "year": 1999,
+        "duration": "136 min",
+        "runtime": 136,
+        "poster": "https://static.hdrezka.ac/i/2014/1/22/b4442e483f19aqx35e41i.jpg"
+      }
+    ]
+  }
+  

@@ -79,6 +79,12 @@ Open `http://localhost:3003/` in your browser.
     rpsec 
 ```
 
+
+
+### For development purposes
+```
+ bun json-server --watch database/db.json --port 8000
+```
 # Authors
 
 👤 **Vitalie Melnic**
