@@ -2,7 +2,7 @@
     <svg xmlns="http://www.w3.org/2000/svg"
       :width="width"
       :height="height"
-      viewBox="0 0 18 18"
+      :viewBox="viewBox"
       :aria-labelledby="iconName"
       role="presentation" >
       <title :id="iconName"  lang="en">{{ iconName }} icon</title>
@@ -12,10 +12,8 @@
     </svg>
   </template>
 
-<script>
-  export default {
-  props: {
-    iconName: {
+  <script setup>
+  const props = defineProps({iconName: {
       type: String,
       default: 'box'
     },
@@ -30,7 +28,10 @@
     iconColor: {
       type: String,
       default: 'currentColor'
+    },
+    viewBox: {
+      type: String,
+      default: '0 0 18 18'
     }
-  }
-}
+});
 </script>
