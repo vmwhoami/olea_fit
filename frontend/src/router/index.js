@@ -11,38 +11,31 @@ const router = createRouter({
       path: '/',
       name: 'login', // Set login as the default front page
       component: Login,
-      meta: { requiresGuest: true }, // Add requiresGuest meta field
+  
     },
     {
       path: '/register',
       name: 'register',
       component: Register,
-      meta: { requiresGuest: true }, // Add requiresGuest meta field
+  
     },
     {
       path: '/main',
       name: 'main',
       component: () => import('../views/Main.vue'), // Lazy loading
-      meta: { requiresAuth: true }, // This route is protected
+ 
     },
     {
       path: '/:pathMatch(.*)*', // Catch-all route
       name: 'NotFound',
-      component: NotFound,
+ 
     },
   ],
 });
 
 // Navigation guard for protected routes
 router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore();
-  if (to.meta.requiresAuth && !authStore.isLoggedIn) {
-    next('/');
-  } else if (to.meta.requiresGuest && authStore.isLoggedIn) {
-    next('/main');
-  } else {
-    next();
-  }
+ 
 });
 
 export default router;
