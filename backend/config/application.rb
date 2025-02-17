@@ -27,3 +27,5 @@ module Danceter
     config.api_only = true
   end
 end
+# Remove these gems:
+# gem 'sass-rails', 'coffee-rails', 'uglifier', 'webpacker', 'jbuilder'

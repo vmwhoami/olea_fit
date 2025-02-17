@@ -25,7 +25,7 @@ RUN chown appuser:appgroup Gemfile.lock
 USER appuser
 
 # Install Rails
-RUN gem install rails -v 7.2.1
+RUN gem install rails -v 8.0
 RUN gem install rack-cors
 
 # Install gems
