@@ -25,6 +25,7 @@ export const useUserStore = defineStore('user', {
       try {
         const response = await apiClient.get('/user');
         this.setUser(response.data);
+        console.log('User fetched:', response.data);
       } catch (error) {
         console.error('Failed to fetch user:', error);
         throw error;
