@@ -9,8 +9,8 @@ RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN groupadd -g $GID appgroup && useradd -u $UID -g appgroup -m appuser
 
 # Set up working directory
-WORKDIR /danceter
-RUN chown -R appuser:appgroup /danceter
+WORKDIR /olea_fit
+RUN chown -R appuser:appgroup /olea_fit
 
 # Switch to root user temporarily to allow chown on Gemfile.lock
 USER root

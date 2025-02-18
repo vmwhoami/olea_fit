@@ -18,7 +18,7 @@ require 'action_mailbox/engine' # Not needed for API only
 
 Bundler.require(*Rails.groups)
 
-module Danceter
+module OleaFit
   class Application < Rails::Application
     config.load_defaults 7.2
 

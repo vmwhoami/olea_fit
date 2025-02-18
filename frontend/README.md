@@ -33,3 +33,8 @@ bun build
 ```sh
 bun lint
 ```
+
+### For development purposes
+```
+ bun json-server --watch database/db.json --port 8000
+```
