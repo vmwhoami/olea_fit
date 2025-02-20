@@ -1,58 +1,58 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'User validations' do
-    it 'Username should be present' do
-      u = User.new(fullname: 'Test User')
-      expect(u.valid?).to eq(false)
+  describe 'validations' do
+    it 'is invalid without a username' do
+      user = User.new(fullname: 'Test User')
+      expect(user.valid?).to eq(false)
     end
 
-    it 'Full name should be present' do
-      u = User.new(username: 'User')
-      expect(u.valid?).to eq(false)
+    it 'is invalid without a fullname' do
+      user = User.new(username: 'User')
+      expect(user.valid?).to eq(false)
     end
 
-    it 'Full name should be present' do
-      u = User.new(username: 'User', fullname: 'Test User')
-      expect(u.valid?).to eq(true)
+    it 'is valid with both username and fullname and password' do
+      user = User.new(username: 'User', fullname: 'Test User', password: 'password')
+      expect(user.valid?).to eq(true)
     end
 
-    it 'Username should be longer than 3 characters' do
-      name = 'u' * 2
-      u = User.new(username: name.to_s, fullname: 'Test User')
-      expect(u.valid?).to eq(false)
+    it 'is invalid if username is shorter than 3 characters' do
+      user = User.new(username: 'uu', fullname: 'Test User', password: 'password')
+      expect(user.valid?).to eq(false)
     end
 
-    it 'Username should not be longer than 50 characters' do
-      name = 'u' * 51
-      u = User.new(username: name.to_s, fullname: 'Test User')
-      expect(u.valid?).to eq(false)
+    it 'is invalid if username is longer than 50 characters' do
+      user = User.new(username: 'u' * 51, fullname: 'Test User', password: 'password')
+      expect(user.valid?).to eq(false)
     end
   end
-end
 
-RSpec.describe User, type: :model do
-  before(:each) do
-    @user_one = User.create!(username: 'user_one', fullname: 'user One')
-    @user_two = User.create!(username: 'user_two', fullname: 'user Two')
-    @user_three = User.create!(username: 'user_three', fullname: 'user Three')
-    @f = @user_one.followings.new(followed: @user_two)
-  end
-  context 'User must follow and be followed' do
-    it 'has to be able to follow another user' do
-      expect(@f.valid?).to eq(true)
-    end
-    it 'user follers should return followers of a user' do
-      @f.save!
-      a = @user_three.followings.new(followed: @user_two)
-      a.save!
-      expect(@user_two.followers.first).to eq(@user_one)
-      expect(@user_two.followers.last).to eq(@user_three)
+  describe 'followings associations' do
+    # Create users to test follow relationships.
+    let!(:user_one)   { User.create!(username: 'user_one', fullname: 'User One', email: "supermail@mail.com",  password: 'password') }
+    let!(:user_two)   { User.create!(username: 'user_two', fullname: 'User Two', email: "supupermail@mail.com",  password: 'password') }
+    let!(:user_three) { User.create!(username: 'user_three', fullname: 'User Three',email: "poop@mail.com" ,password: 'password') }
+    
+    let(:following) { user_one.followings.new(followed: user_two) }
+
+    it 'allows a user to follow another user' do
+      expect(following.valid?).to eq(true)
     end
 
-    it 'user followed_persons should return the user it follows' do
-      @f.save!
-      expect(@user_one.followed_persons.first).to eq(@user_two)
+    it 'returns the correct followers for a user' do
+      following.save!
+      another_following = user_three.followings.new(followed: user_two)
+      another_following.save!
+      
+      # Depending on the order of association, you can test the array order:
+      expect(user_two.followers.first).to eq(user_one)
+      expect(user_two.followers.last).to eq(user_three)
+    end
+
+    it 'returns the correct followed persons for a user' do
+      following.save!
+      expect(user_one.followed_persons.first).to eq(user_two)
     end
   end
 end
