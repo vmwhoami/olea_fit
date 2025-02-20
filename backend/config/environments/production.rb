@@ -40,6 +40,7 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  config.active_support.to_time_preserves_timezone = :zone
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
@@ -60,7 +61,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "danceter_production"
+  # config.active_job.queue_name_prefix = "olea_fit_production"
 
   config.action_mailer.perform_caching = false
 

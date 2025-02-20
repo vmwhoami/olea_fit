@@ -4,11 +4,12 @@ services:
     volumes:
       - ./db:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: postgres
-      POSTGRES_DB: danceter_development
+                      
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: olea_fit_development
 
-  dance_api:
+  olea_fit_api:
     build:
       context: ./backend
       args:
@@ -18,27 +19,16 @@ services:
       - .env
     user: "${UID}:${GID}"
     volumes:
-      - ./backend:/danceter
-      - ./backend/tmp:/danceter/backend/tmp
-      - ./backend/log:/danceter/backend/log
+      - ./backend:/olea_fit
+      - ./backend/tmp:/olea_fit/backend/tmp
+      - ./backend/log:/olea_fit/backend/log
     ports:
-      - "3000:3000"
+      - ${SERVER_PORT}:${SERVER_PORT}
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://postgres:password@db:5432/danceter_development
-      
-
-  # frontend:
-  #     build:
-  #       context: ./frontend
-  #     command: bun run dev
-  #     volumes:
-  #       - ./frontend:/danceter
-  #       - /danceter/node_modules
-  #     ports:
-  #       - "5173:5173" # Adjust port to match Vite's default or custom port
-  #     environment:
-  #       NODE_ENV: development
-  #     depends_on:
-  #       - web
+      ## https://ieftimov.com/posts/docker-compose-stray-pids-rails-beyond/
+      PIDFILE: /tmp/pids/server.pid
+      DATABASE_URL: postgres://postgres:password@db:5432/olea_fit_development
+    tmpfs:  
+      - /tmp/pids/

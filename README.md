@@ -12,7 +12,7 @@ Some of the advanced concepts explored in this project includes.
 sudo chmod +x setup.sh
 sudo chmod -R 777 frontend
 ~~~
-![screenshot](./danceter.gif )
+![screenshot](./olea_fit.gif )
 
 ## Built With
 
@@ -23,7 +23,7 @@ sudo chmod -R 777 frontend
 
 ## Live Demo
 
-[Live Demo](https://danceter.herokuapp.com/)
+[Live Demo](https://olea_fit.herokuapp.com/)
 
 ## Video Presentation
 
@@ -43,8 +43,8 @@ Postgres: >=13
 ### Setup
 
 ~~~bash
-$ git clone https://github.com/vmwhoami/danceter
-$ cd danceter
+$ git clone https://github.com/vmwhoami/olea_fit
+$ cd olea_fit
 ~~~
 
 ### ! Remember to do it inside a container
@@ -79,6 +79,12 @@ Open `http://localhost:3003/` in your browser.
     rpsec 
 ```
 
+
+
+### For development purposes
+```
+ bun json-server --watch database/db.json --port 8000
+```
 # Authors
 
 👤 **Vitalie Melnic**

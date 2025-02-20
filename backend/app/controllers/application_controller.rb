@@ -1,40 +1,28 @@
 class ApplicationController < ActionController::API
   before_action :authorized
 
-  def encode_token(payload)
-    payload[:exp] = 24.hours.from_now.to_i # Token expires in 24 hours
-    JWT.encode(payload, ENV['JWT_SECRET'])
-  end
+  private
 
   def auth_header
-    # { Authorization: 'Bearer <token>' }
     request.headers['Authorization']
   end
 
   def decoded_token
-    return unless auth_header
-
-    token = auth_header.split(' ')[1]
-    # header: { 'Authorization': 'Bearer <token>' }
-    begin
-      JWT.decode(token, 'adam', true, algorithm: 'HS256')
-    rescue JWT::DecodeError
-      nil
-    end
+    token = auth_header&.split&.last
+    JwtService.decode(token)
   end
 
   def logged_in_user
     return unless decoded_token
 
-    user_id = decoded_token[0]['user_id']
-    @user = User.find_by(id: user_id)
+    @current_user ||= User.find_by(id: decoded_token[:user_id])
   end
 
   def logged_in?
-    !!logged_in_user
+    logged_in_user.present?
   end
 
   def authorized
-    render json: { message: 'You have to be logged in to perform this action' }, status: :unauthorized unless logged_in?
+    render json: { message: 'You must be logged in to perform this action' }, status: :unauthorized unless logged_in?
   end
 end

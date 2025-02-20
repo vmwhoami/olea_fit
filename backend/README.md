@@ -1,4 +1,4 @@
-# Ruby on Rails Capstone Project: Redesign of Twitter
+# Ruby on Rails Api 
 
 > In this project I built Dance opinion application based on a redesign of Twitter.  
 
@@ -9,18 +9,15 @@ Some of the advanced concepts explored in this project includes.
  
 
 
-![screenshot](./danceter.gif )
-
 ## Built With
 
 - Ruby v2.7.1
-- Ruby on Rails v6.0.3.4
+- Ruby on Rails v8.0
 - RSpec
-- Bootstrap ~4.0
 
 ## Live Demo
 
-[Live Demo](https://danceter.herokuapp.com/)
+
 
 ## Video Presentation
 
@@ -40,8 +37,8 @@ Postgres: >=9.5
 ### Setup
 
 ~~~bash
-$ git clone https://github.com/vmwhoami/danceter
-$ cd danceter
+$ git clone https://github.com/vmwhoami/olea_fit
+$ cd olea_fit
 ~~~
 
 Install gems with:

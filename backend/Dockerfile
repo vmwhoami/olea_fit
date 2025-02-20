@@ -4,13 +4,13 @@ ARG UID=1000
 ARG GID=1000
 
 # Install essential Linux packages
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y postgresql-client
 
 RUN groupadd -g $GID appgroup && useradd -u $UID -g appgroup -m appuser
 
 # Set up working directory
-WORKDIR /danceter
-RUN chown -R appuser:appgroup /danceter
+WORKDIR /olea_fit
+RUN chown -R appuser:appgroup /olea_fit
 
 # Switch to root user temporarily to allow chown on Gemfile.lock
 USER root
@@ -25,7 +25,7 @@ RUN chown appuser:appgroup Gemfile.lock
 USER appuser
 
 # Install Rails
-RUN gem install rails -v 7.2.1
+RUN gem install rails -v 8.0
 RUN gem install rack-cors
 
 # Install gems
