@@ -1,13 +1,42 @@
-// This file contains the routes for the frontend application.
+// routes.js
 import { createRouter, createWebHistory } from "vue-router";
 
+// Route components
+const Login = () => import("@/views/Login.vue");
+const Register = () => import("@/views/Register.vue");
+const Home = () => import("@/views/Home.vue");
+const About = () => import("@/views/About.vue");
+const Movies = () => import("@/views/Movies.vue");
+const Main = () => import("@/views/Main.vue");
+
 const routes = [
-    { path: "/login", component: () => import("@/views/Login.vue")},
-    { path: "/", component: () => import("@/views/Home.vue")},
-    { path: "/about", component: () => import("@/views/About.vue") },
-    { path: "/movies", component: () => import("@/views/Movies.vue")},
-    { path: "/main", component:  () => import("@/views/Main.vue")},
-]
+  { 
+    path: "/login",
+    component: Login, 
+    meta: { title: "Login" }
+  },
+  { 
+    path: "/register", 
+    component: Register, 
+    meta: { title: "Register" }
+  },
+  { 
+    path: "/", 
+    component: Home, 
+    meta: { title: "Home" }},
+  { 
+    path: "/about", 
+    component: About, 
+    meta: { title: "About" }},
+  { 
+    path: "/movies", 
+    component: Movies, 
+    meta: { title: "Movies" }},
+  { 
+    path: "/main", 
+    component: Main, 
+    meta: { title: "Main" }
+ }];
 
 const router = createRouter({
     history: createWebHistory(),
