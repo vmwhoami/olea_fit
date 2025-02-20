@@ -10,7 +10,7 @@ RSpec.describe Opinion, type: :model do
     end
 
     context 'with a valid user' do
-      let(:user) { User.create!(username: 'user_one', fullname: 'User One', password: "filosofia", email:"whatanemail@what.com") }
+      let(:user) { User.create!(username: 'user_one', fullname: 'User One', password: 'filosofia', email: 'whatanemail@what.com') }
 
       it 'requires the opinion text to be at least 1 character long' do
         opinion = user.opinions.build(text: '')

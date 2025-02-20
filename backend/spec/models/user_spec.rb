@@ -30,10 +30,10 @@ RSpec.describe User, type: :model do
 
   describe 'followings associations' do
     # Create users to test follow relationships.
-    let!(:user_one)   { User.create!(username: 'user_one', fullname: 'User One', email: "supermail@mail.com",  password: 'password') }
-    let!(:user_two)   { User.create!(username: 'user_two', fullname: 'User Two', email: "supupermail@mail.com",  password: 'password') }
-    let!(:user_three) { User.create!(username: 'user_three', fullname: 'User Three',email: "poop@mail.com" ,password: 'password') }
-    
+    let!(:user_one) { User.create!(username: 'user_one', fullname: 'User One', email: 'supermail@mail.com', password: 'password') }
+    let!(:user_two) { User.create!(username: 'user_two', fullname: 'User Two', email: 'supupermail@mail.com', password: 'password') }
+    let!(:user_three) { User.create!(username: 'user_three', fullname: 'User Three', email: 'poop@mail.com', password: 'password') }
+
     let(:following) { user_one.followings.new(followed: user_two) }
 
     it 'allows a user to follow another user' do
@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
       following.save!
       another_following = user_three.followings.new(followed: user_two)
       another_following.save!
-      
+
       # Depending on the order of association, you can test the array order:
       expect(user_two.followers.first).to eq(user_one)
       expect(user_two.followers.last).to eq(user_three)
