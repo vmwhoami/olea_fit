@@ -17,14 +17,13 @@ sudo chmod -R 777 frontend
 ## Built With
 
 - Ruby v3.2.2
-- Ruby on Rails v7.2.1
+- Ruby on Rails v8.0
 - RSpec
  
 
 ## Live Demo
 
-[Live Demo](https://olea_fit.herokuapp.com/)
-
+ 
 ## Video Presentation
 
 [Video Link](https://youtu.be/PLhU1zXu0uU )
