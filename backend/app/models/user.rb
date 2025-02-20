@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   include UserPhotos
-
   has_secure_password
+  has_many :sessions, dependent: :destroy
+
+  normalizes :email_address, with: ->(e) { e.strip.downcase }
   after_initialize :downcase_usename, :set_default_img
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
   has_many :opinions, class_name: 'Opinion', foreign_key: 'author_id', dependent: :destroy

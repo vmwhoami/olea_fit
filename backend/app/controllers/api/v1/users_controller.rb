@@ -2,9 +2,9 @@ module Api
   module V1
     # implements Api::V1::UsersController
     class UsersController < ApplicationController
-      skip_before_action :authorized, only: [:register]
+      # skip_before_action :authorized, only: [:register]
 
-      before_action :logged_in?, only: %i[index show edit destoroy]
+      # before_action :logged_in?, only: %i[index show edit destoroy]
       before_action :current_user?, only: %i[edit]
       before_action :find_user, only: %i[edit update destroy show]
 
@@ -41,11 +41,8 @@ module Api
         @user = User.new(permitted_params)
         if @user.save
           render json: { message: 'User was successfully created.' }
-          log_in(@user)
-
         else
           render json: { message: @user.errors.full_messages[0] }
-
         end
       end
 
