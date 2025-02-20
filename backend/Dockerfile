@@ -4,7 +4,7 @@ ARG UID=1000
 ARG GID=1000
 
 # Install essential Linux packages
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y postgresql-client
 
 RUN groupadd -g $GID appgroup && useradd -u $UID -g appgroup -m appuser
 
