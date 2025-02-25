@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   root to: redirect('/api/v1/opinions')
   namespace :api do
@@ -26,4 +24,3 @@ Rails.application.routes.draw do
     end
   end
 end
-

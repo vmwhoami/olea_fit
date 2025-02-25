@@ -2,27 +2,23 @@ module Api
   module V1
     # implements Api::V1::UsersController
     class UsersController < ApplicationController
-      skip_before_action :authorized, only: [:register]
+      skip_before_action :authenticate_request, only: [:create]
 
-      before_action :logged_in?, only: %i[index show edit destoroy]
-      before_action :current_user?, only: %i[edit]
-      before_action :find_user, only: %i[edit update destroy show]
-
-      def register
-        @user = User.new(permitted_params)
-
-        if @user.save
-          token = JwtService.encode({ user_id: @user.id }) # Generate a JWT token upon successful registration
-          render json: { user: @user, token: }, status: :created
-        else
-          render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
-        end
-      end
+      before_action :set_user, only: %i[show destoroy]
 
       def index
         @users = User.most_followed
 
         render json: { most_followed: @users }
+      end
+
+      def create
+        @user = User.new(user_params)
+        if @user.save
+          render json: { message: 'User was successfully created.' }
+        else
+          render json: { message: @user.errors.full_messages[0] }
+        end
       end
 
       def followers
@@ -37,25 +33,17 @@ module Api
         @following = User.where('id in (?)', arr).includes(:followings)
       end
 
-      def create
-        @user = User.new(permitted_params)
-        if @user.save
-          render json: { message: 'User was successfully created.' }
-          log_in(@user)
-
-        else
-          render json: { message: @user.errors.full_messages[0] }
-
-        end
+      def show
+        render json: { user: @user }
       end
 
-      def show; end
-
-      def edit; end
+      def edit
+        binding.pry_remote
+      end
 
       def update
         respond_to do |format|
-          if @user.update(permitted_params)
+          if @user.update(user_params)
 
             format.json { render :show, status: :ok, location: @user }
           else
@@ -67,26 +55,16 @@ module Api
 
       def destroy
         @user.destroy
-        respond_to do |format|
-          format.json { head :no_content, notice: 'User was successfully destroyed.' }
-        end
+        render json: { message: 'User was successfully destroyed.' }
       end
 
       private
 
-      def current_user?
-        if current?(find_user)
-          nil
-        else
-          render json: { response_message: "You don't have the right credentials" }
-        end
-      end
-
-      def find_user
+      def set_user
         @user = User.find(params[:id])
       end
 
-      def permitted_params
+      def user_params
         params.require(:user).permit(:username, :email, :password)
       end
     end

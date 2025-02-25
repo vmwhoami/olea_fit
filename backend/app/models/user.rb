@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_secure_password
   after_initialize :downcase_usename, :set_default_img
-  validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
   has_many :opinions, class_name: 'Opinion', foreign_key: 'author_id', dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :followings, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
