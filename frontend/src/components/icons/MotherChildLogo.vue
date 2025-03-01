@@ -1,5 +1,5 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.25 451.99">
+  <IconBase>
     <g id="Layer_11" data-name="Layer 11">
       <g>
         <path class="cls-2" d="m261.03,69.93c10.69-27.21,74.84-12.63,113.71,12.19,55.33,35.33,18.96,120.66,10.69,141.37,150.65-164.25-66.52-252.76-124.4-153.56Z"/>
@@ -36,9 +36,9 @@
         <path class="cls-1" d="m451.13,355.59v-20.72h1.75v20.72h-1.75Z"/>
       </g>
     </g>
-  </svg>
+  </IconBase>
 </template>
   
 <script setup>
- 
+ import IconBase from './IconBase.vue';
 </script>

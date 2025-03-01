@@ -1,8 +1,15 @@
-
 <template>
-  <div class="max-w-sm bg-white rounde-lg shadow-md dark:bg-gray-800 m-2" style="border-radius: 20px;">
+  <div
+    class="max-w-sm bg-white rounde-lg shadow-md dark:bg-gray-800 m-2"
+    style="border-radius: 20px"
+  >
     <div class="flex justify-center pt-3">
-     <img :src="movie.poster" alt="poster" class="w-full h-64 object-cover" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+      <img
+        :src="movie.poster"
+        alt="poster"
+        class="w-full h-64 object-cover"
+        style="border-top-left-radius: 10px; border-top-right-radius: 10px"
+      />
     </div>
     <div class="p-5">
       <h2 class="text-2x">{{ movie.name }}</h2>
@@ -17,7 +24,7 @@
         <div class="bg-red-200 rounded-lg p-2">
           <h2>Duration</h2>
           <p>
-            {{ movie.duration}}
+            {{ movie.duration }}
           </p>
         </div>
       </div>
@@ -25,9 +32,8 @@
   </div>
 </template>
 
-
 <script setup>
-    defineProps({
-        movie: Object
-    });
+defineProps({
+  movie: Object,
+});
 </script>
