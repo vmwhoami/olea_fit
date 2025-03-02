@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
   def logged_in_user
     return unless decoded_token
 
-    @current_user ||= User.find_by(id: decoded_token[:user_id])
+    @logged_in_user ||= User.find_by(id: decoded_token[:user_id])
   end
 
   def logged_in?
