@@ -1,18 +1,6 @@
 <template>
-  <div class="font-sans text-gray-700">
-    <header class="flex items-center justify-between py-4 px-6 shadow-md">
-      <div class="text-xl md:text-2xl font-bold text-orange-500">OlyaFit</div>
-      <nav>
-        <ul class="flex space-x-4 text-gray-600 text-sm md:text-base">
-          <li><a href="#" class="hover:text-gray-900">Home Page</a></li>
-          <li><a href="#" class="hover:text-gray-900">Class Time</a></li>
-          <li><a href="#" class="hover:text-gray-900">Review</a></li>
-          <li><a href="#" class="hover:text-gray-900">Last Post</a></li>
-          <li><a href="#" class="hover:text-gray-900">About</a></li>
-          <li><a href="#" class="hover:text-gray-900">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+  <div class="font-sans text-gray-700 pt-20">
+
 
     <!-- Hero Section -->
     <section class="container mx-auto px-6 py-12">
@@ -24,9 +12,8 @@
             “If it doesn’t challenge you, it won’t change you.”
           </p>
           <p class="mb-6">
-            It’s my Slogan and I will help you be the best you can be. I’m Emma Jones,
-            I’ve been a Fitness Trainer since 2010, Fitness, Health and Lifestyle
-            influencer.
+            It’s my Slogan and I will help you be the best you can be. I’m Olya Melnic,
+            I’ve been a Fitness Trainer since 2020, Fitness, Health mother and wife.
           </p>
           <div class="flex space-x-4">
             <button class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
