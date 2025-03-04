@@ -27,7 +27,8 @@
           <a href="#" class="text-sm text-blue-500 hover:underline">Forgot Password?</a>
         </div>
         <button
-          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+        >
           Login
         </button>
       </form>

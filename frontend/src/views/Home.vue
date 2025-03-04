@@ -1,7 +1,5 @@
 <template>
   <div class="font-sans text-gray-700 pt-20">
-
-
     <!-- Hero Section -->
     <section class="container mx-auto px-6 py-12">
       <div class="flex flex-col-reverse md:flex-row items-center">
