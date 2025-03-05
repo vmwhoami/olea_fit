@@ -1,9 +1,16 @@
 <template>
-      <!-- <header class="flex items-center justify-between py-4 px-6 shadow-md">
-      <div class="text-xl md:text-2xl font-bold text-orange-500">OlyaFit</div>
+   <!-- <header
+    class="flex-no-wrap fixed top-0 z-10 flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
+  >
+    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <icon-olea-fit-logo myFill="#b4b4b4" />
+    </a>
       <nav>
         <ul class="flex space-x-4 text-gray-600 text-sm md:text-base">
-          <li><a href="#" class="hover:text-gray-900">Home Page</a></li>
+          <li>
+          <router-link to="/" class="hover:text-gray-900" aria-current="page">Home Page</router-link>
+       
+          </li>
           <li><a href="#" class="hover:text-gray-900">Class Time</a></li>
           <li><a href="#" class="hover:text-gray-900">Review</a></li>
           <li><a href="#" class="hover:text-gray-900">Last Post</a></li>
@@ -12,6 +19,10 @@
         </ul>
       </nav>
     </header> -->
+
+
+
+    
   <nav
     class="flex-no-wrap fixed top-0 z-10 flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
   >
