@@ -12,5 +12,10 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  server: {
+    host: '127.0.0.1', // or '0.0.0.0' for all interfaces
+    port: 3003,       // pick a port you like
+    // open: true,     // optional: automatically open browser
+  },
 })
