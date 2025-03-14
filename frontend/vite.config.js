@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
+
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import svgLoader from 'vite-svg-loader'
@@ -15,7 +16,7 @@ export default defineConfig({
   },
   server: {
     host: '127.0.0.1', // or '0.0.0.0' for all interfaces
-    port: 3003,       // pick a port you like
+    port: 3003 // pick a port you like
     // open: true,     // optional: automatically open browser
-  },
+  }
 })

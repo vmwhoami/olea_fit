@@ -1,0 +1,2 @@
+Make the navbar sticky to top
+Make the hambuger to disoplay a navbar
