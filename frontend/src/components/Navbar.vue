@@ -53,4 +53,5 @@
 
 <script setup>
 import IconOleaFitLogo from "@/assets/icons/IconOleaFitLogo.vue";
+import IconBurger from "@/assets/icons/IconBurger.vue";
 </script>
